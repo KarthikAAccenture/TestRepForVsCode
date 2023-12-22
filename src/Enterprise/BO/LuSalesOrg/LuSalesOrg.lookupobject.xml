@@ -13,6 +13,7 @@
     <SimpleProperty name="accountNumber" type="DomId" dataSourceProperty="accountNumber" />
     <SimpleProperty name="legalInformation" type="DomLongDescription" dataSourceProperty="legalInformation" />
     <SimpleProperty name="currency" type="DomCurrency" dataSourceProperty="currency" />
+    <SimpleProperty name="noOfDaysPastDueForOverdueCustomers" type="DomString" dataSourceProperty="noOfDaysPastDueForOverdueCustomers" />
   </SimpleProperties>
   <Methods>
     <Method name="afterLoadAsync" />

@@ -1,0 +1,8 @@
+<ListObject name="LoMyCustomerPerfectStoreIndex" generateLoadMethod="true" schemaVersion="1.1">
+  <DataSource name="DsLoMyCustomerPerfectStoreIndex" />
+  <Item objectClass="LiMyCustomerPerfectStoreIndex" />
+  <Methods>
+    <Method name="beforeSaveAsync" />
+    <Method name="afterSaveAsync" />
+  </Methods>
+</ListObject>

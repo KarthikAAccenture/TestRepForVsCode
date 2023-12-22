@@ -56,10 +56,6 @@ function saveAsync(){
 *           -Non customer related calls: Store only Event                                   *
 *  onPrem:  -Only a call record for customer related and non customer related calls         *
 *********************************************************************************************/
-
-// check and correct start/end time timestamps (timezone differences)
-me.checkStartEndTime();
-
 var deferreds = [];
 // Preserve Substitution Flag
 var substitution = me.getSubstitution();

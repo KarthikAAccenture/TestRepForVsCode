@@ -39,7 +39,7 @@
     <SimpleProperty name="savePresetting" type="DomBool" storable="false" dataSourceProperty="savePresetting" />
     <SimpleProperty name="defaultValue" type="DomVariant" dataSourceProperty="defaultValue" storable="false" />
     <SimpleProperty name="promotionDateFrom" type="DomDate" dataSourceProperty="promotionDateFrom" storable="false" />
-    <SimpleProperty name="promotionDateThru" type="DomValidThru" dataSourceProperty="promotionDateThru" storable="false"/>
+    <SimpleProperty name="promotionDateThru" type="DomValidThru" dataSourceProperty="promotionDateThru" storable="false" />
     <SimpleProperty name="promotionId" type="DomPKey" storable="true" dataSourceProperty="promotionId" />
     <SimpleProperty name="promotionSlogan" type="DomText" storable="true" dataSourceProperty="promotionSlogan" />
     <SimpleProperty name="jdlDescriptionInitialized" type="DomBool" dataSourceProperty="jdlDescriptionInitialized" />
@@ -52,5 +52,6 @@
     <SimpleProperty name="considerScore" type="DomString" dataSourceProperty="considerScore" />
     <SimpleProperty name="score" type="DomDecimal" dataSourceProperty="score" />
     <SimpleProperty name="scoreAnswers" type="DomString" dataSourceProperty="scoreAnswers" />
+    <SimpleProperty name="myPerfectStoreVariable" type="DomString" dataSourceProperty="myPerfectStoreVariable"/>
   </SimpleProperties>
 </ListItem>

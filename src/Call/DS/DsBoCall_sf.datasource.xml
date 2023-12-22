@@ -46,6 +46,7 @@
     <Attribute name="outOfStockRate" table="Visit" column="OOS_Rate_All__c" />
     <Attribute name="outOfStockIssue" table="Visit" column="OOS_Issues__c" />
     <Attribute name="kpiRelevant" table="Visit_Template__c" column="KPI_Relevant__c" />
+    <Attribute name="myCallStatus" table="Visit" column="Visit_Status__c" />
   </Attributes>
   <Entities>
     <Entity name="Visit" idAttribute="Id" />
@@ -75,6 +76,7 @@
         sqlStmt += ",Visit.Visit_Template__c AS clbMetaPKey ";
         sqlStmt += ",Visit.Subject__c AS subject	";
         sqlStmt += ",Visit.Status AS clbStatus	";
+		sqlStmt += ",Visit.Visit_Status__c AS myCallStatus	";
         sqlStmt += ",#dateAsUnixepochLocaltime('Visit.PlannedVisitStartTime')# AS dateFrom	";
         sqlStmt += ",#dateAsUnixepochLocaltime('Visit.PlannedVisitEndTime')# AS dateThru	";
         sqlStmt += ",Visit.PlannedVisitStartTime AS timeFrom	";
@@ -155,6 +157,7 @@
         sqlStmt += ",Visit_Template__c.Id AS clbMetaPKey ";
         sqlStmt += ",Event.Subject AS subject	";
         sqlStmt += ",'Planned' AS clbStatus	";
+		sqlStmt += ",'Planned' AS myCallStatus	";
         sqlStmt += ",#dateAsUnixepochLocaltime('Event.StartDateTime')# AS dateFrom	";
         sqlStmt += ",#dateAsUnixepochLocaltime('Event.EndDateTime')# AS dateThru	";
         sqlStmt += ",Event.StartDateTime AS timeFrom	";

@@ -8,6 +8,7 @@
     <SimpleProperty name="text" type="DomText" storable="true" dataSourceProperty="text" />
     <SimpleProperty name="mobilityRelevant" type="DomBool" storable="false" dataSourceProperty="mobilityRelevant" />
     <SimpleProperty name="docTATypeForNew" type="DomBpaPaymentPolicy" storable="false" dataSourceProperty="docTATypeForNew" />
+    <SimpleProperty name="mobilityNameConstant" type="DomString" storable="true" dataSourceProperty="mobilityNameConstant" /> 
   </SimpleProperties>
   <ListObjects>
     <ListObject name="loBpaMetaRoleMetaRel" objectClass="LoBpaMetaRoleMetaRel" dataSourceProperty="pKey" listProperty="bpaMetaPKey" loadMode="LoadImmediate" />

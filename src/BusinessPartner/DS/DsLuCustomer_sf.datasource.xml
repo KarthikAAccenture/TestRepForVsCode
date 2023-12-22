@@ -2,6 +2,7 @@
   <Attributes>
     <Attribute name="pKey" table="Account" column="Id" />
     <Attribute name="name" table="Account" column="Name" />
+    <Attribute name="recordTypeId" table="Account" column="RecordTypeId" />
     <Attribute name="street" table="Account" column="ShippingStreet" />
     <DerivedAttribute name="houseNumber" value="' '" />
     <Attribute name="zipCode" table="Account" column="ShippingPostalCode" />
@@ -10,9 +11,17 @@
     <Attribute name="state" table="Account" column="ShippingState" />
     <Attribute name="latitude" table="Account" column="ShippingLatitude" />
     <Attribute name="longitude" table="Account" column="ShippingLongitude" />
+    <DerivedAttribute name="recordTypeName" value="RecordType.Name" />
   </Attributes>
   <Entities>
     <Entity name="Account" alias="" />
+     <Entity name="RecordType" alias="">
+      <Join Type="inner">
+        <SimpleJoin>
+          <Condition leftSideValue="Account.RecordTypeId" comparator="eq" rightSideType="Attribute" rightSideValue="RecordType.Id" />
+        </SimpleJoin>
+      </Join>
+    </Entity>
   </Entities>
   <QueryCondition><![CDATA[
      Account.Id = #pKey#

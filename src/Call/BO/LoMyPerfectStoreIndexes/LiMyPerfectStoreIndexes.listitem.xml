@@ -1,0 +1,10 @@
+<ListItem name="LiMyPerfectStoreIndexes">
+  <SimpleProperties>
+    <SimpleProperty name="pKey" type="DomPKey" />
+    <SimpleProperty name="icon" type="DomString" />
+    <SimpleProperty name="score" type="DomInteger" />
+    <SimpleProperty name="scoreText" type="DomString" />
+    <SimpleProperty name="indicatorImage" type="DomString" />
+    <SimpleProperty name="benchmarkScore" type="DomInteger" />
+  </SimpleProperties>
+</ListItem>

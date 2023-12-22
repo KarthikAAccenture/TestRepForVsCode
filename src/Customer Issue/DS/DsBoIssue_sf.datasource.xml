@@ -13,6 +13,9 @@
     <Attribute name="issuePhase" table="Account_Task__c" column="Phase__c" />
     <Attribute name="issueId" table="Account_Task__c" column="Name" />
     <Attribute name="svcRequestMetaPKey" table="Account_Task__c" column="Account_Task_Template__c" />
+    <Attribute name="note" table="Account_Task__c" column="Note__c" />
+    <Attribute name="featureDescription" table="Account_Task__c" column="Feature_Description__c" />
+    <Attribute name="productPkey" table="Account_Task__c" column="MCBC_Product__c" />
     <DerivedAttribute name="actualStatePKey" value="#toggleMapping('Account_Task__c', 'Phase__c')#" />
     <DerivedAttribute name="nextStatePKey" value="' '" />
     <DerivedAttribute name="wfeWorkflowPKey" value="Account_Task_Template__c.Workflow__c" />
@@ -27,6 +30,13 @@
       <Join Type="inner">
         <SimpleJoin>
           <Condition leftSideValue="Account_Task__c.Account_Task_Template__c" comparator="eq" rightSideType="Attribute" rightSideValue="Account_Task_Template__c.Id" />
+        </SimpleJoin>
+      </Join>
+    </Entity>
+    <Entity name="Product2" alias="">
+      <Join Type="left">
+        <SimpleJoin>
+          <Condition leftSideValue="Account_Task__c.MCBC_Product__c" comparator="eq" rightSideType="Attribute" rightSideValue="Product2.Id" />
         </SimpleJoin>
       </Join>
     </Entity>

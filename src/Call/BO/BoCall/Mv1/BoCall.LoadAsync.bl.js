@@ -70,7 +70,6 @@ var promise = Facade.getObjectAsync(BO_CALL, jsonQuery)
     me.setProperties(selfJson);
     me.setStartTimeEffectiveUI(Utils.convertTime2Ansi(Utils.convertAnsiTime2Time(me.getStartTimeEffective())));
     me.setStopTimeEffectiveUI(Utils.convertTime2Ansi(Utils.convertAnsiTime2Time(me.getStopTimeEffective())));
-    me.setStopTimeEffectiveTimezoneOffset(Utils.createDateNow().getTimezoneOffset());
     var jsonParams = me.prepareLookupsLoadParams(selfJson);
     return Facade.loadLookupsAsync(jsonParams);
   }
@@ -83,7 +82,6 @@ var promise = Facade.getObjectAsync(BO_CALL, jsonQuery)
     //Double conversion is needed  here as no Utils Function is available to replace
     //returns only Time
     me.setStartTimeEffective(Utils.convertFullDate2Ansi(currentDateTime));
-    me.setStartTimeEffectiveTimezoneOffset(currentDateTime.getTimezoneOffset());
     me.setStartTimeEffectiveUI(Utils.convertTime2Ansi(currentDateTime));
   }
 

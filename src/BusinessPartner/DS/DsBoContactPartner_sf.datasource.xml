@@ -16,6 +16,29 @@
     <Attribute name="description" table="Contact" column="Description" />
     <DerivedAttribute name="bpaMetaPKey" value="' '" />
     <DerivedAttribute name="emailEditable" value="'0'" />
+    <Attribute name="active" table="Contact" column="Active__c" />
+    <Attribute name="chainExecutionCommunicationMessage" table="Contact" column="BMC_ChainExecutionCommunication_Message__c" />
+    <Attribute name="position" table="Contact" column="Role__c" />
+    <Attribute name="reportsToID" table="Contact" column="ReportsToId" />
+    <Attribute name="mailingCity" table="Contact" column="Mailing_City__c" />
+    <Attribute name="mailingCountry" table="Contact" column="Mailing_Country__c" />
+    <Attribute name="mailingPostalCode" table="Contact" column="Mailing_Postal_Code__c" />
+    <Attribute name="mailingState" table="Contact" column="Mailing_State__c" />
+    <Attribute name="mailingStreet" table="Contact" column="Mailing_Street__c" />
+    <Attribute name="language" table="Contact" column="C360_Language__c" />
+    <Attribute name="decisionMaker" table="Contact" column="C360_Decision_Maker__c" />
+    <Attribute name="nps" table="Contact" column="C360_NPS__c" />
+    <Attribute name="financeContact" table="Contact" column="C360_Finance_Contact__c" />
+    <Attribute name="gdrpConsent" table="Contact" column="C360_GDPR_Consent__c" />
+    <Attribute name="dateofConsent" table="Contact" column="C360_GDPR_Consent_Date__c" />
+    <Attribute name="mcbcExternalPrivacyPolicy" table="Contact" column="C360_MCBC_External_Privacy_Policy__c" />
+    <Attribute name="globalDataProtectionPolicy" table="Contact" column="C360_Global_Data_Protection_Policy__c" />
+    <Attribute name="optinLanguage" table="Contact" column="C360_Opt_in_Language__c" />
+    <Attribute name="ownerID" table="Contact" column="OwnerId" />
+    <Attribute name="emailOptOut" table="Contact" column="HasOptedOutOfEmail" />
+    <Attribute name="lastModifiedById" table="Contact" column="LastModifiedById" />
+    <Attribute name="createdById" table="Contact" column="CreatedById" />
+    <Attribute name="contactOwner" table="Contact" column="OwnerId" />
   </Attributes>
   <Entities>
     <Entity name="Contact" alias="" idAttribute="Id" />

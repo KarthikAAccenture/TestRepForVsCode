@@ -35,5 +35,9 @@
     <SimpleProperty name="distance" type="DomDecimal" />
     <SimpleProperty name="visibleInMap" type="DomBool" />
     <SimpleProperty name="dateFromTimeFrom" type="DomString" />
+    <SimpleProperty name="callColor" type="DomRgbColor" storable="true" dataSourceProperty="callColor" />
+    <SimpleProperty name="cardStartTime" type="DomString" storable="true" />
+    <SimpleProperty name="cardEndTime" type="DomString" storable="true" />
+    <SimpleProperty name="myCallStatus" dataSourceProperty="myCallStatus" type="DomVisitStatus" />
   </SimpleProperties>
 </ListItem>

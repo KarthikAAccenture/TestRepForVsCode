@@ -18,7 +18,9 @@
   <Entities>
     <Entity name="Contact" alias="" idAttribute="Id" />
   </Entities>
-  <QueryCondition />
+  <QueryCondition><![CDATA[
+  Contact.AccountId = #accountPKey#
+  ]]></QueryCondition>
   <OrderCriteria>
     <OrderCriterion entity="Contact" attribute="Name" direction="ASC" />
   </OrderCriteria>
@@ -35,6 +37,7 @@
     <Parameter name="cpCity" type="TEXT" />
     <Parameter name="cpStateComp" type="TEXT" />
     <Parameter name="cpState" type="TEXT" />
+    <Parameter name="accountPKey" type="TEXT"/>
   </Parameters>
   <ConditionalParameters>
     <ConditionalParameter name="lastName">

@@ -59,7 +59,6 @@ if (me.getLuCallMeta().getCaptureProceedingTime() == "1") {
     } else {
       me.setFinishTime(Utils.createAnsiDateTimeNow());
       me.setStopTimeEffective(Utils.createAnsiDateTimeNow());
-      me.setStopTimeEffectiveTimezoneOffset(Utils.createDateNow().getTimezoneOffset());
     }
   } else {
     if (me.getClbStatus() === "Planned") {
@@ -71,7 +70,6 @@ if (me.getLuCallMeta().getCaptureProceedingTime() == "1") {
     var stopTimeEffective = Utils.convertAnsiDate2Date(me.getStopTimeEffective());
     stopTimeEffective.setSeconds(stopTimeEffective.getSeconds()+1);
     me.setStopTimeEffective(Utils.convertDateTime2Ansi(stopTimeEffective));
-    me.setStopTimeEffectiveTimezoneOffset(stopTimeEffective.getTimezoneOffset());
   }
 }
 

@@ -1,4 +1,4 @@
-<DataSource name="DsBoCustomer" backendSystem="sf" businessObjectClass="BoCustomer" external="false" editableEntity="Account" schemaVersion="2.0">
+<DataSource name="DsBoCustomer" backendSystem="sf" objectClass="BoCustomer" businessObjectClass="BoCustomer" external="true" editableEntity="Account" schemaVersion="2.0">
   <Attributes>
     <Attribute name="pKey" table="Account" column="Id" />
     <Attribute name="name" table="Account" column="Name" />
@@ -28,22 +28,279 @@
     <Attribute name="accountOi" table="Account_Extension__c" column="OOS_Issue__c" />
     <Attribute name="operatingHoursId" table="Account" column="OperatingHoursId" />
     <DerivedAttribute name="emailEditable" value="'0'" />
+    <Attribute name="rollingIndustryVolume" table="Account" column="X12M_Rolling_Industry_Volume__c" />
+    <Attribute name="rollingMolsonVolume" table="Account" column="X12M_Rolling_Molson_Volume__c" />
+    <Attribute name="accountName" table="Account" column="Name" />
+    <Attribute name="aopCustomerGroup" table="Account" column="AOP_Customer_Group__c" />
+    <Attribute name="canada3rdTier" table="Account" column="Canada_3rd_Tier__c" />
+    <Attribute name="canadaUsefulLinks" table="Account" column="C360_CanadaUsefulLinks__c" />
+    <Attribute name="closingweek" table="Account" column="Closing_week__c" />
+    <Attribute name="craftPotential" table="Account" column="C360_Craft_Potential__c" />
+    <Attribute name="creditBlock" table="Account" column="C360_Credit_Block__c" />
+    <Attribute name="customerHierarchyLevel7" table="Account" column="C360_Cust_Hierarchy_Lvl7_Text__c" />
+    <Attribute name="customerHierarchyLevel8" table="Account" column="C360_Cust_Hierarchy_Lvl8_Text__c" />
+    <Attribute name="customerPricingGroup" table="Account" column="Customer_Pricing_Group__c" />
+    <Attribute name="dateofLastTelesalesCall" table="Account" column="C360_Date_of_Last_Telesales_Call__c" />
+    <Attribute name="dateofLastVisit" table="Account" column="C360_Date_of_Last_Visit__c" />
+    <Attribute name="deliveryFrequency" table="Account" column="Delivery_Frequency__c" />
+    <Attribute name="deliveryInstructions" table="Account" column="C360_Delivery_Instructions__c" />
+    <Attribute name="deliveryPlantDescription" table="Account" column="C360_Delivery_Plant_Description__c" />
+    <Attribute name="distributorWarehouse" table="Account" column="C360_DistributorWarehouse__c" />
+    <Attribute name="eMailAddress" table="Account" column="C360_E_Mail_Address__c" />
+    <Attribute name="fieldSalesNotes" table="Account" column="C360_Field_Sales_Notes__c" />
+    <Attribute name="fridge" table="Account" column="C360_Fridge__c" />
+    <Attribute name="molsonAccountManager" table="Account" column="C360_Molson_Account_Manager__c" />
+    <Attribute name="openingweek" table="Account" column="Opening_week__c" />
+    <Attribute name="parentAccount" table="Account" column="ParentId" />
+    <Attribute name="perfectStoreScore" table="Account" column="Perfect_Store_Perfect_Store_Score__c" />
+    <Attribute name="benchmarkingPerfectStoreScore" table="Account" column="Benchmarking_Perfect_Store_Score__c" />
+    <Attribute name="phone" table="Account" column="Phone" />
+    <Attribute name="regionalKeyAcct" table="Account" column="C360_Regional_Key_Acct_Sales_Off__c" />
+    <Attribute name="sapId" table="Account" column="C360_SAP_ID__c" />
+    <Attribute name="seasonalIndicator" table="Account" column="C360_Seasonal_Indicator__c" />
+    <Attribute name="tableauDashboardLinks" table="Account" column="C360_Tableau_Dashboard_Links__c" />
+    <Attribute name="routingIndicator" table="Account" column="Routing_Indicator__c" />
+    <Attribute name="accountStatus" table="Account" column="C360_Account_Status__c" />
+    <Attribute name="calledOnAccounts" table="Account" column="Called_On_Accounts__c" />
+    <Attribute name="outletTypeLVL2OffPremise" table="Account" column="C360_Outlet_Type_LVL2_Off_Premise__c" />
+    <Attribute name="outletTypeLVL2OnPremise" table="Account" column="C360_Outlet_Type_LVL2_On_Premise__c" />
+    <Attribute name="outletPriceCluster" table="Account" column="C360_Outlet_Price_Cluster__c" />
+    <Attribute name="telesalesNotes" table="Account" column="C360_TeleSales_Notes__c" />
+    <Attribute name="creditManagementNotes" table="Account" column="C360_Credit_Management_Notes__c" />
+    <Attribute name="termsofPayment" table="Account" column="C360_Terms_of_Payment__c" />
+    <Attribute name="licenseNumber" table="Account" column="C360_License_Number__c" />
+    <Attribute name="salesChannelDescription" table="Account" column="C360_Sales_Channel_Description__c" />
+    <Attribute name="ownerID" table="Account" column="OwnerId" />
+    <Attribute name="assignedEmployeeName" table="Account" column="DRMAssignedEmployeeNme__c" />
+    <Attribute name="assignedSalesPosition" table="Account" column="DRMAssignedSalesPositionNme__c" />
+    <Attribute name="chainLevel1Name" table="Account" column="ChainLevel1Nme__c" />
+    <Attribute name="createdByID" table="Account" column="CreatedById" />
+    <Attribute name="accountDescription" table="Account" column="Description" />
+    <Attribute name="eCommerceAccounts" table="Account" column="e_Commerce_Accounts__c" />
+    <Attribute name="hoursofOperations" table="Account" column="Hours_of_Operations__c" />
+    <Attribute name="howManyTapsatAccount" table="Account" column="How_Many_Taps_at_Account__c" />
+    <Attribute name="keyContact" table="Account" column="Key_Contact__c" />
+    <Attribute name="lastInvoiceDate" table="Account" column="LastInvoiceDt__c" />
+    <Attribute name="lastModifiedByID" table="Account" column="LastModifiedById" />
+    <Attribute name="managedSubChannel" table="Account" column="ManagedSubChannelDesc__c" />
+    <Attribute name="outletCode" table="Account" column="OutletCd__c" />
+    <Attribute name="preferredVisitDay" table="Account" column="MillerCoors_Preferred_Visit_Day__c" />
+    <Attribute name="primaryContact" table="Account" column="ACE_Primary_Contact__c" />
+    <Attribute name="primaryOrderDay" table="Account" column="Primary_Order_Day__c" />
+    <Attribute name="status" table="Account" column="StatusNme__c" />
+    <Attribute name="storeLevelInstruction" table="Account" column="Store_Level_Instruction__c" />
+    <Attribute name="tdLinkCode" table="Account" column="TD_Link_Code__c" />
+    <Attribute name="teraAccountID" table="Account" column="TeraAccountId__c" />
+    <Attribute name="tradeChannel" table="Account" column="TradeChannelDesc__c" />
+    <Attribute name="visitFrequency" table="Account" column="Visit_Frequency__c" />
+    <Attribute name="defaultVisitTemplate" table="Account" column="defaultVisitTemplate" />
+    <Attribute name="accountManagerPKey" table="Account_Manager__c" column="Id" />
+    <Attribute name="retailOutletId" table="Account" column="Retail_Outlet_ID__c" />
   </Attributes>
   <Entities>
     <Entity name="Account" alias="" idAttribute="Id" />
-    <Entity name="Account_Extension__c" alias="">
-      <Join Type="inner">
-        <SimpleJoin>
-          <Condition leftSideValue="Account_Extension__c.Account__c" comparator="eq" rightSideType="Attribute" rightSideValue="Account.Id" />
-        </SimpleJoin>
-      </Join>
-    </Entity>
   </Entities>
-  <QueryCondition><![CDATA[
-   Account.Id = #pKey#
-          ]]></QueryCondition>
-  <OrderCriteria />
-  <Parameters>
-    <Parameter name="pKey" type="TEXT" />
-  </Parameters>
+  <Database platform="SQLite">
+    <Load><![CDATA[
+		if (!jsonQuery){jsonQuery={'params': []};}
+	if (Utils.isDefined(jsonQuery)){
+	  var newParams = jsonQuery;
+	  if (Utils.isOldParamsFormat(newParams)){
+		newParams = Utils.convertDsParamsOldToNew(newParams);
+	  }
+	}
+	var pKey;
+	if(Utils.isDefined(newParams.pKey)){
+		pKey = newParams.pKey;
+	}
+	var sqlParams1 = {pKey};
+
+	// Fields on account that are used in all salesorg's 
+	// all global fileds must be delared below for account 
+	var sqlStmt1 = "SELECT";
+    sqlStmt1 += " Account.Id as pKey";
+    sqlStmt1 += ", Account.Name as name";
+    sqlStmt1 += ", Account.Name_2__c as name2";
+    sqlStmt1 += ", Account_Extension__c.Match_Code__c as matchcode";
+    sqlStmt1 += ", Account.Account_Number__c as customerId";
+    sqlStmt1 += ", Account.Phone as phone1";
+    sqlStmt1 += ", Account.Account_Email__c as email1";
+    sqlStmt1 += ", Account.Fax as fax1";
+    sqlStmt1 += ", Account_Extension__c.Sales_Relevant__c as salesRelevant";
+    sqlStmt1 += ", Account.Account_Template__c as bpaMetaPKey";
+    sqlStmt1 += ", Account_Extension__c.Date_Closure__c as dateClosure";
+    sqlStmt1 += ", Account_Extension__c.Id as accountExtensionId";
+    sqlStmt1 += ", Account_Extension__c.Consider_Modules__c as considerModules";
+    sqlStmt1 += ", Account_Extension__c.Distribution_Issue__c as accountDi";
+    sqlStmt1 += ", Account_Extension__c.OOS_Issue__c as accountOi";
+    sqlStmt1 += ", Account.OperatingHoursId as operatingHoursId";
+	sqlStmt1 += ", Account_Extension__c.State__c as state";
+	sqlStmt1 += ", Account_Extension__c.Phase__c as phase";
+	sqlStmt1 += ", Account_Extension__c.Org_Level__c as orgLevel";
+	sqlStmt1 += ", Account_Extension__c.Company_Type__c as companyType";
+	sqlStmt1 += ", Account_Extension__c.Class_Of_Trade__c as classOfTrade";
+	sqlStmt1 += ", Account_Extension__c.Priority__c as priority";
+	sqlStmt1 += ", Account.Default_Visit_Template__c as defaultVisitTemplate";
+	sqlStmt1 += ", Account_Manager__c.Id as accountManagerPKey";
+	sqlStmt1 += ", Account.Retail_Outlet_ID__c as retailOutletId";
+	sqlStmt1 += ", Account.OwnerId as ownerID";
+	sqlStmt1 += ", Account.CreatedById as createdByID";
+	sqlStmt1 += ", Account.LastModifiedById as lastModifiedByID";
+	
+	//Fields on account that are used for Canada - 3000 salesorg
+	//Fields other than the respective salesorg must be declared as empty in below if condition
+	if(ApplicationContext.get('user').salesOrg == Localization.resolve("Canada_SalesOrg"))
+	{
+		sqlStmt1 += ", Account.X12M_Rolling_Industry_Volume__c as rollingIndustryVolume";
+		sqlStmt1 += ", Account.X12M_Rolling_Molson_Volume__c as rollingMolsonVolume";
+		sqlStmt1 += ", Account.Name as accountName";
+		sqlStmt1 += ", Account.AOP_Customer_Group__c as aopCustomerGroup";
+		sqlStmt1 += ", Account.Canada_3rd_Tier__c as canada3rdTier";
+		sqlStmt1 += ", Account.C360_CanadaUsefulLinks__c as canadaUsefulLinks";
+		sqlStmt1 += ", Account.Closing_week__c as closingweek";
+		sqlStmt1 += ", Account.C360_Craft_Potential__c as craftPotential";
+		sqlStmt1 += ", Account.C360_Credit_Block__c as creditBlock";
+		sqlStmt1 += ", Account.C360_Cust_Hierarchy_Lvl7_Text__c as customerHierarchyLevel7";
+		sqlStmt1 += ", Account.C360_Cust_Hierarchy_Lvl8_Text__c as customerHierarchyLevel8";
+		sqlStmt1 += ", Account.Customer_Pricing_Group__c as customerPricingGroup";
+		sqlStmt1 += ", Account.C360_Date_of_Last_Telesales_Call__c as dateofLastTelesalesCall";
+		sqlStmt1 += ", Account.C360_Date_of_Last_Visit__c as dateofLastVisit";
+		sqlStmt1 += ", Account.Delivery_Frequency__c as deliveryFrequency";
+		sqlStmt1 += ", Account.C360_Delivery_Instructions__c as deliveryInstructions";
+		sqlStmt1 += ", Account.C360_Delivery_Plant_Description__c as deliveryPlantDescription";
+		sqlStmt1 += ", Account.C360_DistributorWarehouse__c as distributorWarehouse";
+		sqlStmt1 += ", Account.C360_E_Mail_Address__c as eMailAddress";
+		sqlStmt1 += ", Account.C360_Field_Sales_Notes__c as fieldSalesNotes";
+		sqlStmt1 += ", Account.C360_Fridge__c as fridge";
+		sqlStmt1 += ", Account.C360_Molson_Account_Manager__c as molsonAccountManager";
+		sqlStmt1 += ", Account.Opening_week__c as openingweek";
+		sqlStmt1 += ", Account.ParentId as parentAccount";
+		sqlStmt1 += ", Account.MCBC_Perfect_Store_Perfect_Store_Score__c as perfectStoreScore";
+		sqlStmt1 += ", Account.MCBC_Benchmarking_Perfect_Store_Score__c as benchmarkingPerfectStoreScore";
+		sqlStmt1 += ", Account.Phone as phone";
+		sqlStmt1 += ", Account.C360_Regional_Key_Acct_Sales_Off__c as regionalKeyAcct";
+		sqlStmt1 += ", Account.C360_SAP_ID__c as sapId";
+		sqlStmt1 += ", Account.C360_Seasonal_Indicator__c as seasonalIndicator";
+		sqlStmt1 += ", Account.C360_Tableau_Dashboard_Links__c as tableauDashboardLinks";
+		sqlStmt1 += ", Account.Routing_Indicator__c as routingIndicator";
+		sqlStmt1 += ", Account.C360_Account_Status__c as accountStatus";
+		sqlStmt1 += ", Account.Called_On_Accounts__c as calledOnAccounts";
+		sqlStmt1 += ", Account.C360_Outlet_Type_LVL2_Off_Premise__c as outletTypeLVL2OffPremise";
+		sqlStmt1 += ", Account.C360_Outlet_Type_LVL2_On_Premise__c as outletTypeLVL2OnPremise";
+		sqlStmt1 += ", Account.C360_Outlet_Price_Cluster__c as outletPriceCluster";
+		sqlStmt1 += ", Account.C360_TeleSales_Notes__c as telesalesNotes";
+		sqlStmt1 += ", Account.C360_Credit_Management_Notes__c as creditManagementNotes";
+		sqlStmt1 += ", Account.C360_Terms_of_Payment__c as termsofPayment";
+		sqlStmt1 += ", Account.C360_License_Number__c as licenseNumber";
+		sqlStmt1 += ", Account.C360_Sales_Channel_Description__c as salesChannelDescription";
+		sqlStmt1 += ", '' as chainLevel1Name";
+		sqlStmt1 += ", '' as createdByID";
+		sqlStmt1 += ", '' as accountDescription";
+		sqlStmt1 += ", '' as eCommerceAccounts";
+		sqlStmt1 += ", '' as hoursofOperations";
+		sqlStmt1 += ", '' as howManyTapsatAccount";
+		sqlStmt1 += ", '' as keyContact";
+		sqlStmt1 += ", #MinDate# as lastInvoiceDate";
+		sqlStmt1 += ", '' as managedSubChannel";
+		sqlStmt1 += ", '' as outletCode";
+		sqlStmt1 += ", '' as preferredVisitDay";
+		sqlStmt1 += ", '' as primaryContact";
+		sqlStmt1 += ", '' as primaryOrderDay";
+		sqlStmt1 += ", '' as status";
+		sqlStmt1 += ", '' as storeLevelInstruction";
+		sqlStmt1 += ", '' as tdLinkCode";
+		sqlStmt1 += ", '' as teraAccountID";
+		sqlStmt1 += ", '' as tradeChannel";
+		sqlStmt1 += ", '' as visitFrequency";
+		sqlStmt1 += ", '' as assignedEmployeeName";
+		sqlStmt1 += ", '' as assignedSalesPosition";
+	}
+		   
+	//Fields on account that are used for USA - 1000 salesorg
+	//Fields other than the respective salesorg must be declared as empty in below if condition
+	if(ApplicationContext.get('user').salesOrg == Localization.resolve("USA_SalesOrg"))
+	{
+		sqlStmt1 += ", Account.OwnerId as ownerID";
+		sqlStmt1 += ", Account.DRMAssignedEmployeeNme__c as assignedEmployeeName";
+		sqlStmt1 += ", Account.DRMAssignedSalesPositionNme__c as assignedSalesPosition";
+		sqlStmt1 += ", Account.ChainLevel1Nme__c as chainLevel1Name";
+		sqlStmt1 += ", Account.Description as accountDescription";
+		sqlStmt1 += ", Account.e_Commerce_Accounts__c as eCommerceAccounts";
+		sqlStmt1 += ", Account.Hours_of_Operations__c as hoursofOperations";
+		sqlStmt1 += ", Account.How_Many_Taps_at_Account__c as howManyTapsatAccount";
+		sqlStmt1 += ", Account.Key_Contact__c as keyContact";
+		sqlStmt1 += ", Account.LastInvoiceDt__c as lastInvoiceDate";
+		sqlStmt1 += ", Account.ManagedSubChannelDesc__c as managedSubChannel";
+		sqlStmt1 += ", Account.OutletCd__c as outletCode";
+		sqlStmt1 += ", Account.MillerCoors_Preferred_Visit_Day__c as preferredVisitDay";
+		sqlStmt1 += ", Account.ACE_Primary_Contact__c as primaryContact";
+		sqlStmt1 += ", Account.Primary_Order_Day__c as primaryOrderDay";
+		sqlStmt1 += ", Account.StatusNme__c as status";
+		sqlStmt1 += ", Account.Store_Level_Instruction__c as storeLevelInstruction";
+		sqlStmt1 += ", Account.TD_Link_Code__c as tdLinkCode";
+		sqlStmt1 += ", Account.TeraAccountId__c as teraAccountID";
+		sqlStmt1 += ", Account.TradeChannelDesc__c as tradeChannel";
+		sqlStmt1 += ", Account.Visit_Frequency__c as visitFrequency";
+		sqlStmt1 += ", '' as rollingIndustryVolume";
+		sqlStmt1 += ", '' as rollingMolsonVolume";
+		sqlStmt1 += ", '' as accountName";
+		sqlStmt1 += ", '' as aopCustomerGroup";
+		sqlStmt1 += ", '' as canada3rdTier";
+		sqlStmt1 += ", '' as canadaUsefulLinks";
+		sqlStmt1 += ", '' as closingweek";
+		sqlStmt1 += ", '' as craftPotential";
+		sqlStmt1 += ", '' as creditBlock";
+		sqlStmt1 += ", '' as customerHierarchyLevel7";
+		sqlStmt1 += ", '' as customerHierarchyLevel8";
+		sqlStmt1 += ", '' as customerPricingGroup";
+		sqlStmt1 += ", #MinDate# as dateofLastTelesalesCall";
+		sqlStmt1 += ", #MinDate# as dateofLastVisit";
+		sqlStmt1 += ", '' as deliveryFrequency";
+		sqlStmt1 += ", '' as deliveryInstructions";
+		sqlStmt1 += ", '' as deliveryPlantDescription";
+		sqlStmt1 += ", '' as distributorWarehouse";
+		sqlStmt1 += ", '' as eMailAddress";
+		sqlStmt1 += ", '' as fieldSalesNotes";
+		sqlStmt1 += ", '' as fridge";
+		sqlStmt1 += ", '' as molsonAccountManager";
+		sqlStmt1 += ", '' as openingweek";
+		sqlStmt1 += ", '' as parentAccount";
+		sqlStmt1 += ", '' as perfectStoreScore";
+		sqlStmt1 += ", '' as benchmarkingPerfectStoreScore";
+		sqlStmt1 += ", '' as phone";
+		sqlStmt1 += ", '' as regionalKeyAcct";
+		sqlStmt1 += ", '' as sapId";
+		sqlStmt1 += ", '' as seasonalIndicator";
+		sqlStmt1 += ", '' as tableauDashboardLinks";
+		sqlStmt1 += ", '' as accountStatus";
+		sqlStmt1 += ", '' as routingIndicator";
+		sqlStmt1 += ", '' as calledOnAccounts";
+		sqlStmt1 += ", '' as outletTypeLVL2OffPremise";
+		sqlStmt1 += ", '' as outletTypeLVL2OnPremise";
+		sqlStmt1 += ", '' as outletPriceCluster";
+		sqlStmt1 += ", '' as telesalesNotes";
+		sqlStmt1 += ", '' as creditManagementNotes";
+		sqlStmt1 += ", '' as termsofPayment";
+		sqlStmt1 += ", '' as licenseNumber";
+    }
+	
+	sqlStmt1 += " FROM Account ";
+	sqlStmt1 += " INNER JOIN Account_Extension__c ON Account_Extension__c.Account__c = Account.Id";
+    sqlStmt1 += " LEFT JOIN Account_Manager__c ON Account_Manager__c.Account__c = Account.Id";
+    sqlStmt1 += " AND Account_Manager__c.User__c = '#UserPKey#'";
+	sqlStmt1 += " WHERE 1=1";
+	sqlStmt1 += " AND Account.Id = '#pKey#'";
+	
+	var sqlStmt1Result = Utils.replaceMacrosParam(sqlStmt1, sqlParams1);
+
+	var finalSql = sqlStmt1Result.sql ;
+    var finalParams = sqlStmt1Result.params ;
+
+	return {sql: finalSql, params: finalParams};
+  
+          ]]></Load>
+    <Update><![CDATA[
+      return undefined;
+]]></Update>
+  </Database>
 </DataSource>

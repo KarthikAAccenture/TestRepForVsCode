@@ -6,7 +6,7 @@
     <DateTimeAttribute dateName="dateFrom" timeName="timeFrom" table="Visit" column="PlannedVisitStartTime" />
     <Attribute name="timeThru" table="Visit" column="PlannedVisitEndTime" />
     <DerivedAttribute name="responsibleName" type="String" value="User.LastName || ', ' || User.FirstName" />
-    <DerivedAttribute name="clbTypeStatus" type="String" value="'ClbTypeStatus_'||Visit_Template__c.Meta_Type__c||'_'||Visit.Status" />
+    <DerivedAttribute name="clbTypeStatus" type="String" value="'ClbTypeStatus_'||Visit_Template__c.Meta_Type__c||'_'||Visit.Visit_Status__c" />
   </Attributes>
   <Entities>
     <Entity name="Visit" alias="" />

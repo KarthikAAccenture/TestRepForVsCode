@@ -1,0 +1,47 @@
+<BusinessObject name="BoMyCalculator" schemaVersion="1.1">
+  <DataSource name="DsBoMyCalculator" />
+  <SimpleProperties>
+    <SimpleProperty name="pKey" type="DomPKey" dataSourceProperty="pKey" id="true" />
+    <SimpleProperty name="name" type="DomText" dataSourceProperty="name" />
+    <SimpleProperty name="accountPKey" type="DomPKey" dataSourceProperty="accountPKey" />
+    <SimpleProperty name="accountName" type="DomText" dataSourceProperty="accountName" />
+    <SimpleProperty name="salesOrg" type="DomSalesOrg" dataSourceProperty="salesOrg" />
+    <SimpleProperty name="timeFrame" type="DomMyCalcTimeFrame" dataSourceProperty="timeFrame" />
+    <SimpleProperty name="packageType" type="DomMyCalcPkgType" dataSourceProperty="packageType" />
+    <SimpleProperty name="size" type="DomMyCalcSize" dataSourceProperty="size" />
+    <SimpleProperty name="beerBrand" type="DomMyCalcBeerBrand" dataSourceProperty="beerBrand" />
+    <SimpleProperty name="servingSizeOz" type="DomDecimal" dataSourceProperty="servingSizeOz" />
+    <SimpleProperty name="otherBrandName" type="DomString" dataSourceProperty="otherBrandName" />
+    <SimpleProperty name="priceToConsumer" type="DomMoney" dataSourceProperty="priceToConsumer" />
+    <SimpleProperty name="priceToRetailer" type="DomMoney" dataSourceProperty="priceToRetailer" />
+    <SimpleProperty name="kegsCasesPerWeek" type="DomDecimal" dataSourceProperty="kegsCasesPerWeek" />
+    <SimpleProperty name="numberOfStores" type="DomDecimal" dataSourceProperty="numberOfStores" />
+    <SimpleProperty name="costPerOunce" type="DomDecimal" dataSourceProperty="costPerOunce" />
+    <SimpleProperty name="numberOfServings" type="DomInteger" dataSourceProperty="numberOfServings" />
+    <SimpleProperty name="sizeInOunce" type="DomDecimal" dataSourceProperty="sizeInOunce" />
+    <SimpleProperty name="costPerServing" type="DomMoney" dataSourceProperty="costPerServing" />
+    <SimpleProperty name="profitMargin" type="DomPercentage" dataSourceProperty="profitMargin" />
+    <SimpleProperty name="grossRevenuePerKegCase" type="DomMoney" dataSourceProperty="grossRevenuePerKegCase" />
+    <SimpleProperty name="netMarginPerKegCase" type="DomMoney" dataSourceProperty="netMarginPerKegCase" />
+    <SimpleProperty name="grossRevenuePerWeek" type="DomMoney" dataSourceProperty="grossRevenuePerWeek" />
+    <SimpleProperty name="netMarginPerWeek" type="DomMoney" dataSourceProperty="netMarginPerWeek" />
+    <SimpleProperty name="netMarginPerYear" type="DomMoney" dataSourceProperty="netMarginPerYear" />
+    <SimpleProperty name="grossRevenuePerYear" type="DomMoney" dataSourceProperty="grossRevenuePerYear" />
+    <SimpleProperty name="recordTypeId" type="DomText" dataSourceProperty="recordTypeId" />
+    <SimpleProperty name="isCalculated" type="DomBool" dataSourceProperty="isCalculated" />
+  </SimpleProperties>
+  <NestedObjects />
+  <ObjectLookups />
+  <ListObjects />
+  <Methods>
+    <Method name="beforeSaveAsync" />
+    <Method name="afterCreateAsync" />
+    <Method name="saveAsync" />
+    <Method name="createAsync" />
+    <Method name="myCgCalculate" />
+    <Method name="myGetButtonVisibility" />
+    <Method name="mySetEARights" />
+    <Method name="myClearValues" />
+    <Method name="mySetSizeWhenPackageChanged" />
+  </Methods>
+</BusinessObject>

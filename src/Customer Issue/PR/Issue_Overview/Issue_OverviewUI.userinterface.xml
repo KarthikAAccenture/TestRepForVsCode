@@ -210,6 +210,15 @@
                 <Binding target="Value" binding="ProcessContext::IssueDetail.text" bindingMode="TWO_WAY" />
               </Bindings>
             </InputArea>
+            <Lookup name="Phase">
+                <Bindings>
+                  <Resource target="Label" type="Label" id="StatusId" defaultLabel="Status" />
+                  <Binding target="Value" binding="ProcessContext::IssueDetail.issuePhase" bindingMode="TWO_WAY" />
+                </Bindings>
+                <Events>
+                  <LookupEvent event="PhaseLookupEvent" />
+                </Events>
+              </Lookup>
             <SelectionBox name="Classification">
               <Bindings>
                 <Resource target="Label" type="Label" id="IssueClassificationId" defaultLabel="Classification" />
@@ -266,6 +275,25 @@
               </Bindings>
             </InputArea>
           </GroupElement>
+          <GroupElement name="ProductLookup">
+            <Lookup name="Product">
+              <Bindings>
+                <Resource target="Label" type="Label" id="ProductId" defaultLabel="Product" />
+                <Binding target="Value" binding="ProcessContext::IssueDetail.luProduct.text1" bindingMode="TWO_WAY" />
+              </Bindings>
+              <Events>
+                <LookupEvent event="productLookupEvent" />
+              </Events>
+            </Lookup>
+          </GroupElement>
+          <GroupElement name="NotesGroup">
+            <InputArea name="FeatureDiscription">
+              <Bindings>
+                <Resource target="Label" type="Label" defaultLabel="Feature Description" id="FeatureDescriptionId" />
+                <Binding target="Value" binding="ProcessContext::IssueDetail.featureDescription" bindingMode="TWO_WAY" />
+              </Bindings>
+            </InputArea>
+          </GroupElement>
           <GroupElement name="Substitution">
             <Bindings>
               <Resource target="title" type="Label" id="SubstitutionGroupId" defaultLabel="Substitution" />
@@ -287,7 +315,7 @@
             <Bindings>
               <Resource target="title" type="Label" id="CurrentStatusGroupId" defaultLabel="Current Status" />
             </Bindings>
-            <SelectionBox name="Phase" editable="false">
+            <!--SelectionBox name="Phase" editable="false">
               <Bindings>
                 <Resource target="Label" type="Label" id="StatusId" defaultLabel="Status" />
                 <Binding target="DataSource" toggleId="SvcIssuePhase" bindingMode="TWO_WAY" />
@@ -299,7 +327,7 @@
                   <Binding target="ItemText" type="Text" binding=".text" bindingMode="ONE_WAY" />
                 </Bindings>
               </Items>
-            </SelectionBox>
+            </SelectionBox-->
             <InputArea name="Initiator" editable="false">
               <Bindings>
                 <Resource target="Label" type="Label" id="Initiator" defaultLabel="Initiator" />

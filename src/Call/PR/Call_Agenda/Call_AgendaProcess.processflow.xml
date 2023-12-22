@@ -2,6 +2,7 @@
   <Entry>
     <ProcessContext>
       <Declarations>
+        <Declaration name="isPreviewOnly" type="DomBool" />
         <Declaration name="OverviewList" type="LoAgendaOverview" />
         <Declaration name="DateFrom" type="String" />
         <Declaration name="TimeFrom" type="String" />
@@ -316,7 +317,7 @@
         <UIDescription>Call::AgendaUI</UIDescription>
         <Events>
           <Event name="swipeEvent" action="Swipe_Decision" />
-          <Event name="itemSelected" action="LoadCall_Decision" />
+          <Event name="itemSelected" action="setIsPreviewOnlyFlagToTrue" />
           <Event name="createNewCall" action="CreateNewCallWizard" />
           <Event name="createNewCallsViaTripList" action="CreateNewCallsViaTripList" />
           <Event name="createNewCallsViaJobLists" action="InitJobListWizardValues" />
@@ -494,7 +495,7 @@
       <Action name="ShowAgendaWeeklyView" actionType="VIEW">
         <UIDescription>Call::AgendaWeeklyViewUI</UIDescription>
         <Events>
-          <Event name="itemSelected" action="LoadCall_Decision" />
+          <Event name="itemSelected" action="setIsPreviewOnlyFlagToTrue" />
           <Event name="createNewCall" action="CreateNewCall_Tour_Decision" />
           <Event name="createNewCallsViaTripList" action="CreateNewCallsViaTripList" />
           <Event name="createNewCallsViaJobLists" action="InitJobListWizardValues" />
@@ -527,6 +528,7 @@
         <Parameters>
           <Input name="pKey" value="Event.pKey" />
           <Input name="clbStatus" value="Event.clbStatus" />
+          <Input name="myCallStatus" value="Event.myCallStatus" />
           <Input name="deleteAllowed" value="Event.deleteAllowed" />
           <Input name="referenceUserPKey" value="ProcessContext::CurrentResponsiblePKey" />
           <Input name="responsiblePKey" value="Event.responsiblePKey" />
@@ -544,6 +546,7 @@
         <CaseElse action="ShowCalendarView_Decision" />
       </Action>
       <Action name="ContextMenu_Result_Decision" actionType="DECISION" parameter="Event.selected">
+        <Case value="Preview" action="setIsPreviewOnlyFlagToTrue" />
         <Case value="Execute" action="LoadCall_Decision" />
         <Case value="Cancel" action="CancelVisit" />
         <Case value="Delete" action="DeleteVisit" />
@@ -552,6 +555,13 @@
         <Case value="Info" action="VisitInfo" />
         <Case value="NavigateToCustomer" action="NavigateToCustomer" />
         <CaseElse action="ShowCalendarView_Decision" />
+      </Action>
+      <Action name="setIsPreviewOnlyFlagToTrue" actionType="LOGIC" call="Utils.identity">
+        <Parameters>
+          <Input name="isPreviewOnly" value="1" type="DomBool" />
+        </Parameters>
+        <Return name="ProcessContext::isPreviewOnly" />
+        <TransitionTo action="LoadCall_Decision" />
       </Action>
       <Action name="LoadCall_Decision" actionType="DECISION" parameter="Event.customerOnDevice">
         <Case value="1" action="LoadCustomerPKey" />
@@ -601,7 +611,15 @@
         <Parameters>
           <Input name="CallPKey" value="Event.pKey" />
           <Input name="ResponsiblePKey" value="ProcessContext::CurrentResponsiblePKey" />
+          <Input name="isPreviewOnly" value="ProcessContext::isPreviewOnly" />
         </Parameters>
+        <TransitionTo action="setIsPreviewOnlyFlagToFalse" />
+      </Action>
+      <Action name="setIsPreviewOnlyFlagToFalse" actionType="LOGIC" call="Utils.identity">
+        <Parameters>
+          <Input name="isPreviewOnly" value="0" type="DomBool" />
+        </Parameters>
+        <Return name="ProcessContext::isPreviewOnly" />
         <TransitionTo action="RefreshCurrentViewByView_Decision" />
       </Action>
       <Action name="RefreshCurrentViewByView_Decision" actionType="DECISION" parameter="ProcessContext::CurrentAgendaView">
@@ -696,11 +714,21 @@
       </Action>
       <Action actionType="LOGIC" name="ValidateBeforeComplete_SaveStatus" call="ProcessContext::MainBO.getClbStatus">
         <Return name="ProcessContext::SaveClbStatus" />
+        <TransitionTo action="ValidateBeforeComplete_SaveMyCallStatus" />
+      </Action>
+       <Action actionType="LOGIC" name="ValidateBeforeComplete_SaveMyCallStatus" call="ProcessContext::MainBO.getMyCallStatus">
+        <Return name="ProcessContext::SaveMyCallStatus" />
         <TransitionTo action="ValidateBeforeComplete_SetStatus" />
       </Action>
       <Action actionType="LOGIC" name="ValidateBeforeComplete_SetStatus" call="ProcessContext::MainBO.setClbStatus">
         <Parameters>
           <Input name="targetClbStatus" value="Completed" type="Literal" />
+        </Parameters>
+        <TransitionTo action="ValidateBeforeComplete_SetMyCallStatus" />
+      </Action>
+      <Action actionType="LOGIC" name="ValidateBeforeComplete_SetMyCallStatus" call="ProcessContext::MainBO.setMyCallStatus">
+        <Parameters>
+          <Input name="targetMyCallStatus" value="Completed" type="Literal" />
         </Parameters>
         <TransitionTo action="ValidateBeforeComplete" />
       </Action>
@@ -716,12 +744,19 @@
         <Parameters>
           <Input name="targetClbStatus" value="ProcessContext::SaveClbStatus" />
         </Parameters>
+        <TransitionTo action="ValidateBeforeComplete_ResetMyCallStatus" />
+      </Action>
+      <Action actionType="LOGIC" name="ValidateBeforeComplete_ResetMyCallStatus" call="ProcessContext::MainBO.setMyCallStatus">
+        <Parameters>
+          <Input name="targetMyCallStatus" value="ProcessContext::SaveMyCallStatus" />
+        </Parameters>
         <TransitionTo action="ShowCalendarView_Decision_From_InputParam" />
       </Action>
       <Action name="CompleteVisit" actionType="PROCESS" process="Call::ChangeStatusWizardProcess">
         <Parameters>
           <Input name="MainPKey" value="Event.pKey" />
           <Input name="targetClbStatus" value="Completed" type="Literal" />
+          <Input name="targetMyCallStatus" value="Completed" type="Literal" />
           <Input name="ResponsiblePKey" value="ProcessContext::CurrentResponsiblePKey" />
         </Parameters>
         <ReturnValues>
@@ -743,6 +778,12 @@
       <Action actionType="LOGIC" name="ResetStatusBeforeComplete" call="ProcessContext::MainBO.setClbStatus">
         <Parameters>
           <Input name="targetClbStatus" value="ProcessContext::SaveClbStatus" />
+        </Parameters>
+        <TransitionTo action="ResetMyCallStatusBeforeComplete" />
+      </Action>
+      <Action actionType="LOGIC" name="ResetMyCallStatusBeforeComplete" call="ProcessContext::MainBO.setMyCallStatus">
+        <Parameters>
+          <Input name="targetMyCallStatus" value="ProcessContext::SaveMyCallStatus" />
         </Parameters>
         <TransitionTo action="resetMainBo" />
       </Action>
@@ -853,7 +894,7 @@
       </Action>
       <Action name="GetCallsByDateRange" actionType="LOGIC" call="ProcessContext::OverviewList.getCallsByDate">
         <Return name="ProcessContext::currentWeekStartDate" />
-        <TransitionTo action="changeWeeklyTitle" />
+        <TransitionTo action="SetCallColor" />
         <Parameters>
           <Input name="setDateFunction" value="none" type="Literal" />
           <Input name="filterCalls" value="ProcessContext::currentCallFilter" />
@@ -861,6 +902,9 @@
           <Input name="currentDateEnd" value="ProcessContext::currentWeeklyViewEndDate" />
           <Input name="currentResponsible" value="ProcessContext::CurrentResponsiblePKey" />
         </Parameters>
+      </Action>
+      <Action name="SetCallColor" actionType="LOGIC" call="ProcessContext::OverviewList.mySetCallColor">
+        <TransitionTo action="changeWeeklyTitle" />
       </Action>
       <Action name="changeWeeklyTitle" actionType="LOGIC" call="ProcessContext::OverviewList.chooseAgendaTitle">
         <Return name="ProcessContext::weeklyHeader" />

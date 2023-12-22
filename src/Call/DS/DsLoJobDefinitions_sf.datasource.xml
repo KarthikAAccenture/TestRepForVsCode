@@ -51,6 +51,7 @@
     <Attribute name="considerScore" table="Job_DL_Job_Definition_Template__c" column="Consider_Score__c" />
     <Attribute name="score" table="Job_DL_Job_Definition_Template__c" column="Score__c" />
     <Attribute name="scoreAnswers" table="Job_DL_Job_Definition_Template__c" column="Score_Relevant_Answers__c" />
+    <Attribute name="myPerfectStoreVariable" table="Job_Definition_Template__c" column="Perfect_Store_Variable__c" />
   </Attributes>
   <Entities>
     <Entity name="Job_DL_Job_Definition_Template__c" alias="" idAttribute="Id" />
@@ -170,7 +171,8 @@ sqlStmt+= "		ELSE '0' ";
 sqlStmt+= "		END AS pOS, ";
 sqlStmt+= "'0' AS jdlDescriptionInitialized, ";
 sqlStmt+= "Job_DL_Job_Definition_Template__c.POS_Template__c AS posMetaPKey, ";
-sqlStmt+= "Job_DL_Job_Definition_Template__c.POS_Type__c AS posType ";
+sqlStmt+= "Job_DL_Job_Definition_Template__c.POS_Type__c AS posType, ";
+sqlStmt+= "Job_Definition_Template__c.Perfect_Store_Variable__c AS myPerfectStoreVariable ";
 sqlStmt+= "FROM Job_Definition_List__c, Data_Type__c ";
 sqlStmt+= "LEFT OUTER JOIN Job_Definition_List_Account__c ON Job_Definition_List__c.Id = Job_Definition_List_Account__c.Job_Definition_List__c AND Job_Definition_List_Account__c.Account__c = #bpaMainPKey# ";
 sqlStmt+= "LEFT OUTER JOIN Job_Definition_List_Account_Set__c ON Job_Definition_List__c.Id = Job_Definition_List_Account_Set__c.Job_Definition_List__c ";
@@ -296,7 +298,8 @@ sqlStmt+= "		ELSE '0' ";
 sqlStmt+= "		END AS pOS, ";
 sqlStmt+= "'0' AS jdlDescriptionInitialized, ";
 sqlStmt+= "Job_DL_Job_Definition_Template__c.POS_Template__c AS posMetaPKey, ";
-sqlStmt+= "Job_DL_Job_Definition_Template__c.POS_Type__c AS posType ";
+sqlStmt+= "Job_DL_Job_Definition_Template__c.POS_Type__c AS posType, ";
+sqlStmt+= "Job_Definition_Template__c.Perfect_Store_Variable__c AS myPerfectStoreVariable ";
 sqlStmt+= "FROM Job_Definition_List__c, Data_Type__c ";
 sqlStmt+= " INNER JOIN Job_DL_Job_Definition_Template__c ON Job_Definition_List__c.Id = Job_DL_Job_Definition_Template__c.Job_Definition_List__c ";
 sqlStmt+= " AND Job_DL_Job_Definition_Template__c.Excluded__c = '0' ";
@@ -412,7 +415,8 @@ sqlStmt+= "		ELSE '0' ";
 sqlStmt+= "		END AS pOS, ";
 sqlStmt+= "'0' AS jdlDescriptionInitialized, ";
 sqlStmt+= "Job_DL_Job_Definition_Template__c.POS_Template__c AS posMetaPKey, ";
-sqlStmt+= "Job_DL_Job_Definition_Template__c.POS_Type__c AS posType ";
+sqlStmt+= "Job_DL_Job_Definition_Template__c.POS_Type__c AS posType, ";
+sqlStmt+= "Job_Definition_Template__c.Perfect_Store_Variable__c AS myPerfectStoreVariable ";
 sqlStmt+= "FROM Job_List__c, Data_Type__c ";
 sqlStmt+= "LEFT JOIN Job_Definition_List__c ON Job_List__c.Job_Definition_List__c = Job_Definition_List__c.Id ";
 sqlStmt+= "INNER JOIN Job_DL_Job_Definition_Template__c ON Job_Definition_List__c.Id = Job_DL_Job_Definition_Template__c.Job_Definition_List__c ";

@@ -46,13 +46,51 @@
             <Binding target="Value" binding="ProcessContext::ValidationBo.text" bindingMode="TWO_WAY" />
           </Bindings>
         </InputArea>
+        <GroupElement name="ProductLookup">
+          <Lookup name="Product">
+            <Bindings>
+              <Resource target="Label" type="Label" id="ProductId" defaultLabel="Product" />
+              <Binding target="Value" binding="ProcessContext::ValidationBo.luProduct.text1" bindingMode="TWO_WAY" />
+            </Bindings>
+            <Events>
+              <LookupEvent event="productLookupEvent" />
+            </Events>
+          </Lookup>
+          <SelectionBox name="Priority">
+            <Bindings>
+              <Resource target="Label" type="Label" id="PriorityId" defaultLabel="Priority" />
+              <Binding target="DataSource" toggleId="ABC" bindingMode="TWO_WAY" />
+              <Binding target="Value" binding="ProcessContext::ValidationBo.priority" bindingMode="TWO_WAY" />
+            </Bindings>
+            <Items>
+              <Bindings>
+                <Binding target="ItemValue" type="Text" binding=".id" bindingMode="ONE_WAY" />
+                <Binding target="ItemText" type="Text" binding=".text" bindingMode="ONE_WAY" />
+              </Bindings>
+            </Items>
+          </SelectionBox>
+        </GroupElement>
         <GroupElement name="DateTime">
+          <DatePickerField name="StartDate">
+            <Bindings>
+              <Resource target="Label" type="Label" defaultLabel="Start Date" id="StartDateId" />
+              <Binding target="Value" binding="ProcessContext::ValidationBo.creationDate" bindingMode="TWO_WAY" />
+            </Bindings>
+          </DatePickerField>
           <DatePickerField name="DueDate">
             <Bindings>
-              <Resource target="Label" type="Label" defaultLabel="Due Date" id="DueDateId" />
+              <Resource target="Label" type="Label" defaultLabel="End Date" id="EndDateId" />
               <Binding target="Value" binding="ProcessContext::ValidationBo.dueDate" bindingMode="TWO_WAY" />
             </Bindings>
           </DatePickerField>
+        </GroupElement>
+        <GroupElement name="FeatureDiscription">
+          <InputArea name="FeatureDiscription">
+            <Bindings>
+              <Resource target="Label" type="Label" defaultLabel="Feature Description" id="FeatureDescriptionId" />
+              <Binding target="Value" binding="ProcessContext::ValidationBo.featureDescription" bindingMode="TWO_WAY" />
+            </Bindings>
+          </InputArea>
         </GroupElement>
       </Area>
     </Section>

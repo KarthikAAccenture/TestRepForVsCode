@@ -1,0 +1,6 @@
+<ListItem name="LiMyCalculatorRecordType">
+  <SimpleProperties>
+    <SimpleProperty name="pKey" type="DomPKey" dataSourceProperty="pKey" id="true" />
+    <SimpleProperty name="text" type="DomText" dataSourceProperty="text" />
+  </SimpleProperties>
+</ListItem>

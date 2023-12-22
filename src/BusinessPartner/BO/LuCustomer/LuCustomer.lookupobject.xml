@@ -3,6 +3,8 @@
   <SimpleProperties>
     <SimpleProperty id="true" name="pKey" type="DomPKey" dataSourceProperty="pKey" />
     <SimpleProperty name="name" type="DomBpaName" dataSourceProperty="name" />
+    <SimpleProperty name="recordTypeId" type="DomText" dataSourceProperty="recordTypeId" />
+    <SimpleProperty name="recordTypeName" type="DomText" dataSourceProperty="recordTypeName" />
     <SimpleProperty name="street" type="DomStreet" dataSourceProperty="street" />
     <SimpleProperty name="houseNumber" type="DomHouseNumber" dataSourceProperty="houseNumber" />
     <SimpleProperty name="zipCode" type="DomZipCode" dataSourceProperty="zipCode" />

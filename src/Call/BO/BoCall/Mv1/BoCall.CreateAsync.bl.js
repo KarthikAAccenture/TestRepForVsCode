@@ -197,7 +197,6 @@ if (
       if (me.getLuCallMeta().getCaptureProceedingTime() == "1") {
         var currentDateTime = Utils.createDateNow();
         me.setStartTimeEffective(Utils.convertFullDate2Ansi(currentDateTime));
-        me.setStartTimeEffectiveTimezoneOffset(currentDateTime.getTimezoneOffset());
         me.setStartTimeEffectiveUI(Utils.convertFullDate2Time(currentDateTime));
       }
 

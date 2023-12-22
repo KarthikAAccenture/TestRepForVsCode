@@ -21,5 +21,10 @@
     <SimpleProperty name="fileType" type="DomFileType" dataSourceProperty="fileType" />
     <SimpleProperty name="text" type="DomText" />
     <SimpleProperty name="emailEditable" type="DomBool" dataSourceProperty="emailEditable" />
+    <SimpleProperty name="nps" type="DomBool" dataSourceProperty="nps" />
+    <SimpleProperty name="position" type="DomMyContactPosition" dataSourceProperty="position" />
+    <SimpleProperty name="npsImage" type="DomId" dataSourceProperty="npsImage" />
+    <SimpleProperty name="npsLabel" type="DomText" dataSourceProperty="npsLabel" />
+    <SimpleProperty name="active" type="DomBool" dataSourceProperty="active" />
   </SimpleProperties>
 </ListItem>

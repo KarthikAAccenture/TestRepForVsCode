@@ -4,12 +4,15 @@
       <Declarations>
         <Declaration name="ContactPartnerList" type="LoContactPartnerOverview" />
       </Declarations>
-      <Parameters></Parameters>
+      <Parameters>
+        <Input name="AccountPKey" type="DomPKey"/>
+      </Parameters>
     </ProcessContext>
     <EntryActions>
       <Action actionType="LOAD" name="GetContactPartnerList" type="LoContactPartnerOverview">
         <Parameters>
           <Input name="asoName" value="AsoContactPartnerOverview" type="Literal" />
+          <Input name="accountPKey" value="ProcessContext::AccountPKey"/>
         </Parameters>
         <Return name="ProcessContext::ContactPartnerList" />
       </Action>

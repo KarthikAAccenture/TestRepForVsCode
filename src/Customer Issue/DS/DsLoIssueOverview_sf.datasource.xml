@@ -71,7 +71,12 @@
 			if (Utils.isDefined(newParams.text)){
               text = Utils.convertForDBParam(newParams.text, "DomText");
               addCondSearch += " AND Account_Task__c.Description_#Language#__c " + Utils.replaceOperator(newParams.textComp) + "#text# ";        
-			} 
+			}
+			
+			/** Alerts */
+			if(Utils.isDefined(newParams.isAlert)){
+				addCondSearch += " AND Account_Task__c.Alert__c = '1' " ;
+			}
 
 			/**  svcMetaPKey */
 			if (Utils.isDefined(newParams.svcMetaPKey)){

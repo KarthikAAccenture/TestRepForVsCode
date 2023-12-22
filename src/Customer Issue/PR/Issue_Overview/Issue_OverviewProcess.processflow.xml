@@ -34,6 +34,7 @@
         <Input name="CustomerName" type="String" />
         <Input name="CustomerTaskPKey" type="DomPKey" />
         <Input name="Mode" type="String" />
+        <Input name="AlertsSelected" type="String" />
       </Parameters>
     </ProcessContext>
     <EntryActions>
@@ -49,6 +50,7 @@
         <Parameters>
           <Input name="asoName" value="AsoIssue" type="Literal" />
           <Input name="customerPKey" value="ProcessContext::CallCustomerPKey" />
+          <Input name="isAlert" value="ProcessContext::AlertsSelected" />
         </Parameters>
         <Return name="ProcessContext::IssueList" />
       </Action>
@@ -91,6 +93,8 @@
           <Event name="SelectPicture" action="updateOpenGalleryForSelectPicture" />
           <Event name="attachmentsContextMenuOpening" action="GetAttachmentsContextMenu" />
           <Event name="attachmentsContextMenuItemSelected" action="AttachmentsContextMenu_Result_Decision" />
+          <Event name="productLookupEvent" action="productLookupProcess" />
+          <Event name="PhaseLookupEvent" action="phaseLookupProcess" />
         </Events>
       </Action>
       <!-- Decision Point for selected Tab Pages -->
@@ -116,6 +120,8 @@
           <Event name="SelectPicture" action="updateOpenGalleryForSelectPicture" />
           <Event name="attachmentsContextMenuOpening" action="GetAttachmentsContextMenu" />
           <Event name="attachmentsContextMenuItemSelected" action="AttachmentsContextMenu_Result_Decision" />
+          <Event name="productLookupEvent" action="productLookupProcess" />
+          <Event name="PhaseLookupEvent" action="phaseLookupProcess" />
         </Events>
       </Action>
       <Action name="CreateAndValidateIssue" actionType="VALIDATION">
@@ -158,6 +164,11 @@
                 <Return name="ProcessContext::dueDate" value="dueDate" />
                 <Return name="ProcessContext::AddIssue_ButtonPressed" value="buttonPressed" />
                 <Return name="ProcessContext::Issue_Status" value="issueStatus" />
+                <Return name="ProcessContext::ProductPkey" value="productPKey" />
+                <Return name="ProcessContext::Priority" value="priority" />
+                <Return name="ProcessContext::InitiationDate" value="startDate" />
+                <Return name="ProcessContext::Note" value="note" />
+                <Return name="ProcessContext::FeatureDescription" value="featureDescription" />
               </ReturnValues>
             </WizardProcess>
           </Create>
@@ -361,6 +372,55 @@
         <Case value="validateOk" action="CancelIssueIfValid" />
         <Case value="validateDiscard" action="GetCurrentListItem" />
         <CaseElse action="UI_Decision" />
+      </Action>
+      <!--Product lookup -->
+      <Action name="productLookupProcess" actionType="PROCESS" process="Product::LookupProcess">
+        <Parameters>
+          <Input name="filterOnlyProducts" type="Literal" value="true" />
+        </Parameters>
+        <ReturnValues>
+          <Return name="ProcessContext::ProductPKey" value="ProductPKey" />
+          <Return name="ProcessContext::ProductId" value="ProductId" />
+        </ReturnValues>
+        <TransitionTo action="setProductPkey" />
+      </Action>
+      <Action name="setProductPkey" actionType="LOGIC" call="ProcessContext::IssueDetail.setProductPkey">
+        <Parameters>
+          <Input name="productPKey" value="ProcessContext::ProductPKey" />
+        </Parameters>
+        <TransitionTo action="LoadProductLookup" />
+      </Action>
+      <Action actionType="LOAD" name="LoadProductLookup" type="LuProduct">
+        <Parameters>
+          <Input name="pKey" value="ProcessContext::ProductPKey" />
+        </Parameters>
+        <Return name="ProcessContext::IssueDetail.luProduct" />
+      </Action>
+      <!-- phase picklist lookup -->
+      <Action name="phaseLookupProcess" actionType="PROCESS" process="Issue::MyPhasePicklistProcess">
+        <Parameters>
+          <Input name="CustTaskTemplate" value="ProcessContext::IssueDetail.boSvcRequestMeta.issueTypeText" />
+        </Parameters>
+        <ReturnValues>
+          <Return name="ProcessContext::phaseValue" value="phasePicklistValue" />
+        </ReturnValues>
+        <TransitionTo action="GetCurrentPhase" />
+      </Action>
+      <Action actionType="LOGIC" name="GetCurrentPhase" call="Utils.isDefined">
+        <Parameters>
+          <Input name="phase" value="ProcessContext::phaseValue" />
+        </Parameters>
+        <Return name="ProcessContext::CurrentPhaseDecision" />
+        <TransitionTo action="Check_Phase_Undefined" />
+      </Action>
+      <Action name="Check_Phase_Undefined" actionType="DECISION" parameter="ProcessContext::CurrentPhaseDecision">
+        <Case value="true" action="setPhaseValue" />
+      </Action>
+      <Action name="setPhaseValue" actionType="LOGIC" call="ProcessContext::IssueDetail.setIssuePhase">
+        <Parameters>
+          <Input name="PhasePicklistValue" value="ProcessContext::phaseValue" />
+        </Parameters>
+        <!-- TransitionTo the transition can be set to the subsequent phase upon phase selection -->
       </Action>
       <!-- Workflow Status Change -->
       <Action name="CancelIssueIfValid" actionType="LOGIC" call="Utils.identity">

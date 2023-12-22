@@ -1,0 +1,82 @@
+<UIDescription name="Customer::MyAllCalculatorsUI" schemaVersion="0.0.0.5">
+  <Page pagePattern="SingleSectionPage" onBackDiscard="true">
+    <PageHeader>
+      <Bindings>
+        <Resource target="title" type="Label" id="CalculatorsId" defaultLabel="All Calculator" />
+      </Bindings>
+    </PageHeader>
+    <!-- [.. MASTER SECTION ..] -->
+    <Section sectionName="masterSection" sectionPattern="SingleAreaSection">
+      <!-- [. AREA .] Main -->
+      <Area areaName="mainArea" areaPattern="SingleElementArea">
+        <GroupedList name="CalculatorsList" searchable="true" onItemDisclosure="true" dataSource="ProcessContext::CalcOverviewList">
+          <SearchAttributes>
+            <SearchAttribute name="name" />
+            <SearchAttribute name="beerBrand" />
+          </SearchAttributes>
+          <Items name="Calculators" itemPattern="CalculatorsOverview">
+            <ItemListLayout>
+              <Default>
+                <Col flex="1">
+                  <Row layoutType="itemLabel" bindingId="NameLabel" />
+                  <Row layoutType="itemLabel" bindingId="BeerBrandLabel" />
+                </Col>
+                <Col flex="1">
+                  <Row layoutType="itemValueSmall" bindingId="name" />
+                  <Row layoutType="itemValueSmall" bindingId="beerBrand" />
+                </Col>
+              </Default>
+              <Tablet>
+                <Default>
+                  <Col flex="1">
+                    <Row layoutType="itemLabel" bindingId="SalesOrgLabel" />
+                    <Row layoutType="itemLabel" bindingId="BeerBrandLabel" />
+                  </Col>
+                  <Col flex="1">
+                    <Row layoutType="itemValue" bindingId="name" />
+                    <Row layoutType="itemValue" bindingId="beerBrand" />
+                  </Col>
+                </Default>
+                <Apple>
+                  <Col flex="1">
+                    <Row layoutType="itemLabel" bindingId="SalesOrgLabel" />
+                    <Row layoutType="itemLabel" bindingId="BeerBrandLabel" />
+                  </Col>
+                  <Col flex="1">
+                    <Row layoutType="itemValue" bindingId="name" />
+                    <Row layoutType="itemValue" bindingId="beerBrand" />
+                  </Col>
+                </Apple>
+              </Tablet>
+              <Phone>
+                <Default>
+                  <Col flex="1">
+                    <Row layoutType="itemIdentifier" bindingId="name" />
+                    <Row layoutType="itemSecondary" bindingId="beerBrand" />
+                  </Col>
+                </Default>
+                <Apple>
+                  <Col flex="1">
+                    <Row layoutType="itemIdentifier" bindingId="name" />
+                    <Row layoutType="itemSecondary" bindingId="beerBrand" />
+                  </Col>
+                </Apple>
+              </Phone>
+            </ItemListLayout>
+            <Bindings>
+              <Binding target="name" type="Text" binding=".name" bindingMode="ONE_WAY" />
+              <Binding target="beerBrand" type="Text" binding=".beerBrand" bindingMode="ONE_WAY" />
+            </Bindings>
+          </Items>
+          <Events>
+            <ItemSelectedEvent event="calculatorSelected">
+              <Params>
+                <Param name="calcPKey" value=".calcPKey" />
+              </Params>
+            </ItemSelectedEvent>
+          </Events>
+        </GroupedList>
+      </Area>
+    </Section>
+  </Page>
+</UIDescription>

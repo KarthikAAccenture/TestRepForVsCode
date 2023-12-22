@@ -102,6 +102,10 @@
           <Event name="acceptTimeSlotChanges" action="ValidateTimeSlot" />
           <Event name="timeSlotContextMenuOpened" action="LoadTimeSlotContextMenu" />
           <Event name="timeSlotContextMenuItemSelected" action="ContextMenuResultDecision" />
+          <Event name="InfoLastmodified" action="infoForLastmodified" />
+          <Event name="emailPressed" action="StartMailPressed" />
+          <Event name="primaryContactLookup" action="primaryContactLookup" />
+          <Event name="keyContactLookup" action="keyContactLookup" />
         </Events>
       </Action>
       <!-- ContextMenu Decision -->
@@ -284,6 +288,55 @@
       <Action name="UpdateGeoCoordinates" actionType="LOGIC" call="ProcessContext::CustomerDetail.updateGeoCoordinates">
         <Return name="ProcessContext::MainAddress" />
       </Action>
+      <!-- Custom Tab -->
+      <Action name="infoForLastmodified" actionType="CONFIRM" confirmType="Ok">
+        <Message messageId="InfoForLastmodifiedMsg" />
+        <Cases>
+          <Case value="Ok" action="ShowCustomer" />
+        </Cases>
+      </Action>
+     <Action actionType="PROCESS" name="primaryContactLookup" process="Customer::ContactPartnerLookupProcess">
+        <Parameters>
+          <Input name="AccountPKey" value="ProcessContext::CustomerDetail.pKey" />
+        </Parameters>
+        <ReturnValues>
+          <Return name="ProcessContext::primaryContactPKey" value="pKey" />
+        </ReturnValues>
+        <TransitionTo action="setPrimaryContact" />
+      </Action>
+      <Action name="setPrimaryContact" actionType="LOGIC" call="ProcessContext::CustomerDetail.setPrimaryContact">
+        <Parameters>
+          <Input name="primaryContact" value="ProcessContext::primaryContactPKey" />
+        </Parameters>
+        <TransitionTo action="loadPrimaryContact" />
+      </Action>
+      <Action name="loadPrimaryContact" actionType="LOAD" type="LuContact">
+        <Parameters>
+          <Input name="pKey" value="ProcessContext::primaryContactPKey" type="DomPKey" />
+        </Parameters>
+        <Return name="ProcessContext::CustomerDetail.luPrimaryContact" />
+      </Action>
+      <Action actionType="PROCESS" name="keyContactLookup" process="Customer::ContactPartnerLookupProcess">
+        <Parameters>
+          <Input name="AccountPKey" value="ProcessContext::CustomerDetail.pKey" />
+        </Parameters>
+        <ReturnValues>
+          <Return name="ProcessContext::keyContactPKey" value="pKey" />
+        </ReturnValues>
+        <TransitionTo action="setKeyContact" />
+      </Action>
+      <Action name="setKeyContact" actionType="LOGIC" call="ProcessContext::CustomerDetail.setKeyContact">
+        <Parameters>
+          <Input name="keyContact" value="ProcessContext::keyContactPKey" />
+        </Parameters>
+        <TransitionTo action="loadKeyContacts" />
+      </Action>
+      <Action name="loadKeyContacts" actionType="LOAD" type="LuContact">
+        <Parameters>
+          <Input name="pKey" value="ProcessContext::keyContactPKey" />
+        </Parameters>
+        <Return name="ProcessContext::CustomerDetail.luKeyContact" />
+      </Action>
       <!-- Opening Hours Tab -->
       <!--Account Harmonization: obsolete 
       <Action name="CreateNewOpeningHour" actionType="LOGIC" call="ProcessContext::CustomerDetail.LoCustomerOpeningTime.addItem">
@@ -424,7 +477,9 @@
           <Input name="pKey" value="Event.pKey" />
         </Parameters>
         <Return name="ProcessContext::ContactPartnerDetail" />
+        <TransitionTo action="setEARightsForContactList" />
       </Action>
+      <Action name="setEARightsForContactList" actionType="LOGIC" call="ProcessContext::CustomerDetail.mySetEARights"></Action>
       <Action name="ValidateContactBeforeComplete" actionType="VALIDATION">
         <Validations>
           <Validation name="ProcessContext::CustomerDetail.doValidateAsync" />
@@ -698,6 +753,9 @@
         <Parameters>
           <Input name="bReload" type="Literal" value="1" />
         </Parameters>
+        <TransitionTo action="setEARightsForContactListReload" />
+      </Action>
+      <Action name="setEARightsForContactListReload" actionType="LOGIC" call="ProcessContext::CustomerDetail.mySetEARights">
         <TransitionTo action="SetSaveFlag" />
       </Action>
       <!-- Validation POS after click Done Button -->
@@ -784,6 +842,11 @@
       <Action name="StartMail" actionType="LOGIC" call="ProcessContext::CustomerDetail.sendMail">
         <Parameters>
           <Input name="Mail" value="ProcessContext::CustomerDetail.email1" />
+        </Parameters>
+      </Action>
+      <Action name="StartMailPressed" actionType="LOGIC" call="ProcessContext::CustomerDetail.sendMail">
+        <Parameters>
+          <Input name="Mail" value="ProcessContext::CustomerDetail.eMailAddress" />
         </Parameters>
       </Action>
       <Action name="StartContactPartnerPhone1Call" actionType="LOGIC" call="ProcessContext::CustomerDetail.processPhoneCall">

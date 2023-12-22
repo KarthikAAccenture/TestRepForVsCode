@@ -45,6 +45,7 @@
           <Event name="CreateNewIssue" action="setDirty" />
           <Event name="CustomerLookup" action="OpenCustomerNameLookup" />
           <Event name="svcMetaLookup" action="OpenSvcRequestMetaLookup" />
+          <Event name="productLookupEvent" action="productLookupEvent" />
         </Events>
       </Action>
       <!-- Set validation business object dirty on clicking done button-->
@@ -84,6 +85,10 @@
           <Return name="dueDate" value="ProcessContext::ValidationBo.dueDate" />
           <Return name="buttonPressed" type="Literal" value="create" />
           <Return name="issueStatus" type="Literal" value="create" />
+          <Return name="productPKey" value="ProcessContext::ValidationBo.luProduct.pKey" />
+          <Return name="priority" value="ProcessContext::ValidationBo.priority" />
+          <Return name="startDate" value="ProcessContext::ValidationBo.creationDate" />
+          <Return name="featureDescription" value="ProcessContext::ValidationBo.featureDescription" />
         </ReturnValues>
       </Action>
       <Action actionType="END" name="EndCreateNewIssueSubstitution">
@@ -97,6 +102,10 @@
           <Return name="dueDate" value="ProcessContext::ValidationBo.dueDate" />
           <Return name="buttonPressed" type="Literal" value="create" />
           <Return name="issueStatus" type="Literal" value="create" />
+          <Return name="productPKey" value="ProcessContext::ValidationBo.productPkey" />
+          <Return name="priority" value="ProcessContext::ValidationBo.priority" />
+          <Return name="startDate" value="ProcessContext::ValidationBo.creationDate" />
+          <Return name="featureDescription" value="ProcessContext::ValidationBo.featureDescription" />
         </ReturnValues>
       </Action>
       <!-- Customer handling -->
@@ -177,6 +186,22 @@
           <Input name="pKey" value="ProcessContext::SvcRequestMetaPKey" />
         </Parameters>
         <Return name="ProcessContext::ValidationBo.luSvcRequestMeta" />
+      </Action>
+      <Action name="productLookupEvent" actionType="PROCESS" process="Product::LookupProcess">
+        <Parameters>
+          <Input name="filterOnlyProducts" type="Literal" value="true" />
+        </Parameters>
+        <ReturnValues>
+          <Return name="ProcessContext::ProductPKey" value="ProductPKey" />
+          <Return name="ProcessContext::ProductId" value="ProductId" />
+        </ReturnValues>
+        <TransitionTo action="LoadProductLookup" />
+      </Action>
+      <Action actionType="LOAD" name="LoadProductLookup" type="LuProduct">
+        <Parameters>
+          <Input name="pKey" value="ProcessContext::ProductPKey" />
+        </Parameters>
+        <Return name="ProcessContext::ValidationBo.luProduct" />
       </Action>
     </Actions>
   </Body>

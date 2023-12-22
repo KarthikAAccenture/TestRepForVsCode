@@ -117,18 +117,18 @@
           <Items name="Items" itemPattern="SurveyPattern">
             <Bindings>
               <Binding target="Product" type="Text" binding=".text1" bindingMode="ONE_WAY" />
-              <Binding target="surveyCol1" type="Text" binding=".svyFacings" bindingMode="TWO_WAY" />
+              <!--Binding target="surveyCol1" type="Text" binding=".svyFacings" bindingMode="TWO_WAY" />
               <Binding target="surveyCol2" type="Decimal" formatV2="10.2" binding=".svyPrice" bindingMode="TWO_WAY" />
               <Binding target="surveyCol3" type="Combo" binding=".svyDistributed" toggleId="PrdDistributed" bindingMode="TWO_WAY" />
               <Binding target="surveyCol4" type="Text" binding=".svyPosFacings" bindingMode="TWO_WAY" />
               <Binding target="surveyCol5" type="Decimal" formatV2="10.2" binding=".svyPosPrice" bindingMode="TWO_WAY" />
               <Binding target="surveyCol6" type="Combo" binding=".svyPosDistributed" toggleId="PrdDistributed" bindingMode="TWO_WAY" />
-              <Binding target="listedPlannedImage" type="Image" binding=".listedPlanned.imageId" toggleId="PrdListedPromoted" bindingMode="ONE_WAY" />
+              <Binding target="listedPlannedImage" type="Image" binding=".listedPlanned.imageId" toggleId="PrdListedPromoted" bindingMode="ONE_WAY" /-->
               <Binding target="MediaPath" type="Blob" binding=".mediaPath" fileTypeBinding=".fileType" roundedEdge="true" />
               <!-- Header Labels -->
               <Resource target="prdIcon" type="Label" id="ClbSurveyHeaderColumnIcon" defaultLabel="Icon" />
               <Resource target="prdNameHeader" type="Label" id="ClbSurveyHeaderColumnProduct" defaultLabel="Product" />
-              <Resource target="listedPlannedHeader" type="Label" id="ClbSurveyHeaderColumnListedPlanned" defaultLabel="P/L" />
+              <!--Resource target="listedPlannedHeader" type="Label" id="ClbSurveyHeaderColumnListedPlanned" defaultLabel="P/L" />
               <Resource target="surveyCol1Header" type="Label" id="ClbSurveyHeaderColumn1" defaultLabel="F" />
               <Resource target="surveyCol2Header" type="Label" id="ClbSurveyHeaderColumn2" defaultLabel="Price" />
               <Resource target="surveyCol3Header" type="Label" id="ClbSurveyHeaderColumn3" defaultLabel="Distrib." />
@@ -138,20 +138,20 @@
               <Resource target="surveyCol1PhoneHeader" type="Label" id="surveyCol1PhoneHeader" defaultLabel="F" />
               <Resource target="surveyCol2PhoneHeader" type="Label" id="surveyCol2PhoneHeader" defaultLabel="Price" />
               <Resource target="surveyCol4PhoneHeader" type="Label" id="surveyCol4PhoneHeader" defaultLabel="F" />
-              <Resource target="surveyCol5PhoneHeader" type="Label" id="surveyCol5PhoneHeader" defaultLabel="Price" />
+              <Resource target="surveyCol5PhoneHeader" type="Label" id="surveyCol5PhoneHeader" defaultLabel="Price" /-->
             </Bindings>
             <ItemListLayout>
               <Default>
                 <Header>
                   <Col bindingId="prdIcon" align="left" />
                   <Col bindingId="prdNameHeader" align="left" />
-                  <Col bindingId="listedPlannedHeader" align="left" />
+                  <!--Col bindingId="listedPlannedHeader" align="left" />
                   <Col bindingId="surveyCol1Header" align="left" />
                   <Col bindingId="surveyCol2Header" align="left" />
                   <Col bindingId="surveyCol3Header" align="left" />
                   <Col bindingId="surveyCol4Header" align="left" />
                   <Col bindingId="surveyCol5Header" align="left" />
-                  <Col bindingId="surveyCol6Header" align="left" />
+                  <Col bindingId="surveyCol6Header" align="left" /-->
                 </Header>
                 <Col width="3em">
                   <Row>
@@ -159,26 +159,26 @@
                   </Row>
                 </Col>
                 <Col layoutType="itemName" bindingId="Product" />
-                <Col width="3em" height="1.4em" layoutType="Image" bindingId="listedPlannedImage" />
+                <!--Col width="3em" height="1.4em" layoutType="Image" bindingId="listedPlannedImage" />
                 <Col width="3em" layoutType="itemNameSecondary" bindingId="surveyCol1" />
                 <Col width="3em" layoutType="itemNameSecondary" bindingId="surveyCol2" />
                 <Col width="3em" layoutType="itemNameSecondary" bindingId="surveyCol3" />
                 <Col width="3em" layoutType="itemNameSecondary" bindingId="surveyCol4" />
                 <Col width="3em" layoutType="itemNameSecondary" bindingId="surveyCol5" />
-                <Col width="3em" layoutType="itemNameSecondary" bindingId="surveyCol6" />
+                <Col width="3em" layoutType="itemNameSecondary" bindingId="surveyCol6" /-->
               </Default>
               <Tablet>
                 <Default>
                   <Header>
                     <Col bindingId="prdIcon" align="left" />
                     <Col bindingId="prdNameHeader" align="left" />
-                    <Col bindingId="listedPlannedHeader" align="center" />
+                    <!--Col bindingId="listedPlannedHeader" align="center" />
                     <Col bindingId="surveyCol1Header" align="left" />
                     <Col bindingId="surveyCol2Header" align="left" />
                     <Col bindingId="surveyCol3Header" align="left" />
                     <Col bindingId="surveyCol4Header" align="left" />
                     <Col bindingId="surveyCol5Header" align="left" />
-                    <Col bindingId="surveyCol6Header" align="left" />
+                    <Col bindingId="surveyCol6Header" align="left" /-->
                   </Header>
                   <Col width="3em">
                     <Row>
@@ -186,25 +186,25 @@
                     </Row>
                   </Col>
                   <Col layoutType="itemName" bindingId="Product" />
-                  <Col width="1.5em" height="1.4em" layoutType="Image" bindingId="listedPlannedImage" />
+                  <!--Col width="1.5em" height="1.4em" layoutType="Image" bindingId="listedPlannedImage" />
                   <Col width="2.5em" layoutType="itemNameSecondary" bindingId="surveyCol1" />
                   <Col width="2.5em" layoutType="itemNameSecondary" bindingId="surveyCol2" />
                   <Col width="2.5em" layoutType="itemNameSecondary" bindingId="surveyCol3" />
                   <Col width="2.5em" layoutType="itemNameSecondary" bindingId="surveyCol4" />
                   <Col width="2.5em" layoutType="itemNameSecondary" bindingId="surveyCol5" />
-                  <Col width="2.5em" layoutType="itemNameSecondary" bindingId="surveyCol6" />
+                  <Col width="2.5em" layoutType="itemNameSecondary" bindingId="surveyCol6" /-->
                 </Default>
                 <Apple>
                   <Header>
                     <Col bindingId="prdIcon" align="left" />
                     <Col bindingId="prdNameHeader" align="left" />
-                    <Col bindingId="listedPlannedHeader" align="center" />
+                    <!--Col bindingId="listedPlannedHeader" align="center" />
                     <Col bindingId="surveyCol1Header" align="left" />
                     <Col bindingId="surveyCol2Header" align="left" />
                     <Col bindingId="surveyCol3Header" align="left" />
                     <Col bindingId="surveyCol4Header" align="left" />
                     <Col bindingId="surveyCol5Header" align="left" />
-                    <Col bindingId="surveyCol6Header" align="left" />
+                    <Col bindingId="surveyCol6Header" align="left" /-->
                   </Header>
                   <Col width="3em">
                     <Row>
@@ -212,13 +212,13 @@
                     </Row>
                   </Col>
                   <Col layoutType="itemName" bindingId="Product" />
-                  <Col width="1.5em" height="1.4em" layoutType="Image" bindingId="listedPlannedImage" />
+                  <!--Col width="1.5em" height="1.4em" layoutType="Image" bindingId="listedPlannedImage" />
                   <Col width="2.5em" layoutType="itemNameSecondary" bindingId="surveyCol1" />
                   <Col width="2.5em" layoutType="itemNameSecondary" bindingId="surveyCol2" />
                   <Col width="2.5em" layoutType="itemNameSecondary" bindingId="surveyCol3" />
                   <Col width="2.5em" layoutType="itemNameSecondary" bindingId="surveyCol4" />
                   <Col width="2.5em" layoutType="itemNameSecondary" bindingId="surveyCol5" />
-                  <Col width="2.5em" layoutType="itemNameSecondary" bindingId="surveyCol6" />
+                  <Col width="2.5em" layoutType="itemNameSecondary" bindingId="surveyCol6" /-->
                 </Apple>
               </Tablet>
               <Phone>
@@ -226,13 +226,13 @@
                   <Header>
                     <Col bindingId="prdIcon" align="left" />
                     <Col bindingId="prdNameHeader" align="left" />
-                    <Col bindingId="listedPlannedHeader" align="center" />
+                    <!--Col bindingId="listedPlannedHeader" align="center" />
                     <Col bindingId="surveyCol1Header" align="left" />
                     <Col bindingId="surveyCol2Header" align="left" />
                     <Col bindingId="surveyCol4Header" align="left" />
                     <Col bindingId="surveyCol5Header" align="left" />
                     <Col bindingId="surveyCol3Header" align="left" />
-                    <Col bindingId="surveyCol6Header" align="left" />
+                    <Col bindingId="surveyCol6Header" align="left" /-->
                   </Header>
                   <Col width="2em">
                     <Row>
@@ -241,24 +241,24 @@
                   </Col>
                   <Col flex="1" layoutType="itemName" bindingId="Product" />
                   <Col width="1.7em" height="1.4em" layoutType="Image" bindingId="listedPlannedImage" />
-                  <Col width="1.4em" layoutType="itemNameSecondary" bindingId="surveyCol1" />
+                  <!--Col width="1.4em" layoutType="itemNameSecondary" bindingId="surveyCol1" />
                   <Col width="1.75em" layoutType="itemNameSecondary" bindingId="surveyCol2" />
                   <Col width="1.75em" layoutType="itemNameSecondary" bindingId="surveyCol4" />
                   <Col width="1.75em" layoutType="itemNameSecondary" bindingId="surveyCol5" />
                   <Col width="1.75em" layoutType="itemNameSecondary" bindingId="surveyCol3" />
-                  <Col width="1.75em" layoutType="itemNameSecondary" bindingId="surveyCol6" />
+                  <Col width="1.75em" layoutType="itemNameSecondary" bindingId="surveyCol6" /-->
                 </Default>
                 <Apple>
                   <Header>
                     <Col bindingId="prdIcon" align="left" />
                     <Col bindingId="prdNameHeader" align="left" />
-                    <Col bindingId="listedPlannedHeader" align="center" />
+                    <!--Col bindingId="listedPlannedHeader" align="center" />
                     <Col bindingId="surveyCol1Header" align="left" />
                     <Col bindingId="surveyCol2Header" align="left" />
                     <Col bindingId="surveyCol4Header" align="left" />
                     <Col bindingId="surveyCol5Header" align="left" />
                     <Col bindingId="surveyCol3Header" align="left" />
-                    <Col bindingId="surveyCol6Header" align="left" />
+                    <Col bindingId="surveyCol6Header" align="left" /-->
                   </Header>
                   <Col width="2em">
                     <Row>
@@ -266,13 +266,13 @@
                     </Row>
                   </Col>
                   <Col layoutType="itemName" bindingId="Product" />
-                  <Col width="1.7em" height="1.4em" layoutType="Image" bindingId="listedPlannedImage" />
+                  <!--Col width="1.7em" height="1.4em" layoutType="Image" bindingId="listedPlannedImage" />
                   <Col width="1.4em" layoutType="itemNameSecondary" bindingId="surveyCol1" />
                   <Col width="1.75em" layoutType="itemNameSecondary" bindingId="surveyCol2" />
                   <Col width="1.75em" layoutType="itemNameSecondary" bindingId="surveyCol4" />
                   <Col width="1.75em" layoutType="itemNameSecondary" bindingId="surveyCol5" />
                   <Col width="1.75em" layoutType="itemNameSecondary" bindingId="surveyCol3" />
-                  <Col width="1.75em" layoutType="itemNameSecondary" bindingId="surveyCol6" />
+                  <Col width="1.75em" layoutType="itemNameSecondary" bindingId="surveyCol6" /-->
                 </Apple>
               </Phone>
             </ItemListLayout>

@@ -1,0 +1,37 @@
+<Process name="Customer::MyAllCalculatorsProcess" defaultAction="ShowView" schemaVersion="0.0.0.5">
+  <Entry>
+    <ProcessContext>
+      <Declarations>
+        <Declaration name="CalcOverviewList" type="LoMyCalculatorOverview" />
+      </Declarations>
+      <Parameters>
+        <Input name="CalcCustomerPKey" type="DomPKey" />
+        <Input name="CalclulatorCustomerName" type="DomBpaName"/>
+      </Parameters>
+    </ProcessContext>
+    <EntryActions>
+      <Action name="GetCalcOverviewList" actionType="LOAD" type="LoMyCalculatorOverview">
+        <Return name="ProcessContext::CalcOverviewList" />
+        <Parameters>
+          <Input name="calcCustomerPKey" value="ProcessContext::CalcCustomerPKey" />
+        </Parameters>
+      </Action>
+    </EntryActions>
+  </Entry>
+  <Body>
+    <Actions>
+      <Action actionType="VIEW" name="ShowView">
+        <UIDescription>Customer::MyAllCalculatorsUI</UIDescription>
+        <Events>
+          <Event name="calculatorSelected" action="LoadCalculator" />
+        </Events>
+      </Action>
+      <Action name="LoadCalculator" actionType="PROCESS" process="Customer::MyCalculationOverviewProcess">
+        <Parameters>
+          <Input name="calcPKey" value="Event.calcPKey" />
+          <Input name="CalclulatorCustomerName" value="ProcessContext::CalclulatorCustomerName" />
+        </Parameters>
+      </Action>
+    </Actions>
+  </Body>
+</Process>

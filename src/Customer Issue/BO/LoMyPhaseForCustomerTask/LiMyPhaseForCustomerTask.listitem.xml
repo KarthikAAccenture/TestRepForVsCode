@@ -1,0 +1,7 @@
+<ListItem name="LiMyPhaseForCustomerTask">
+  <SimpleProperties>
+    <SimpleProperty id="true" name="pKey" type="DomPKey" dataSourceProperty="pKey" />
+    <SimpleProperty name="text" type="DomText" dataSourceProperty="text" />
+    <SimpleProperty name="value" type="DomText" dataSourceProperty="value" />
+  </SimpleProperties>
+</ListItem>

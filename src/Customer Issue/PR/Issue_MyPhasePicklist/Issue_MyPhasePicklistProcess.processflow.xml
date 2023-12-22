@@ -1,0 +1,35 @@
+<Process name="Issue::MyPhasePicklistProcess" defaultAction="ShowView" schemaVersion="0.0.0.5">
+  <Entry>
+    <ProcessContext>
+      <Declarations>
+        <Declaration name="PhaseValuesList" type="LoMyPhaseForCustomerTask" />
+      </Declarations>
+      <Parameters>
+        <Input name="CustTaskTemplate" type="DomString" />
+      </Parameters>
+    </ProcessContext>
+    <EntryActions>
+      <Action actionType="LOAD" name="GetProductList" type="LoMyPhaseForCustomerTask">
+        <Parameters>
+          <Input name="custTaskTemplate" value="ProcessContext::CustTaskTemplate" />
+        </Parameters>
+        <Return name="ProcessContext::PhaseValuesList" />
+      </Action>
+    </EntryActions>
+  </Entry>
+  <Body>
+    <Actions>
+      <Action actionType="View" name="ShowView">
+        <UIDescription>Issue::MyPhasePicklistUI</UIDescription>
+        <Events>
+          <Event name="itemSelected" action="End" />
+        </Events>
+      </Action>
+      <Action actionType="END" name="End">
+        <ReturnValues>
+          <Return name="phasePicklistValue" value="Event.text" />
+        </ReturnValues>
+      </Action>
+    </Actions>
+  </Body>
+</Process>

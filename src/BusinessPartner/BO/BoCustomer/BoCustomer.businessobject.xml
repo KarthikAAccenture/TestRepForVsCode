@@ -1,4 +1,4 @@
-<BusinessObject name="BoCustomer"  generateLoadMethod="false" generateCreateMethod="false" OERReference="BpaCustomer">
+<BusinessObject name="BoCustomer" generateLoadMethod="false" generateCreateMethod="false" OERReference="BpaCustomer">
   <DataSource name="DsBoCustomer" />
   <SimpleProperties>
     <SimpleProperty id="true" name="pKey" type="DomPKey" storable="true" dataSourceProperty="pKey" />
@@ -29,10 +29,84 @@
     <SimpleProperty name="accountOi" type="DomBool" storable="true" id="false" dataSourceProperty="accountOi" />
     <SimpleProperty name="operatingHoursId" type="DomPKey" dataSourceProperty="operatingHoursId" />
     <SimpleProperty name="emailEditable" type="DomBool" storable="false" dataSourceProperty="emailEditable" />
+    <SimpleProperty name="retailOutletId" type="DomString" id="false" dataSourceProperty="retailOutletId" />
+    <SimpleProperty name="sapId" type="DomString" id="false" dataSourceProperty="sapId" />
+    <SimpleProperty name="defaultVisitTemplate" type="DomPKey" id="false" dataSourceProperty="defaultVisitTemplate" />
+    <SimpleProperty name="accountManagerPKey" type="DomPKey" dataSourceProperty="accountManagerPKey" />
+    <!-- GB-28830 -->
+    <SimpleProperty name="rollingIndustryVolume" type="DomDecimal" dataSourceProperty="rollingIndustryVolume" />
+    <SimpleProperty name="rollingMolsonVolume" type="DomDecimal" dataSourceProperty="rollingMolsonVolume" />
+    <SimpleProperty name="accountStatus" type="DomAccStatus" dataSourceProperty="accountStatus" />
+    <SimpleProperty name="aopCustomerGroup" type="DomString" dataSourceProperty="aopCustomerGroup" />
+    <SimpleProperty name="calledOnAccounts" type="DomAccCOA" dataSourceProperty="calledOnAccounts" />
+    <SimpleProperty name="canada3rdTier" type="DomBool" dataSourceProperty="canada3rdTier" />
+    <SimpleProperty name="canadaUsefulLinks" type="DomText" dataSourceProperty="canadaUsefulLinks" />
+    <SimpleProperty name="closingweek" type="DomDecimal" dataSourceProperty="closingweek" />
+    <SimpleProperty name="craftPotential" type="DomString" dataSourceProperty="craftPotential" />
+    <SimpleProperty name="creditBlock" type="DomBool" dataSourceProperty="creditBlock" />
+    <SimpleProperty name="customerHierarchyLevel7" type="DomString" dataSourceProperty="customerHierarchyLevel7" />
+    <SimpleProperty name="customerHierarchyLevel8" type="DomString" dataSourceProperty="customerHierarchyLevel8" />
+    <SimpleProperty name="customerPricingGroup" type="DomString" dataSourceProperty="customerPricingGroup" />
+    <SimpleProperty name="dateofLastTelesalesCall" type="DomDateTime" dataSourceProperty="dateofLastTelesalesCall" />
+    <SimpleProperty name="dateofLastVisit" type="DomDateTime" dataSourceProperty="dateofLastVisit" />
+    <SimpleProperty name="deliveryFrequency" type="DomString" dataSourceProperty="deliveryFrequency" />
+    <SimpleProperty name="deliveryInstructions" type="DomLongText" dataSourceProperty="deliveryInstructions" />
+    <SimpleProperty name="deliveryPlantDescription" type="DomString" dataSourceProperty="deliveryPlantDescription" />
+    <SimpleProperty name="distributorWarehouse" type="DomString" dataSourceProperty="distributorWarehouse" />
+    <SimpleProperty name="eMailAddress" type="DomEmail" dataSourceProperty="eMailAddress" />
+    <SimpleProperty name="fieldSalesNotes" type="DomLongText" dataSourceProperty="fieldSalesNotes" />
+    <SimpleProperty name="fridge" type="DomString" dataSourceProperty="fridge" />
+    <SimpleProperty name="lowCellar" type="DomAccLowCellar" dataSourceProperty="lowCellar" />
+    <SimpleProperty name="molsonAccountManager" type="DomText" dataSourceProperty="molsonAccountManager" />
+    <SimpleProperty name="openingweek" type="DomPercentage" dataSourceProperty="openingweek" />
+    <SimpleProperty name="outletTypeLVL2OffPremise" type="DomAccOutletTypeLVL2OffPremise" dataSourceProperty="outletTypeLVL2OffPremise" />
+    <SimpleProperty name="outletTypeLVL2OnPremise" type="DomAccOutletTypeLVL2OnPremise" dataSourceProperty="outletTypeLVL2OnPremise" />
+    <SimpleProperty name="parentAccount" type="DomText" dataSourceProperty="parentAccount" />
+    <SimpleProperty name="perfectStoreScore" type="DomPercentage" dataSourceProperty="perfectStoreScore" />
+    <SimpleProperty name="benchmarkingPerfectStoreScore" type="DomPercentage" dataSourceProperty="benchmarkingPerfectStoreScore" />
+    <SimpleProperty name="regionalKeyAcct" type="DomString" dataSourceProperty="regionalKeyAcct" />
+    <SimpleProperty name="routingIndicator" type="DomAccRoutingIndicator" dataSourceProperty="routingIndicator" />
+    <SimpleProperty name="salesChannelDescription" type="DomAccSalesChannelDescription" dataSourceProperty="salesChannelDescription" />
+    <SimpleProperty name="seasonalIndicator" type="DomBool" dataSourceProperty="seasonalIndicator" />
+    <SimpleProperty name="tableauDashboardLinks" type="DomText" dataSourceProperty="tableauDashboardLinks" />
+    <SimpleProperty name="ownerID" type="DomPKey" dataSourceProperty="ownerID" />
+    <SimpleProperty name="chainLevel1Name" type="DomString" dataSourceProperty="chainLevel1Name" />
+    <SimpleProperty name="createdByID" type="DomPKey" dataSourceProperty="createdByID" />
+    <SimpleProperty name="accountDescription" type="DomLongText" dataSourceProperty="accountDescription" />
+    <SimpleProperty name="eCommerceAccounts" type="DomText" dataSourceProperty="eCommerceAccounts" />
+    <SimpleProperty name="hoursofOperations" type="DomString" dataSourceProperty="hoursofOperations" />
+    <SimpleProperty name="howManyTapsatAccount" type="DomDecimal" dataSourceProperty="howManyTapsatAccount" />
+    <SimpleProperty name="keyContact" type="DomPKey" dataSourceProperty="keyContact" />
+    <SimpleProperty name="lastInvoiceDate" type="DomDate" dataSourceProperty="lastInvoiceDate" />
+    <SimpleProperty name="lastModifiedByID" type="DomPKey" dataSourceProperty="lastModifiedByID" />
+    <SimpleProperty name="managedSubChannel" type="DomAccManagedSubChannel" dataSourceProperty="managedSubChannel" />
+    <SimpleProperty name="outletCode" type="DomString" dataSourceProperty="outletCode" />
+    <SimpleProperty name="preferredVisitDay" type="DomAccPreferredVisitDay" dataSourceProperty="preferredVisitDay" />
+    <SimpleProperty name="primaryContact" type="DomPKey" dataSourceProperty="primaryContact" />
+    <SimpleProperty name="primaryOrderDay" type="DomAccPrimaryOrderDay" dataSourceProperty="primaryOrderDay" />
+    <SimpleProperty name="status" type="DomString" dataSourceProperty="status" />
+    <SimpleProperty name="storeLevelInstruction" type="DomString" dataSourceProperty="storeLevelInstruction" />
+    <SimpleProperty name="tdLinkCode" type="DomString" dataSourceProperty="tdLinkCode" />
+    <SimpleProperty name="teraAccountID" type="DomString" dataSourceProperty="teraAccountID" />
+    <SimpleProperty name="tradeChannel" type="DomString" dataSourceProperty="tradeChannel" />
+    <SimpleProperty name="visitFrequency" type="DomAccVisitFrequency" dataSourceProperty="visitFrequency" />
+    <SimpleProperty name="assignedEmployeeName" type="DomString" dataSourceProperty="assignedEmployeeName" />
+    <SimpleProperty name="assignedSalesPosition" type="DomString" dataSourceProperty="assignedSalesPosition" />
+    <SimpleProperty name="outletPriceCluster" type="DomString" dataSourceProperty="outletPriceCluster" />
+    <SimpleProperty name="telesalesNotes" type="DomLongText" dataSourceProperty="telesalesNotes" />
+    <SimpleProperty name="creditManagementNotes" type="DomLongText" dataSourceProperty="creditManagementNotes" />
+    <SimpleProperty name="termsofPayment" type="DomString" dataSourceProperty="termsofPayment" />
+    <SimpleProperty name="licenseNumber" type="DomString" dataSourceProperty="licenseNumber" />
   </SimpleProperties>
   <ObjectLookups>
     <!-- luCustomerTradeOrg: load immediate -->
     <ObjectLookup name="luCustomerTradeOrg" objectClass="LuCustomerTradeOrg" dataSourceProperty="pKey" lookupProperty="customerPKey" loadMode="LoadImmediate" />
+    <ObjectLookup name="luParentAccount" objectClass="LuCustomer" dataSourceProperty="parentAccount" lookupProperty="pKey" loadMode="LoadImmediate" />
+    <ObjectLookup name="luLastModifiedBy" objectClass="LuUser" dataSourceProperty="lastModifiedByID" lookupProperty="pKey" loadMode="LoadImmediate" />
+    <ObjectLookup name="luCreatedByID" objectClass="LuUser" dataSourceProperty="createdByID" lookupProperty="pKey" loadMode="LoadImmediate" />
+    <ObjectLookup name="luOwner" objectClass="LuUser" dataSourceProperty="ownerID" lookupProperty="pKey" loadMode="LoadImmediate" />
+    <ObjectLookup name="luPrimaryContact" objectClass="LuContact" dataSourceProperty="primaryContact" lookupProperty="pKey" loadMode="LoadImmediate" />
+    <ObjectLookup name="luKeyContact" objectClass="LuContact" dataSourceProperty="keyContact" lookupProperty="pKey" loadMode="LoadImmediate" />
   </ObjectLookups>
   <NestedObjects>
     <NestedObject name="boBpaMeta" objectClass="BoBpaMeta" dataSourceProperty="bpaMetaPKey" nestingProperty="pKey" loadMode="LoadImmediate" />
@@ -98,6 +172,10 @@
     <Method name="selectedListingModule" />
     <Method name="validatePOSDeletion" />
     <Method name="loadLoOpenHoursAsync" />
+    <Method name="postSetEARights" />
+    <Method name="mySetEARights" />
+    <Method name="replaceGetTabVisibility" />
+    <Method name="replaceGetContactPartner" />
   </Methods>
   <Validations>
     <!--Account Harmonization: obsolete <Validation name="validateCustomerOpeningTime" /> -->

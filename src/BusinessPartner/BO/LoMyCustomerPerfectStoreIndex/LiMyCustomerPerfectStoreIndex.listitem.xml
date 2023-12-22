@@ -1,0 +1,15 @@
+<ListItem name="LiMyCustomerPerfectStoreIndex">
+  <SimpleProperties>
+    <SimpleProperty id="true" name="pKey" type="DomPKey" dataSourceProperty="pKey" />
+    <SimpleProperty name="totalPSI" type="DomInteger" dataSourceProperty="totalPSI" />
+    <SimpleProperty name="availability" type="DomInteger" dataSourceProperty="availability" />
+    <SimpleProperty name="visibility" type="DomInteger" dataSourceProperty="visibility" />
+    <SimpleProperty name="quality" type="DomInteger" dataSourceProperty="quality" />
+    <SimpleProperty name="price" type="DomInteger" dataSourceProperty="price" />
+    <SimpleProperty name="totalPSIBenchmark" type="DomInteger" dataSourceProperty="totalPSIBenchmark" />
+    <SimpleProperty name="availabilityBenchmark" type="DomInteger" dataSourceProperty="availabilityBenchmark" />
+    <SimpleProperty name="visibilityBenchmark" type="DomInteger" dataSourceProperty="visibilityBenchmark" />
+    <SimpleProperty name="qualityBenchmark" type="DomInteger" dataSourceProperty="qualityBenchmark" />
+    <SimpleProperty name="priceBenchmark" type="DomInteger" dataSourceProperty="priceBenchmark" />
+  </SimpleProperties>
+</ListItem>

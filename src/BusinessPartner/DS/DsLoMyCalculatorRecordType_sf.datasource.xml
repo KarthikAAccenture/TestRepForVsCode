@@ -1,0 +1,14 @@
+<DataSource name="DsLoMyCalculatorRecordType" backendSystem="sf" businessObjectClass="LoMyCalculatorRecordType" external="false" editableEntity="" schemaVersion="2.0">
+  <Attributes>
+    <Attribute name="pKey" table="RecordType" column="Id" />
+    <Attribute name="text" table="RecordType" column="name" />
+  </Attributes>
+  <Entities>
+    <Entity name="RecordType" alias="" idAttribute="Id" />
+  </Entities>
+  <QueryCondition><![CDATA[
+    RecordType.DeveloperName = 'On_Premise_Beer_Math'
+  ]]></QueryCondition>
+  <OrderCriteria />
+  <Parameters></Parameters>
+</DataSource>

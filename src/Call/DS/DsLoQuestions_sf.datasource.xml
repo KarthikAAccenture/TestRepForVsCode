@@ -51,6 +51,7 @@
     <Attribute name="scoreAnswers" table="Job_DL_Job_Definition_Template__c" column="Score_Relevant_Answers__c" />
     <Attribute name="jobDefListPKey" table="Job_Definition_List__c" column="Id" />
     <DerivedAttribute name="visible" value="'1'" />
+    <Attribute name="myPerfectStoreVariable" table="Job_Definition_Template__c" column="Perfect_Store_Variable__c"/>
   </Attributes>
   <Entities>
     <Entity name="Visit_Job__c" idAttribute="Id" />
@@ -186,6 +187,7 @@ sqlStmt+= " 	,Job_Definition_Template__c.Description_#Language#__c AS questionTe
 sqlStmt+= " 	,'1' AS visible ";
 sqlStmt+= " 	,CASE WHEN Job_Definition_List__c.Description_#Language#__c IS NULL THEN #clbManualQuestionGroupName# ELSE Job_Definition_List__c.Description_#Language#__c END AS jobDefinitionListText ";
 sqlStmt+= " 	,Visit_Job__c.POS__c AS posId ";
+sqlStmt+= " 	,Job_Definition_Template__c.Perfect_Store_Variable__c AS myPerfectStoreVariable ";
 sqlStmt+= " FROM Visit_Job__c, Data_Type__c ";
 sqlStmt+= " 	,Job_Definition_Template__c ";
 sqlStmt+= " LEFT OUTER JOIN Job_DL_Job_Definition_Template__c ON Job_DL_Job_Definition_Template__c.Id = Visit_Job__c.Job_Definition__c ";
@@ -295,6 +297,7 @@ sqlStmt+= " 	,Job_Definition_Template__c.Description_#Language#__c AS questionTe
 sqlStmt+= " 	,'1' AS visible ";
 sqlStmt+= " 	,CASE WHEN Job_Definition_List__c.Description_#Language#__c IS NULL THEN #clbManualQuestionGroupName# ELSE Job_Definition_List__c.Description_#Language#__c END AS jobDefinitionListText ";
 sqlStmt+= " 	,Visit_Job__c.POS__c AS posId ";
+sqlStmt+= " 	,Job_Definition_Template__c.Perfect_Store_Variable__c AS myPerfectStoreVariable ";
 sqlStmt+= "  FROM Visit_Job__c, Data_Type__c ,Job_Definition_Template__c  ";
 sqlStmt+= "  JOIN Job_Definition_List__c ON Job_Definition_List__c.Id = Job_DL_Job_Definition_Template__c.Job_Definition_List__c  ";
 sqlStmt+= "  INNER JOIN Job_Definition_List_Template__c ON Job_Definition_List__c.Job_Definition_List_Template__c = Job_Definition_List_Template__c.Id ";

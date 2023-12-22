@@ -12,6 +12,7 @@
     <Attribute name="accountNumber" table="Sales_Organization__c" column="Account_Number__c" />
     <Attribute name="legalInformation" table="Sales_Organization__c" column="Legal_Information__c" />
     <Attribute name="currency" table="Sales_Organization__c" column="Currency__c" />
+    <DerivedAttribute name="noOfDaysPastDueForOverdueCustomers" value="'-' || Sales_Organization__c.MCBC_Customer_Overdue_Limit__c" />
   </Attributes>
   <Entities>
     <Entity name="Sales_Organization__c" alias="" idAttribute="Id" />

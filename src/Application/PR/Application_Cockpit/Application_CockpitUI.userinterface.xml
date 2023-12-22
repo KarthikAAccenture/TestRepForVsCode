@@ -40,9 +40,7 @@
             <Events>
               <ButtonPressedEvent event="executeStartOfDay" />
             </Events>
-            <VisibilityRoles allRoles="false">
-              <Role name="TourUser" />
-            </VisibilityRoles>
+            <VisibilityRoles allRoles="false" />
           </NavigationMenuItem>
           <NavigationMenuItem name="AgendaMenuItem">
             <Bindings>
@@ -52,10 +50,7 @@
             <Events>
               <ButtonPressedEvent event="openAgendaOverview" />
             </Events>
-            <VisibilityRoles allRoles="false">
-              <Role name="TourUser" />
-              <Role name="RetailUser" />
-            </VisibilityRoles>
+            <VisibilityRoles allRoles="true" />
           </NavigationMenuItem>
           <NavigationMenuItem name="EndOfDayMenuItem">
             <Bindings>
@@ -70,9 +65,7 @@
             <Events>
               <ButtonPressedEvent event="executeEndOfDay" />
             </Events>
-            <VisibilityRoles allRoles="false">
-              <Role name="TourUser" />
-            </VisibilityRoles>
+            <VisibilityRoles allRoles="false" />
           </NavigationMenuItem>
           <NavigationMenuItem name="TourMenuItem">
             <Bindings>
@@ -87,9 +80,7 @@
             <Events>
               <ButtonPressedEvent event="openTourOverview" />
             </Events>
-            <VisibilityRoles allRoles="false">
-              <Role name="TourUser" />
-            </VisibilityRoles>
+            <VisibilityRoles allRoles="false" />
           </NavigationMenuItem>
           <NavigationMenuItem name="TruckLoadMenuItem">
             <Bindings>
@@ -104,9 +95,7 @@
             <Events>
               <ButtonPressedEvent event="openInventoryOverview" />
             </Events>
-            <VisibilityRoles allRoles="false">
-              <Role name="TourUser" />
-            </VisibilityRoles>
+            <VisibilityRoles allRoles="false" />
           </NavigationMenuItem>
           <NavigationMenuItem name="CashMenuItem">
             <Bindings>
@@ -121,9 +110,7 @@
             <Events>
               <ButtonPressedEvent event="openCashOverview" />
             </Events>
-            <VisibilityRoles allRoles="false">
-              <Role name="TourUser" />
-            </VisibilityRoles>
+            <VisibilityRoles allRoles="false" />
           </NavigationMenuItem>
           <NavigationMenuItem name="ReplenishmentMenuItem">
             <Bindings>
@@ -138,9 +125,7 @@
             <Events>
               <ButtonPressedEvent event="openReplenishmentOverview" />
             </Events>
-            <VisibilityRoles allRoles="false">
-              <Role name="TourUser" />
-            </VisibilityRoles>
+            <VisibilityRoles allRoles="false" />
           </NavigationMenuItem>
           <NavigationMenuItem name="CustomerMenuItem">
             <Bindings>
@@ -150,158 +135,7 @@
             <Events>
               <ButtonPressedEvent event="openCustomerOverview" />
             </Events>
-            <VisibilityRoles allRoles="false">
-              <Role name="RetailUser" />
-              <Role name="PromotionApprover" />
-              <Role name="TourUser" />
-            </VisibilityRoles>
-          </NavigationMenuItem>
-          <NavigationMenuItem name="ProductMenuItem">
-            <Bindings>
-              <Resource target="Image" type="Image" id="Products" />
-              <Resource target="Title" type="Label" id="productOverviewLabelId" defaultLabel="Product" />
-            </Bindings>
-            <Events>
-              <ButtonPressedEvent event="openProductOverview" />
-            </Events>
-            <VisibilityRoles allRoles="false">
-              <Role name="RetailUser" />
-              <Role name="PromotionApprover" />
-              <Role name="TourUser" />
-            </VisibilityRoles>
-          </NavigationMenuItem>
-          <NavigationMenuItem name="OrderMenuItem">
-            <Bindings>
-              <Resource target="Image" type="Image" id="Clipboard_LM" />
-              <Resource target="Title" type="Label" id="orderOverviewLabelId" defaultLabel="Order" />
-            </Bindings>
-            <Events>
-              <ButtonPressedEvent event="openOrderOverview" />
-            </Events>
-            <VisibilityRoles allRoles="false">
-              <Role name="RetailUser" />
-              <Role name="PromotionApprover" />
-              <Role name="TourUser" />
-            </VisibilityRoles>
-          </NavigationMenuItem>
-          <NavigationMenuItem name="SalesFolderMenuItem">
-            <Bindings>
-              <Resource target="Image" type="Image" id="NavSalesFolder" />
-              <Resource target="Title" type="Label" id="SalesFolderId" defaultLabel="Sales Folder" />
-              <Binding type="Visible" target="Visible" call="ProcessContext::CardController.getCockpitMenuVisibility">
-                <Parameters>
-                  <Input name="token" type="Literal" value="SalesfolderMenu" />
-                </Parameters>
-              </Binding>
-            </Bindings>
-            <Events>
-              <ButtonPressedEvent event="openSalesFolder" />
-            </Events>
-            <VisibilityRoles allRoles="false">
-              <Role name="RetailUser" />
-              <Role name="PromotionApprover" />
-            </VisibilityRoles>
-          </NavigationMenuItem>
-          <NavigationMenuItem name="DailyReportMenuItem">
-            <Bindings>
-              <Resource target="Image" type="Image" id="ClipboardClock" />
-              <Resource target="Title" type="Label" id="dailyReportOverviewLabelId" defaultLabel="Time Card" />
-              <Binding type="Visible" target="Visible" call="ProcessContext::CardController.getCockpitMenuVisibility">
-                <Parameters>
-                  <Input name="token" type="Literal" value="DailyReportMenu" />
-                </Parameters>
-              </Binding>
-            </Bindings>
-            <Events>
-              <ButtonPressedEvent event="openDailyReport" />
-            </Events>
-            <VisibilityRoles allRoles="false">
-              <Role name="RetailUser" />
-              <Role name="PromotionApprover" />
-              <Role name="TourUser" />
-            </VisibilityRoles>
-          </NavigationMenuItem>
-          <NavigationMenuItem name="ReportingMenuItem">
-            <Bindings>
-              <Resource target="Image" type="Image" id="Report" />
-              <Resource target="Title" type="Label" id="ReportingLabelId" defaultLabel="Reports" />
-            </Bindings>
-            <Events>
-              <ButtonPressedEvent event="openReporting" />
-            </Events>
-            <VisibilityRoles allRoles="false">
-              <Role name="RetailUser" />
-              <Role name="PromotionApprover" />
-              <Role name="TourUser" />
-            </VisibilityRoles>
-          </NavigationMenuItem>
-          <NavigationMenuItem name="NotificationsMenuItem">
-            <Bindings>
-              <Resource target="Image" type="Image" id="Speechbubble" />
-              <Resource target="Title" type="Label" id="NotificationsLabelId" defaultLabel="Notifications" />
-            </Bindings>
-            <Events>
-              <ButtonPressedEvent event="openNotifications" />
-            </Events>
-            <VisibilityRoles allRoles="false">
-              <Role name="TourUser" />
-              <Role name="RetailUser" />
-              <Role name="PromotionApprover" />
-            </VisibilityRoles>
-          </NavigationMenuItem>
-          <NavigationMenuItem name="CustomerContractsMenuItem">
-            <Bindings>
-              <Resource target="Image" type="Image" id="Contract_LM" />
-              <Resource target="Title" type="Label" id="customerContractsOverviewLabelId" defaultLabel="Contracts" />
-              <Binding type="Visible" target="Visible" call="ProcessContext::CardController.getCockpitMenuVisibility">
-                <Parameters>
-                  <Input name="token" type="Literal" value="ContractMenu" />
-                </Parameters>
-              </Binding>
-            </Bindings>
-            <Events>
-              <ButtonPressedEvent event="openCustomerContracts" />
-            </Events>
-            <VisibilityRoles allRoles="false">
-              <Role name="ReservedForFutureUse_RetailUser" />
-              <Role name="ReservedForFutureUse_PromotionApprover" />
-            </VisibilityRoles>
-          </NavigationMenuItem>
-          <NavigationMenuItem name="PaymentsMenuItem">
-            <Bindings>
-              <Resource target="Image" type="Image" id="Money" />
-              <Resource target="Title" type="Label" id="PaymentsLabelId" defaultLabel="Payments" />
-              <Binding type="Visible" target="Visible" call="ProcessContext::CardController.getCockpitMenuVisibility">
-                <Parameters>
-                  <Input name="token" type="Literal" value="PaymentMenu" />
-                </Parameters>
-              </Binding>
-            </Bindings>
-            <Events>
-              <ButtonPressedEvent event="openPayments" />
-            </Events>
-            <VisibilityRoles allRoles="false">
-              <Role name="ReservedForFutureUse_RetailUser" />
-              <Role name="ReservedForFutureUse_PromotionApprover" />
-            </VisibilityRoles>
-          </NavigationMenuItem>
-          <NavigationMenuItem name="TodoMenuItem">
-            <Bindings>
-              <Resource target="Image" type="Image" id="ClipboardChecklist" />
-              <Resource target="Title" type="Label" id="TodoLabelId" defaultLabel="Tasks" />
-              <Binding type="Visible" target="Visible" call="ProcessContext::CardController.getCockpitMenuVisibility">
-                <Parameters>
-                  <Input name="token" type="Literal" value="TasksMenu" />
-                </Parameters>
-              </Binding>
-            </Bindings>
-            <Events>
-              <ButtonPressedEvent event="openTodo" />
-            </Events>
-            <VisibilityRoles allRoles="false">
-              <Role name="RetailUser" />
-              <Role name="PromotionApprover" />
-            </VisibilityRoles>
+            <VisibilityRoles allRoles="true" />
           </NavigationMenuItem>
           <NavigationMenuItem name="IssueMenuItem">
             <Bindings>
@@ -316,10 +150,137 @@
             <Events>
               <ButtonPressedEvent event="openIssue" />
             </Events>
-            <VisibilityRoles allRoles="false">
-              <Role name="RetailUser" />
-              <Role name="PromotionApprover" />
-            </VisibilityRoles>
+            <VisibilityRoles allRoles="true" />
+          </NavigationMenuItem>
+          <NavigationMenuItem name="TodoMenuItem">
+            <Bindings>
+              <Resource target="Image" type="Image" id="ClipboardChecklist" />
+              <Resource target="Title" type="Label" id="TodoLabelId" defaultLabel="Tasks" />
+              <Binding type="Visible" target="Visible" call="ProcessContext::CardController.getCockpitMenuVisibility">
+                <Parameters>
+                  <Input name="token" type="Literal" value="TasksMenu" />
+                </Parameters>
+              </Binding>
+            </Bindings>
+            <Events>
+              <ButtonPressedEvent event="openTodo" />
+            </Events>
+            <VisibilityRoles allRoles="true" />
+          </NavigationMenuItem>
+          <NavigationMenuItem name="SalesFolderMenuItem">
+            <Bindings>
+              <Resource target="Image" type="Image" id="NavSalesFolder" />
+              <Resource target="Title" type="Label" id="SalesFolderId" defaultLabel="Sales Folder" />
+              <Binding type="Visible" target="Visible" call="ProcessContext::CardController.getCockpitMenuVisibility">
+                <Parameters>
+                  <Input name="token" type="Literal" value="SalesfolderMenu" />
+                </Parameters>
+              </Binding>
+            </Bindings>
+            <Events>
+              <ButtonPressedEvent event="openSalesFolder" />
+            </Events>
+            <VisibilityRoles allRoles="true" />
+          </NavigationMenuItem>
+          <NavigationMenuItem name="ReportingMenuItem">
+            <Bindings>
+              <Resource target="Image" type="Image" id="Report" />
+              <Resource target="Title" type="Label" id="ReportingLabelId" defaultLabel="Reports" />
+            </Bindings>
+            <Events>
+              <ButtonPressedEvent event="openReporting" />
+            </Events>
+            <VisibilityRoles allRoles="true" />
+          </NavigationMenuItem>
+          <NavigationMenuItem name="OrderMenuItem">
+            <Bindings>
+              <Resource target="Image" type="Image" id="Clipboard_LM" />
+              <Resource target="Title" type="Label" id="orderOverviewLabelId" defaultLabel="Order" />
+              <Binding type="Visible" target="Visible" call="ProcessContext::CardController.getCockpitMenuVisibility">
+                <Parameters>
+                  <Input name="token" type="Literal" value="orderMenuItem" />
+                </Parameters>
+              </Binding>
+            </Bindings>
+            <Events>
+              <ButtonPressedEvent event="openOrderOverview" />
+            </Events>
+            <VisibilityRoles allRoles="true" />
+          </NavigationMenuItem>
+          <NavigationMenuItem name="ProductMenuItem">
+            <Bindings>
+              <Resource target="Image" type="Image" id="Products" />
+              <Resource target="Title" type="Label" id="productOverviewLabelId" defaultLabel="Product" />
+              <Binding type="Visible" target="Visible" call="ProcessContext::CardController.getCockpitMenuVisibility">
+                <Parameters>
+                  <Input name="token" type="Literal" value="productMenuItem" />
+                </Parameters>
+              </Binding>
+            </Bindings>
+            <Events>
+              <ButtonPressedEvent event="openProductOverview" />
+            </Events>
+            <VisibilityRoles allRoles="true" />
+          </NavigationMenuItem>
+          <NavigationMenuItem name="DailyReportMenuItem">
+            <Bindings>
+              <Resource target="Image" type="Image" id="ClipboardClock" />
+              <Resource target="Title" type="Label" id="dailyReportOverviewLabelId" defaultLabel="Time Card" />
+              <Binding type="Visible" target="Visible" call="ProcessContext::CardController.getCockpitMenuVisibility">
+                <Parameters>
+                  <Input name="token" type="Literal" value="DailyReportMenu" />
+                </Parameters>
+              </Binding>
+            </Bindings>
+            <Events>
+              <ButtonPressedEvent event="openDailyReport" />
+            </Events>
+            <VisibilityRoles allRoles="false" />
+          </NavigationMenuItem>
+          <NavigationMenuItem name="NotificationsMenuItem">
+            <Bindings>
+              <Resource target="Image" type="Image" id="Speechbubble" />
+              <Resource target="Title" type="Label" id="NotificationsLabelId" defaultLabel="Notifications" />
+              <Binding type="Visible" target="Visible" call="ProcessContext::CardController.getCockpitMenuVisibility">
+                <Parameters>
+                  <Input name="token" type="Literal" value="notificationsMenuItem" />
+                </Parameters>
+              </Binding>
+            </Bindings>
+            <Events>
+              <ButtonPressedEvent event="openNotifications" />
+            </Events>
+            <VisibilityRoles allRoles="true" />
+          </NavigationMenuItem>
+          <NavigationMenuItem name="CustomerContractsMenuItem">
+            <Bindings>
+              <Resource target="Image" type="Image" id="Contract_LM" />
+              <Resource target="Title" type="Label" id="customerContractsOverviewLabelId" defaultLabel="Contracts" />
+              <Binding type="Visible" target="Visible" call="ProcessContext::CardController.getCockpitMenuVisibility">
+                <Parameters>
+                  <Input name="token" type="Literal" value="ContractMenu" />
+                </Parameters>
+              </Binding>
+            </Bindings>
+            <Events>
+              <ButtonPressedEvent event="openCustomerContracts" />
+            </Events>
+            <VisibilityRoles allRoles="false" />
+          </NavigationMenuItem>
+          <NavigationMenuItem name="PaymentsMenuItem">
+            <Bindings>
+              <Resource target="Image" type="Image" id="Money" />
+              <Resource target="Title" type="Label" id="PaymentsLabelId" defaultLabel="Payments" />
+              <Binding type="Visible" target="Visible" call="ProcessContext::CardController.getCockpitMenuVisibility">
+                <Parameters>
+                  <Input name="token" type="Literal" value="PaymentMenu" />
+                </Parameters>
+              </Binding>
+            </Bindings>
+            <Events>
+              <ButtonPressedEvent event="openPayments" />
+            </Events>
+            <VisibilityRoles allRoles="false" />
           </NavigationMenuItem>
           <NavigationMenuItem name="PersonalSettingsMenuItem">
             <Bindings>
@@ -329,11 +290,7 @@
             <Events>
               <ButtonPressedEvent event="openUsrSettings" />
             </Events>
-            <VisibilityRoles allRoles="false">
-              <Role name="RetailUser" />
-              <Role name="PromotionApprover" />
-              <Role name="TourUser" />
-            </VisibilityRoles>
+            <VisibilityRoles allRoles="true" />
           </NavigationMenuItem>
           <NavigationMenuItem name="SynchronizeMenuItem">
             <Bindings>
@@ -348,31 +305,37 @@
             <Events>
               <ButtonPressedEvent event="synchronizeData" />
             </Events>
-            <VisibilityRoles allRoles="false">
-              <Role name="RetailUser" />
-              <Role name="PromotionApprover" />
-              <Role name="TourUser" />
-            </VisibilityRoles>
+            <VisibilityRoles allRoles="false" />
           </NavigationMenuItem>
           <NavigationMenuItem name="AboutMenuItem">
             <Bindings>
               <Resource target="Image" type="Image" id="Info" />
               <Resource target="Title" type="Label" id="AboutLabelId" defaultLabel="About" />
+              <Binding type="Visible" target="Visible" call="ProcessContext::CardController.getCockpitMenuVisibility">
+                <Parameters>
+                  <Input name="token" type="Literal" value="AboutMenu" />
+                </Parameters>
+              </Binding>
             </Bindings>
             <Events>
               <ButtonPressedEvent event="openAboutScreen" />
             </Events>
-            <VisibilityRoles allRoles="true" />
+            <VisibilityRoles allRoles="false" />
           </NavigationMenuItem>
           <NavigationMenuItem name="LogoutMenuItem">
             <Bindings>
               <Resource target="Image" type="Image" id="Logout" />
               <Resource target="Title" type="Label" id="LogoutLabelId" defaultLabel="Logout" />
+              <Binding type="Visible" target="Visible" call="ProcessContext::CardController.getCockpitMenuVisibility">
+                <Parameters>
+                  <Input name="token" type="Literal" value="LogoutMenu" />
+                </Parameters>
+              </Binding>
             </Bindings>
             <Events>
               <ButtonPressedEvent event="User_Logout" />
             </Events>
-            <VisibilityRoles allRoles="true" />
+            <VisibilityRoles allRoles="false" />
           </NavigationMenuItem>
         </NavigationMenuContainer>
         <!-- User Welcome Card-->
@@ -426,7 +389,7 @@
         <!-- CardVisits START -->
         <CardContainer name="CardVisits">
           <Bindings>
-            <Binding type="Visible" target="Visible" call="ProcessContext::CardController.isCardVisible " bindingMode="ONE_WAY">
+            <Binding type="Visible" target="Visible" call="ProcessContext::CardController.isCardVisible" bindingMode="ONE_WAY">
               <Parameters>
                 <Input name="cardName" type="Literal" value="CardVisits" />
               </Parameters>
@@ -473,7 +436,10 @@
               <ItemListLayout>
                 <Default>
                   <Col width="1em" height="1.6em" layoutType="Image" bindingId="typeWithStatusImage" />
-                  <Col width="2em" layoutType="itemSecondaryCockpit" bindingId="timeFrom" />
+                  <Col width="3em">
+                    <Row layoutType="itemSecondaryCockpit" bindingId="timeFrom" />
+                    <Row layoutType="itemSecondaryCockpit" bindingId="timeThru" />
+                  </Col>
                   <Col flex="1">
                     <Row layoutType="itemIdentifierCockpit" bindingId="customerName" />
                     <Row layoutType="itemSecondaryCockpit" bindingId="customerAddress" />
@@ -481,8 +447,11 @@
                 </Default>
                 <Tablet>
                   <Default>
-                    <Col width="1em" height="1.4em" layoutType="Image" bindingId="typeWithStatusImage" />
-                    <Col width="2em" layoutType="itemSecondaryCockpit" bindingId="timeFrom" />
+                    <Col width="1em" height="1.6em" layoutType="Image" bindingId="typeWithStatusImage" />
+                    <Col width="3em">
+                      <Row layoutType="itemSecondaryCockpit" bindingId="timeFrom" />
+                      <Row layoutType="itemSecondaryCockpit" bindingId="timeThru" />
+                    </Col>
                     <Col flex="1">
                       <Row layoutType="itemIdentifierCockpit" bindingId="customerName" />
                       <Row layoutType="itemSecondaryCockpit" bindingId="customerAddress" />
@@ -492,7 +461,10 @@
                 <Phone>
                   <Default>
                     <Col width="2em" height="1.6em" layoutType="Image" bindingId="typeWithStatusImage" />
-                    <Col width="3.3em" layoutType="itemSecondaryCockpit" bindingId="timeFrom" />
+                    <Col width="3em">
+                      <Row layoutType="itemSecondaryCockpit" bindingId="timeFrom" />
+                      <Row layoutType="itemSecondaryCockpit" bindingId="timeThru" />
+                    </Col>
                     <Col flex="1">
                       <Row layoutType="itemIdentifierCockpit" bindingId="customerName" />
                       <Row layoutType="itemSecondaryCockpit" bindingId="customerAddress" />
@@ -500,7 +472,10 @@
                   </Default>
                   <Apple>
                     <Col width="2em" height="1.4em" layoutType="Image" bindingId="typeWithStatusImage" />
-                    <Col width="3.3em" layoutType="itemSecondaryCockpit" bindingId="timeFrom" />
+                    <Col width="3em">
+                      <Row layoutType="itemSecondaryCockpit" bindingId="timeFrom" />
+                      <Row layoutType="itemSecondaryCockpit" bindingId="timeThru" />
+                    </Col>
                     <Col flex="1">
                       <Row layoutType="itemIdentifierCockpit" bindingId="customerName" />
                       <Row layoutType="itemSecondaryCockpit" bindingId="customerAddress" />
@@ -517,14 +492,16 @@
                     <Binding target="Icon" type="Image" binding=".actionImg" />
                     <Binding target="Text" type="Label" binding=".actionId" />
                     <Binding type="Editable" target="Editable" binding=".actionEnabled" />
+                    <Binding type="Visible" target="Visible" binding=".actionVisible" />
                   </Bindings>
                 </Items>
               </ContextMenu>
               <Bindings>
-                <Binding target="typeWithStatusImage" type="Image" binding=".clbTypeStatusColored" bindingMode="ONE_WAY" />
-                <Binding target="timeFrom" type="Text" binding=".timeFrom" bindingMode="ONE_WAY" />
+                <Binding target="typeWithStatusImage" type="Image" binding=".clbTypeStatus" bindingMode="ONE_WAY" />
+                <Binding target="timeFrom" type="Text" binding=".cardStartTime" bindingMode="ONE_WAY" />
                 <Binding target="customerName" type="Text" binding=".name" bindingMode="ONE_WAY" />
                 <Binding target="customerAddress" type="Text" binding=".address" bindingMode="ONE_WAY" />
+                <Binding target="timeThru" type="Text" binding=".cardEndTime" bindingMode="ONE_WAY" />
               </Bindings>
             </Items>
             <Events>
@@ -538,6 +515,7 @@
                 <Params>
                   <Param name="pKey" value=".pKey" />
                   <Param name="clbStatus" value=".clbStatus" />
+                  <Param name="myCallStatus" value=".myCallStatus" />
                   <Param name="deleteAllowed" value=".deleteAllowed" />
                   <Param name="dateFrom" value=".dateFrom" />
                   <Param name="bpaMainPKey" value=".bpaMainPKey" />

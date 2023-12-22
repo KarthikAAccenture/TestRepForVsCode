@@ -12,11 +12,16 @@
     <SimpleProperty name="callPKey" type="DomPKey" />
     <SimpleProperty name="text" type="DomText" />
     <SimpleProperty name="dueDate" type="DomDate" />
+    <SimpleProperty name="productPkey" type="DomPKey" />
+    <SimpleProperty name="priority" type="DomABC" />
+    <SimpleProperty name="creationDate" type="DomDate" />
+    <SimpleProperty name="featureDescription" type="DomText" />
   </SimpleProperties>
   <NestedObjects></NestedObjects>
   <ObjectLookups>
     <ObjectLookup name="luCustomer" objectClass="LuCustomer" dataSourceProperty="customerPKey" lookupProperty="pKey" loadMode="onDemand" />
     <ObjectLookup name="luSvcRequestMeta" objectClass="LuSvcRequestMeta" dataSourceProperty="svcRequestMetaPKey" lookupProperty="pKey" loadMode="onDemand" />
+    <ObjectLookup name="luProduct" objectClass="LuProduct" dataSourceProperty="productPkey" lookupProperty="pKey" loadMode="onDemand" />
   </ObjectLookups>
   <ListObjects></ListObjects>
   <Methods>
@@ -33,6 +38,7 @@
     <Method name="setEARights" />
     <Method name="reloadManagementInformation" />
     <Method name="checkSubstitution" />
+    <Method name="replaceAfterCreateAsync"/>
   </Methods>
   <Validations>
     <Validation name="validateNotEmpty" />

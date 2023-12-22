@@ -1,0 +1,210 @@
+<UIDescription name="Customer::MyCalculationOverviewUI" schemaVersion="0.0.0.5">
+  <Page pagePattern="SingleSectionPage" onBackDiscard="true">
+    <PageHeader>
+      <Bindings>
+        <Resource target="title" type="Label" id="CalculationId" defaultLabel="CG Calculator" />
+      </Bindings>
+    </PageHeader>
+    <Section sectionName="masterSection" sectionPattern="SingleAreaSection">
+      <Area areaName="mainArea" areaPattern="GroupedElementsArea">
+        <!-- Calculation Type -->
+        <GroupElement name="InformationGroup">
+          <Bindings>
+            <Resource target="Title" type="Label" id="InformationId" defaultLabel="Information" />
+          </Bindings>
+          <InputArea name="CalculatorName" disabled="true">
+            <Bindings>
+              <Resource target="Label" type="Label" id="CalculatorNameId" defaultLabel="Calculator Name" />
+              <Binding target="Value" binding="ProcessContext::calculatorBo.name" bindingMode="ONE_WAY" />
+            </Bindings>
+          </InputArea>
+          <InputArea name="SalesOrg" disabled="true">
+            <Bindings>
+              <Resource target="Label" type="Label" id="SalesOrgId" defaultLabel="Sales Org" />
+              <Binding target="Value" binding="ProcessContext::calculatorBo.salesOrg" bindingMode="ONE_WAY" />
+            </Bindings>
+          </InputArea>
+          <InputArea name="AccountName" disabled="true">
+            <Bindings>
+              <Resource target="Label" type="Label" id="AccountNameId" defaultLabel="Account" />
+              <Binding target="Value" binding="ProcessContext::CalclulatorCustomerName" bindingMode="ONE_WAY" />
+            </Bindings>
+          </InputArea>
+        </GroupElement>
+        <GroupElement name="InputGroup">
+          <Bindings>
+            <Resource target="Title" type="Label" id="InputId" defaultLabel="Input" />
+          </Bindings>
+          <SelectionBox name="TimeFrame">
+            <Bindings>
+              <Resource target="Label" type="Label" id="TimeFrameId" defaultLabel="Time Frame" />
+              <Binding target="DataSource" toggleId="MyCalcTimeFrame" bindingMode="TWO_WAY" />
+              <Binding target="Value" binding="ProcessContext::calculatorBo.timeFrame" bindingMode="TWO_WAY" />
+            </Bindings>
+            <Items>
+              <Bindings>
+                <Binding target="ItemValue" type="Text" binding=".pKey" bindingMode="ONE_WAY" />
+                <Binding target="ItemText" type="Text" binding=".text" bindingMode="ONE_WAY" />
+              </Bindings>
+            </Items>
+          </SelectionBox>
+          <InputArea name="PackageType" disabled="true">
+            <Bindings>
+              <Resource target="Label" type="Label" id="PackageTypeId" defaultLabel="Package Type" />
+              <Binding target="Value" binding="ProcessContext::calculatorBo.packageType" bindingMode="ONE_WAY" />
+            </Bindings>
+          </InputArea>
+          <SelectionBox name="Size" disabled="true">
+            <Bindings>
+              <Resource target="Label" type="Label" id="SizeId" defaultLabel="Size" />
+              <Binding target="Value" binding="ProcessContext::calculatorBo.size" bindingMode="TWO_WAY" />
+              <Binding target="DataSource" toggleId="MyCalcSize" bindingMode="TWO_WAY" />
+            </Bindings>
+            <Items>
+              <Bindings>
+                <Binding target="ItemValue" type="Text" binding=".pKey" bindingMode="ONE_WAY" />
+                <Binding target="ItemText" type="Text" binding=".text" bindingMode="ONE_WAY" />
+              </Bindings>
+            </Items>
+          </SelectionBox>
+          <!--<InputArea name="Size" disabled="true">
+            <Bindings>
+              <Resource target="Label" type="Label" id="SizeId" defaultLabel="Size" />
+              <Binding target="Value" binding="ProcessContext::calculatorBo.size" bindingMode="ONE_WAY" />
+            </Bindings>
+          </InputArea>-->
+          <SelectionBox name="BeerBrand">
+            <Bindings>
+              <Resource target="Label" type="Label" id="BeerBrandId" defaultLabel="Beer Brand" />
+              <Binding target="DataSource" toggleId="MyCalcBeerBrand" bindingMode="TWO_WAY" />
+              <Binding target="Value" binding="ProcessContext::calculatorBo.beerBrand" bindingMode="TWO_WAY" />
+            </Bindings>
+            <Items>
+              <Bindings>
+                <Binding target="ItemValue" type="Text" binding=".pKey" bindingMode="ONE_WAY" />
+                <Binding target="ItemText" type="Text" binding=".text" bindingMode="ONE_WAY" />
+              </Bindings>
+            </Items>
+          </SelectionBox>
+          <InputArea name="ServingSize" disabled="true">
+            <Bindings>
+              <Resource target="Label" type="Label" id="ServingSizeId" defaultLabel="Serving Size (oz)" />
+              <Binding target="Value" binding="ProcessContext::calculatorBo.servingSizeOz" bindingMode="ONE_WAY" />
+            </Bindings>
+          </InputArea>
+          <InputArea name="OtherBrandName" disabled="true">
+            <Bindings>
+              <Resource target="Label" type="Label" id="OtherBrandNameId" defaultLabel="Other Brand Name" />
+              <Binding target="Value" binding="ProcessContext::calculatorBo.otherBrandName" bindingMode="ONE_WAY" />
+            </Bindings>
+          </InputArea>
+          <InputArea name="PriceToConsumer" disabled="true">
+            <Bindings>
+              <Resource target="Label" type="Label" id="PriceToConsumerId" defaultLabel="Price To Consumer" />
+              <Binding target="Value" binding="ProcessContext::calculatorBo.priceToConsumer" bindingMode="ONE_WAY" />
+            </Bindings>
+          </InputArea>
+          <InputArea name="PriceToRetailer" disabled="true">
+            <Bindings>
+              <Resource target="Label" type="Label" id="PriceToRetailerId" defaultLabel="Price To Retailer" />
+              <Binding target="Value" binding="ProcessContext::calculatorBo.priceToRetailer" bindingMode="ONE_WAY" />
+            </Bindings>
+          </InputArea>
+          <InputArea name="KegsOrCasesPerWeek" disabled="true">
+            <Bindings>
+              <Resource target="Label" type="Label" id="KegsOrCasesPerWeekId" defaultLabel="Kegs/Cases per Week" />
+              <Binding target="Value" binding="ProcessContext::calculatorBo.kegsCasesPerWeek" bindingMode="ONE_WAY" />
+            </Bindings>
+          </InputArea>
+        </GroupElement>
+        <GroupElement name="StoreMultiplierGroup">
+          <Bindings>
+            <Resource target="Title" type="Label" id="StoreMultiplierId" defaultLabel="Store Multiplier" />
+          </Bindings>
+          <InputArea name="NumberOfStores" disabled="true">
+            <Bindings>
+              <Resource target="Label" type="Label" id="NumberOfStoresId" defaultLabel="Number of Stores" />
+              <Binding target="Value" binding="ProcessContext::calculatorBo.numberOfStores" bindingMode="ONE_WAY" />
+            </Bindings>
+          </InputArea>
+        </GroupElement>
+        <GroupElement name="OutputStatisticsGroup">
+          <Bindings>
+            <Resource target="Title" type="Label" id="OutputStatisticsId" defaultLabel="Output Statistics Based on Beer Serving Size / Price" />
+          </Bindings>
+          <InputArea name="CostPerOunce" disabled="true">
+            <Bindings>
+              <Resource target="Label" type="Label" id="CostPerOunceId" defaultLabel="Cost per Ounce" />
+              <Binding target="Value" binding="ProcessContext::calculatorBo.costPerOunce" bindingMode="ONE_WAY" />
+            </Bindings>
+          </InputArea>
+          <InputArea name="NumberOfServings" disabled="true">
+            <Bindings>
+              <Resource target="Label" type="Label" id="NumberOfServingsId" defaultLabel="Number of Servings" />
+              <Binding target="Value" type="Decimal" formatV2="10.2" binding="ProcessContext::calculatorBo.numberOfServings" bindingMode="ONE_WAY" />
+            </Bindings>
+          </InputArea>
+          <InputArea name="SizeInOunces" disabled="true">
+            <Bindings>
+              <Resource target="Label" type="Label" id="SizeInOuncesId" defaultLabel="Size in Ounces" />
+              <Binding target="Value" type="Decimal" formatV2="10.2" binding="ProcessContext::calculatorBo.sizeInOunce" bindingMode="ONE_WAY" />
+            </Bindings>
+          </InputArea>
+          <InputArea name="CostPerServing" disabled="true">
+            <Bindings>
+              <Resource target="Label" type="Label" id="CostPerServingId" defaultLabel="Cost per Serving" />
+              <Binding target="Value" type="Decimal" formatV2="10.2" binding="ProcessContext::calculatorBo.costPerServing" bindingMode="ONE_WAY" />
+            </Bindings>
+          </InputArea>
+          <InputArea name="ProfitMargin" disabled="true">
+            <Bindings>
+              <Resource target="Label" type="Label" id="ProfitMarginId" defaultLabel="Profit Margin" />
+              <Binding target="Value" binding="ProcessContext::calculatorBo.profitMargin" bindingMode="ONE_WAY" />
+            </Bindings>
+          </InputArea>
+        </GroupElement>
+        <GroupElement name="OutputSummaryGroup">
+          <Bindings>
+            <Resource target="Title" type="Label" id="OutputSummaryId" defaultLabel="Output Summary" />
+          </Bindings>
+          <InputArea name="RevenuePerKegOrCase" disabled="true">
+            <Bindings>
+              <Resource target="Label" type="Label" id="RevenuePerKegOrCaseId" defaultLabel="Revenue - Per Keg/Case" />
+              <Binding target="Value" type="Decimal" formatV2="10.2" binding="ProcessContext::calculatorBo.grossRevenuePerKegCase" bindingMode="ONE_WAY" />
+            </Bindings>
+          </InputArea>
+          <InputArea name="ProfitPerKegOrCase" disabled="true">
+            <Bindings>
+              <Resource target="Label" type="Label" id="ProfitPerKegOrCaseId" defaultLabel="Profit - Per Keg/Case" />
+              <Binding target="Value" type="Decimal" formatV2="10.2" binding="ProcessContext::calculatorBo.netMarginPerKegCase" bindingMode="ONE_WAY" />
+            </Bindings>
+          </InputArea>
+          <InputArea name="RevenuePerWeek" disabled="true">
+            <Bindings>
+              <Resource target="Label" type="Label" id="RevenuePerWeekId" defaultLabel="Revenue - Per Week" />
+              <Binding target="Value" type="Decimal" formatV2="10.2" binding="ProcessContext::calculatorBo.grossRevenuePerWeek" bindingMode="ONE_WAY" />
+            </Bindings>
+          </InputArea>
+          <InputArea name="ProfitPerWeek" disabled="true">
+            <Bindings>
+              <Resource target="Label" type="Label" id="ProfitPerWeekId" defaultLabel="Profit - Per Week" />
+              <Binding target="Value" binding="ProcessContext::calculatorBo.netMarginPerWeek" bindingMode="ONE_WAY" />
+            </Bindings>
+          </InputArea>
+          <InputArea name="RevenuePerYear" disabled="true">
+            <Bindings>
+              <Resource target="Label" type="Label" id="RevenuePerYearId" defaultLabel="Revenue - Per Year" />
+              <Binding target="Value" type="Decimal" formatV2="10.2" binding="ProcessContext::calculatorBo.grossRevenuePerYear" bindingMode="ONE_WAY" />
+            </Bindings>
+          </InputArea>
+          <InputArea name="ProfitPerYear" disabled="true">
+            <Bindings>
+              <Resource target="Label" type="Label" id="ProfitPerYearId" defaultLabel="Profit - Per Year" />
+              <Binding target="Value" type="Decimal" formatV2="10.2" binding="ProcessContext::calculatorBo.netMarginPerYear" bindingMode="ONE_WAY" />
+            </Bindings>
+          </InputArea>
+        </GroupElement>
+      </Area>
+    </Section>
+  </Page>
+</UIDescription>

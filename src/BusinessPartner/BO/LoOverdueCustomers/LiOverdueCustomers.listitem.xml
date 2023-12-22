@@ -6,5 +6,6 @@
     <SimpleProperty name="jdlCount" type="DomInteger" dataSourceProperty="jdlCount" />
     <SimpleProperty name="promotionCount" type="DomInteger" dataSourceProperty="promotionCount" />
     <SimpleProperty name="overdueImage" type="DomString" />
+    <SimpleProperty name="overdueDate" type="DomDate" dataSourceProperty="overdueDate" />
   </SimpleProperties>
 </ListItem>

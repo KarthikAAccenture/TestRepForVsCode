@@ -1,0 +1,8 @@
+<ListItem name="LiMyCalculatorOverview">
+  <SimpleProperties>
+    <SimpleProperty name="calcPKey" type="DomPKey" id="true" dataSourceProperty="calcPKey" />
+    <SimpleProperty name="name" type="DomText" dataSourceProperty="name" />
+    <SimpleProperty name="beerBrand" type="DomMyCalcBeerBrand" storable="false" dataSourceProperty="beerBrand" />
+    <SimpleProperty name="salesOrg" type="DomSalesOrg" storable="false" dataSourceProperty="salesOrg" />
+  </SimpleProperties>
+</ListItem>

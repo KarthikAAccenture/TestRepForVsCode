@@ -1,0 +1,5 @@
+<ListObject name="LoMyCalculatorRecordType" generateLoadMethod="true" schemaVersion="1.1">
+  <DataSource name="DsLoMyCalculatorRecordType" />
+  <Item objectClass="LiMyCalculatorRecordType" />
+  <Methods></Methods>
+</ListObject>

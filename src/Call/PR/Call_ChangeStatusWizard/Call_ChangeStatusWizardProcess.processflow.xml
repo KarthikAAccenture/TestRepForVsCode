@@ -12,6 +12,7 @@
       <Parameters>
         <Input name="MainPKey" type="DomPKey" />
         <Input name="targetClbStatus" type="String" />
+        <Input name="targetMyCallStatus" type="String" />
         <Input name="ResponsiblePKey" type="DomPKey" />
         <Input name="OverviewList" type="LoAgendaOverview" />
         <Input name="CardVisits_IsCallComplete" type="DomBool" />
@@ -79,11 +80,21 @@
       </Action>
       <Action actionType="LOGIC" name="ValidateBeforeComplete_SaveStatus" call="ProcessContext::CallBo.getClbStatus">
         <Return name="ProcessContext::SaveClbStatus" />
+        <TransitionTo action="ValidateBeforeComplete_SaveMyCallStatus" />
+      </Action>
+      <Action actionType="LOGIC" name="ValidateBeforeComplete_SaveMyCallStatus" call="ProcessContext::CallBo.getMyCallStatus">
+        <Return name="ProcessContext::SaveMyCallStatus" />
         <TransitionTo action="SetCallCompleted" />
       </Action>
       <Action name="SetCallCompleted" actionType="LOGIC" call="ProcessContext::CallBo.setClbStatus">
         <Parameters>
           <Input name="clbStatus" value="Completed" type="Literal" />
+        </Parameters>
+        <TransitionTo action="SetCallStatusCompleted" />
+      </Action>
+      <Action name="SetCallStatusCompleted" actionType="LOGIC" call="ProcessContext::CallBo.setMyCallStatus">
+        <Parameters>
+          <Input name="myCallStatus" value="Completed" type="Literal" />
         </Parameters>
         <TransitionTo action="CompleteCallViaVisitsCard_Decision" />
       </Action>
@@ -112,6 +123,12 @@
       <Action actionType="LOGIC" name="ValidateBeforeComplete_ResetStatus" call="ProcessContext::CallBo.setClbStatus">
         <Parameters>
           <Input name="targetClbStatus" value="ProcessContext::SaveClbStatus" />
+        </Parameters>
+        <TransitionTo action="ValidateBeforeComplete_ResetMyCallStatus" />
+      </Action>
+      <Action actionType="LOGIC" name="ValidateBeforeComplete_ResetMyCallStatus" call="ProcessContext::CallBo.setMyCallStatus">
+        <Parameters>
+          <Input name="targetMyCallStatus" value="ProcessContext::SaveMyCallStatus" />
         </Parameters>
         <TransitionTo action="end" />
       </Action>
@@ -185,6 +202,12 @@
         <Parameters>
           <Input name="reasonCode" value="ProcessContext::CancelReasonCode" />
         </Parameters>
+        <TransitionTo action="SetMyCallStatus" />
+      </Action>
+      <Action name="SetMyCallStatus" actionType="LOGIC" call="ProcessContext::CallBo.setMyCallStatus">
+        <Parameters>
+          <Input name="myCallStatus" value="Abandoned" type="Literal" />
+        </Parameters>
         <TransitionTo action="end" />
       </Action>
       <Action name="CancelAllCall" actionType="LOGIC" call="ProcessContext::OverviewList.cancelAllVisit">
@@ -194,8 +217,9 @@
         <TransitionTo action="end" />
       </Action>
       <!-- Delete Call -->
-      <Action name="DeletionWithStatusAllowed_Decision" actionType="DECISION" parameter="ProcessContext::CallBo.clbStatus">
+      <Action name="DeletionWithStatusAllowed_Decision" actionType="DECISION" parameter="ProcessContext::CallBo.myCallStatus">
         <Case value="Completed" action="DeleteCompletedNotAllowed" />
+        <Case value="InProgress" action="DeleteCompletedNotAllowed" />
         <CaseElse action="DeletionAllowed_Decision" />
       </Action>
       <Action name="DeletionAllowed_Decision" actionType="DECISION" parameter="ProcessContext::CallBo.luCallMeta.deleteAllowed">

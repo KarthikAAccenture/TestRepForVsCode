@@ -20,6 +20,11 @@
     <DerivedAttribute name="fileType" value="' '" />
     <DerivedAttribute name="bpaMetaPKey" value="' '" />
     <DerivedAttribute name="emailEditable" value="'0'" />
+    <Attribute name="nps" table="Contact" column="C360_NPS__c" />
+    <Attribute name="position" table="Contact" column="Role__c" />
+    <DerivedAttribute name="npsImage" value="' '" />
+    <DerivedAttribute name="npsLabel" value="'NPS'" />
+    <Attribute name="active" table="Contact" column="Active__c"/>
   </Attributes>
   <Database platform="SQLite">
     <Load><![CDATA[
@@ -50,6 +55,11 @@
    sqlStmt += ",contactPartnerName ";
    sqlStmt += ",fileType ";
    sqlStmt += ",mediaPath ";
+   sqlStmt += ",position ";
+   sqlStmt += ",npsImage ";
+   sqlStmt += ",npsLabel ";
+   sqlStmt += ",nps ";
+   sqlStmt += ",active ";
    sqlStmt += "FROM ";
 
    sqlStmt += "(SELECT Contact.Id as pKey ";
@@ -58,6 +68,11 @@
    sqlStmt += ",Contact.Name as name ";
    sqlStmt += ",Contact.LastName as lastName ";
    sqlStmt += ",Contact.Job_Title__c as jobTitle";
+   sqlStmt += ",Contact.C360_NPS__c as nps";
+   sqlStmt += ",'NPS' as npsLabel";
+   sqlStmt += ",Contact.Active__c as active";
+   sqlStmt += ",Contact.Role__c as position";
+   sqlStmt += ",CASE Contact.C360_NPS__c WHEN 1 THEN 'DoneIcon24' ELSE 'CancelledDarkGrey24' END as npsImage";
    sqlStmt += ",Contact.Main_Function__c as mainFunction ";
    sqlStmt += ",Contact.Mailing_Street__c || ', ' || Contact.Mailing_Postal_Code__c || ' ' || Contact.Mailing_City__c || ', ' || Contact.Mailing_Country__c as mainAddress ";
    sqlStmt += ",Contact.Phone as phone1 ";
@@ -78,6 +93,7 @@
    sqlStmt += "WHERE 1=1 ";
    sqlStmt += "AND Contact.AccountId = #customerPKey# ";
    sqlStmt += "AND Contact.IsDeleted <> '1' ";
+   sqlStmt += "AND Contact.Active__c == '1' ";
    sqlStmt += "ORDER BY Contact.Id AND SF_File.CreatedDate) ";
 
    sqlStmt += "GROUP BY pKey";

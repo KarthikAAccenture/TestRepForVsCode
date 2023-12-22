@@ -3,6 +3,7 @@
     <SimpleProperty id="true" name="pKey" type="DomPKey" dataSourceProperty="pKey" />
     <SimpleProperty name="name" type="DomBpaName" dataSourceProperty="name" />
     <SimpleProperty name="customerId" type="DomId" dataSourceProperty="customerId" />
+    <SimpleProperty name="sapId" type="DomText" dataSourceProperty="sapId" />
     <SimpleProperty name="mainAddress" type="DomText" storable="false" dataSourceProperty="mainAddress" />
     <SimpleProperty name="street" type="DomText" dataSourceProperty="street" />
     <SimpleProperty name="zipCode" type="DomText" dataSourceProperty="zipCode" />
@@ -34,5 +35,8 @@
     <SimpleProperty name="mapIcon" type="DomText" />
     <SimpleProperty name="isButtonVisible" type="DomBool" />
     <SimpleProperty name="visibleInMap" type="DomBool" />
+    <SimpleProperty name="retailOutletId" type="DomString" id="false" dataSourceProperty="retailOutletId" />
+    <SimpleProperty name="billingAddress" type="DomText" storable="false" dataSourceProperty="billingAddress" />
+    <SimpleProperty name="overdueDate" type="DomDate" id="false" dataSourceProperty="overdueDate" />
   </SimpleProperties>
 </ListItem>

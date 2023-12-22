@@ -52,5 +52,6 @@
     <SimpleProperty name="scoreAnswers" type="DomString" dataSourceProperty="scoreAnswers" />
     <SimpleProperty name="jobDefListPKey" type="DomPKey" dataSourceProperty="jobDefListPKey" />
     <SimpleProperty name="visible" type="DomBool" dataSourceProperty="visible" />
+    <SimpleProperty name="myPerfectStoreVariable" type="DomString" dataSourceProperty="myPerfectStoreVariable"/>
   </SimpleProperties>
 </ListItem>

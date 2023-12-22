@@ -1,0 +1,6 @@
+<ListObject name="LoMyPhaseForCustomerTask" generateLoadMethod="true" schemaVersion="1.1">
+  <DataSource name="DsLoMyPhaseForCustomerTask" />
+  <Item objectClass="LiMyPhaseForCustomerTask" />
+  <Methods>
+  </Methods>
+</ListObject>

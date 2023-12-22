@@ -21,6 +21,8 @@
     <SimpleProperty name="salesOrg" type="DomSalesOrg" storable="true" dataSourceProperty="salesOrg" />
     <SimpleProperty name="clbMainPKey" type="DomPKey" dataSourceProperty="clbMainPKey" />
     <SimpleProperty name="fromClbMainPKey" type="DomPKey" dataSourceProperty="fromClbMainPKey" />
+    <SimpleProperty name="productPkey" type="DomPKey" dataSourceProperty="productPkey" />
+    <SimpleProperty name="featureDescription" type="DomText" dataSourceProperty="featureDescription" />
   </SimpleProperties>
   <NestedObjects>
     <NestedObject name="boIssueNote" objectClass="BoIssueNote" dataSourceProperty="pKey" nestingProperty="svcIssuePKey" loadMode="LoadImmediate" />
@@ -34,6 +36,7 @@
     <ObjectLookup name="luInitiator" objectClass="LuUser" dataSourceProperty="initiatorPKey" lookupProperty="pKey" loadMode="LoadImmediate" />
     <ObjectLookup name="luCustomerManagementInfo" objectClass="LuCustomerManagementInfo" dataSourceProperty="ownerBpaMainPKey" lookupProperty="pKey" loadMode="LoadImmediate" />
     <ObjectLookup name="luIssueAttachmentCount" objectClass="LuIssueAttachmentCount" dataSourceProperty="pKey" lookupProperty="pKey" loadMode="LoadImmediate" />
+    <ObjectLookup name="luProduct" objectClass="LuProduct" dataSourceProperty="productPkey" lookupProperty="pKey" loadMode="onDemand" />
   </ObjectLookups>
   <ListObjects>
     <ListObject name="loRecentState" objectClass="LoIssueRecentState" dataSourceProperty="pKey" listProperty="svcIssuePKey" loadMode="LoadImmediate" />
@@ -59,6 +62,8 @@
     <Method name="loadOnDemand" />
     <Method name="updateAttachmentCount" />
     <Method name="clearState" />
+    <Method name="replaceBeforeCreateAsync" />
+    <Method name="replaceCopyAsync"/>
   </Methods>
   <Validations>
     <Validation name="validateNotEmpty" />

@@ -14,5 +14,15 @@
     <SimpleProperty name="longitude" type="DomDegree" dataSourceProperty="longitude" />
     <SimpleProperty name="address" type="DomText" dataSourceProperty="address" />
     <SimpleProperty name="zipCodeAndCity" type="DomText" dataSourceProperty="zipCodeAndCity" />
+    <SimpleProperty name="billingStreet" type="DomStreet" dataSourceProperty="billingStreet" />
+    <SimpleProperty name="billingHouseNumber" type="DomHouseNumber" dataSourceProperty="billingHouseNumber" />
+    <SimpleProperty name="billingZipCode" type="DomZipCode" dataSourceProperty="billingZipCode" />
+    <SimpleProperty name="billingCity" type="DomCity" dataSourceProperty="billingCity" />
+    <SimpleProperty name="billingCountryState" type="DomText" dataSourceProperty="billingCountryState" />
+    <SimpleProperty name="billingCountry" type="DomText" dataSourceProperty="billingCountry" />
+    <SimpleProperty name="billingLatitude" type="DomDegree" dataSourceProperty="billingLatitude" />
+    <SimpleProperty name="billingLongitude" type="DomDegree" dataSourceProperty="billingLongitude" />
+    <SimpleProperty name="billingAddress" type="DomText" dataSourceProperty="billingAddress" />
+    <SimpleProperty name="billingZipCodeAndCity" type="DomText" dataSourceProperty="billingZipCodeAndCity" />
   </SimpleProperties>
 </ListItem>

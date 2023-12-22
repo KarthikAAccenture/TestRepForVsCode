@@ -100,7 +100,7 @@
             <Bindings>
               <Resource target="Label" type="Label" id="ClbStatus" defaultLabel="Status" />
               <Binding target="DataSource" toggleId="VisitStatus" bindingMode="TWO_WAY" />
-              <Binding target="Value" binding="ProcessContext::MainBO.clbStatus" bindingMode="TWO_WAY" />
+              <Binding target="Value" binding="ProcessContext::MainBO.myCallStatus" bindingMode="TWO_WAY" />
             </Bindings>
             <Items>
               <Bindings>
@@ -285,7 +285,7 @@
         <UIPluginV2 name="CardSurveyExceptionsUiPlugin" uiPlugin="CardSurveyExceptionsUiPluginV2">
           <Bindings>
             <Binding target="surveys" binding="ProcessContext::SurveyExceptions" type="Blob" bindingMode="ONE_WAY" />
-           <Binding target="maximizedMode" type="Text" binding="ProcessContext::ModeMaximized" bindingMode="ONE_WAY" />
+            <Binding target="maximizedMode" type="Text" binding="ProcessContext::ModeMaximized" bindingMode="ONE_WAY" />
           </Bindings>
         </UIPluginV2>
       </Area>

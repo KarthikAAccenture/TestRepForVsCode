@@ -1,0 +1,95 @@
+<Process name="Call::MyFollowUpVisitNotesProcess" defaultAction="NotesInitialized" schemaVersion="0.0.0.5">
+  <Entry>
+    <ProcessContext>
+      <Declarations>
+        <Declaration name="mainBO" type="BoCall" />
+        <Declaration name="NoteDetail" type="LiCallNote" />
+        <Declaration name="NoteText" type="LoCallNotes" />
+        <Declaration name="RefreshNoteList" type="DomBool" />
+      </Declarations>
+      <Parameters>
+        <Input name="MainPKey" type="DomPKey" />
+        <Input name="ResponsiblePKey" type="DomPKey" />
+        <Input name="isReadOnly" type="DomBool" />
+      </Parameters>
+    </ProcessContext>
+    <EntryActions>
+      <Action name="LoadBo" actionType="LOAD" type="BoCall">
+        <Parameters>
+          <Input name="pKey" value="ProcessContext::MainPKey" />
+          <Input name="referenceUserPKey" value="ProcessContext::ResponsiblePKey" />
+        </Parameters>
+        <Return name="ProcessContext::mainBO" />
+      </Action>
+    </EntryActions>
+  </Entry>
+  <Body>
+    <Actions>
+      <Action name="NotesInitialized" actionType="DECISION" parameter="ProcessContext::mainBO.noteInitialized">
+        <Case value="0" action="loadCallNotes" />
+        <Case value="1" action="CardNotes_LoadCurrentNote" />
+        <CaseElse action="loadCallNotes" />
+      </Action>
+      <Action actionType="LOAD" name="loadCallNotes" type="LoCallNotes">
+        <Parameters>
+          <Input name="clbMainPKey" value="ProcessContext::mainBO.pKey" />
+          <Input name="bpaMainPKey" value="ProcessContext::mainBO.bpaMainPKey" />
+          <Input name="dateFrom" value="ProcessContext::mainBO.dateFrom" />
+          <Input name="timeFrom" value="ProcessContext::mainBO.timeFrom" />
+          <Input name="responsiblePKey" value="ProcessContext::mainBO.responsiblePKey" />
+        </Parameters>
+        <TransitionTo action="beforeSetNotesInitialized" />
+      </Action>
+      <Action actionType="LOGIC" name="beforeSetNotesInitialized" call="ProcessContext::MainBO.setObjectStatusFrozen">
+        <Parameters>
+          <Input name="setFrozen" type="Literal" value="true" />
+        </Parameters>
+        <TransitionTo action="setNotesInitialized" />
+      </Action>
+      <Action actionType="LOGIC" name="setNotesInitialized" call="ProcessContext::MainBO.setNoteInitialized">
+        <Parameters>
+          <Input name="noteInitialized" type="Literal" value="1" />
+        </Parameters>
+        <TransitionTo action="afterSetNotesInitialized" />
+      </Action>
+      <!-- Un-Freeze BoCall -->
+      <Action actionType="LOGIC" name="afterSetNotesInitialized" call="ProcessContext::MainBO.setObjectStatusFrozen">
+        <Parameters>
+          <Input name="setFrozen" type="Literal" value="false" />
+        </Parameters>
+        <TransitionTo action="CardNotes_LoadCurrentNote" />
+      </Action>
+      <Action name="CardNotes_LoadCurrentNote" actionType="LOGIC" call="ProcessContext::mainBO.loNotes.getItemByPKey">
+        <Parameters>
+          <Input name="pKey" value="ProcessContext::MainBO.pKey" />
+        </Parameters>
+        <Return name="ProcessContext::NoteDetail" />
+        <TransitionTo action="CardNotes_LoadNoteDetailWizard" />
+      </Action>
+      <Action actionType="PROCESS" name="CardNotes_LoadNoteDetailWizard" process="Call::VisitNotesWizardProcess">
+        <Parameters>
+          <Input name="NoteDetail" value="ProcessContext::NoteDetail" />
+          <Input name="clbMainPKey" value="ProcessContext::mainBO.pKey" />
+          <Input name="isReadOnly" value="ProcessContext::isReadOnly" />
+        </Parameters>
+        <TransitionTo action="CardNotes_UpdateDecision" />
+        <ReturnValues>
+          <Return name="ProcessContext::NoteText" value="noteText" />
+          <Return name="ProcessContext::RefreshNoteList" value="isCurrentNote" />
+        </ReturnValues>
+      </Action>
+      <Action name="CardNotes_UpdateDecision" actionType="DECISION" parameter="ProcessContext::RefreshNoteList">
+        <Case value="true" action="CardNotes_updateLonotes" />
+        <CaseElse action="End" />
+      </Action>
+      <Action actionType="LOGIC" name="CardNotes_updateLonotes" call="ProcessContext::MainBO.loNotes.updateVisitNoteText">
+        <Parameters>
+          <Input name="noteText" value="ProcessContext::NoteText" />
+          <Input name="clbMainPKey" value="ProcessContext::MainBO.pKey" />
+        </Parameters>
+        <TransitionTo action="End" />
+      </Action>      
+      <Action actionType="END" name="End" />
+    </Actions>
+  </Body>
+</Process>

@@ -1,0 +1,103 @@
+<Process name="Call::MyCalculatorProcess" defaultAction="setIsCalculatedToFalse" schemaVersion="0.0.0.5">
+  <Entry>
+    <ProcessContext>
+      <Declarations>
+        <Declaration name="CalculationWizardBO" type="BoMyCalculator" />
+        <Declaration name="Size" type="LoSysToggleItem" />
+      </Declarations>
+      <Parameters>
+        <Input name="CalclulatorCustomerPKey" type="DomPKey" />
+        <Input name="CalclulatorCustomerName" type="DomBpaName" />
+      </Parameters>
+    </ProcessContext>
+    <EntryActions>
+      <Action actionType="LOAD" name="GetCalculatorRecordTypes" type="LoMyCalculatorRecordType">
+        <Return name="ProcessContext::CalculatorRecordTypes" />
+      </Action>
+      <Action name="CreteCalculatorWizard" actionType="CREATE" type="BoMyCalculator">
+        <Parameters>
+          <Input name="calclulatorCustomerPKey" value="ProcessContext::CalclulatorCustomerPKey" />
+          <Input name="calclulatorCustomerName" value="ProcessContext::CalclulatorCustomerName" />
+        </Parameters>
+        <Return name="ProcessContext::CalculationWizardBO" />
+      </Action>
+    </EntryActions>
+  </Entry>
+  <Body>
+    <Actions>
+      <Action actionType="VIEW" name="ShowView">
+        <UIDescription>Call::MyCalculatorUI</UIDescription>
+        <Events>
+          <Event name="calculateValue" action="calculate" />
+          <Event name="saveCalculationValues" action="setDirty" />
+          <Event name="clearCalculationValues" action="clear" />
+          <Event name="packageTypeSelected" action="setSizeWhenPackageChanged" />
+          <Event name="calculationTypeSelected" action="setEARights" />
+        </Events>
+      </Action>
+      <!--  Set validation business object dirty on clicking done button -->
+      <Action actionType="LOGIC" name="setDirty" call="ProcessContext::CalculationWizardBO.setObjectStatus">
+        <Parameters>
+          <Input name="objectStatus" type="Literal" value="5" />
+        </Parameters>
+        <TransitionTo action="EndCreateNewCalculation" />
+      </Action>
+      <Action name="calculate" actionType="LOGIC" call="ProcessContext::CalculationWizardBO.myCgCalculate">
+        <TransitionTo action="setIsCalculatedToTrue" />
+      </Action>
+      <Action name="clear" actionType="LOGIC" call="ProcessContext::CalculationWizardBO.myClearValues">
+        <TransitionTo action="setIsCalculatedToFalse" />
+      </Action>
+      <Action name="setIsCalculatedToTrue" actionType="LOGIC" call="ProcessContext::CalculationWizardBO.setIsCalculated">
+        <Parameters>
+          <Input name="isCalculated" type="Literal" value="true"></Input>
+        </Parameters>
+        <TransitionTo action="setEARights" />
+      </Action>
+      <Action name="setSizeWhenPackageChanged" actionType="LOGIC" call="ProcessContext::CalculationWizardBO.setSize">
+        <Parameters>
+          <Input name="size" type="Literal" value=""></Input>
+        </Parameters>
+        <TransitionTo action="PrepareSizeToggle" />
+      </Action>
+      <Action name="PrepareSizeToggle" actionType="LOAD" type="LoSysToggleItem">
+        <Parameters>
+          <Input name="id" type="Literal" value="DomMyCalcSize" />
+        </Parameters>
+        <Return name="ProcessContext::Size" />
+        <TransitionTo action="GetSizeValuesForSelectedPackageType" />
+      </Action>
+      <Action actionType="LOGIC" name="GetSizeValuesForSelectedPackageType" call="ProcessContext::CalculationWizardBO.mySetSizeWhenPackageChanged">
+        <Parameters>
+          <Input name="Size" value="ProcessContext::Size" />
+        </Parameters>
+        <Return name="ProcessContext::sizeListItems" />
+        <TransitionTo action="setEARights" />
+      </Action>
+      <!--  Edit and access rights  -->
+      <Action name="setIsCalculatedToFalse" actionType="LOGIC" call="ProcessContext::CalculationWizardBO.setIsCalculated">
+        <Parameters>
+          <Input name="isCalculated" type="Literal" value="false"></Input>
+        </Parameters>
+        <TransitionTo action="setEARights" />
+      </Action>
+      <Action actionType="LOGIC" name="setEARights" call="ProcessContext::CalculationWizardBO.mySetEARights">
+        <TransitionTo action="setNew" />
+      </Action>
+      <!--  Set validation business object to new if not the done button has been clicked -->
+      <Action actionType="LOGIC" name="setNew" call="ProcessContext::CalculationWizardBO.setObjectStatus">
+        <Parameters>
+          <Input name="objectStatus" type="Literal" value="2" />
+        </Parameters>
+        <TransitionTo action="ShowView" />
+      </Action>
+      <Action actionType="END" name="EndCreateNewCalculation">
+        <ReturnValues>
+          <Return name="calculatorBo" value="ProcessContext::CalculationWizardBO" />
+          <Return name="buttonPressed" value="1"/>
+        </ReturnValues>
+      </Action>
+      <Action actionType="END" name="EndCancel" />
+    </Actions>
+  </Body>
+</Process>

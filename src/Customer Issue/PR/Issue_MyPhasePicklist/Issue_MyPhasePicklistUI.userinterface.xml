@@ -1,0 +1,33 @@
+<UIDescription name="Issue::MyPhasePicklistUI" schemaVersion="0.0.0.5"  layoutType="blank">
+  <Page pagePattern="SingleSectionDialogPage">
+    <PageHeader>
+      <Bindings>
+        <Resource target="title" type="Label" id="PhaseLookupTitleId" defaultLabel="Status" />
+      </Bindings>
+    </PageHeader>
+    <Section sectionName="masterSection" sectionPattern="SingleAreaSection">
+      <Area areaName="mainArea" areaPattern="SingleElementArea">
+        <GroupedList name="ProductList" groupBy="grouping1" indexBar="true" searchable="false" dataSource="ProcessContext::PhaseValuesList.Items[]">
+          <Items name="Items" itemPattern="PhaseOverviewItem">
+            <Bindings>
+              <Binding target="PhaseText" type="Text" binding=".text" bindingMode="ONE_WAY" />
+            </Bindings>
+            <ItemListLayout>
+              <Col>
+                <Row layoutType="itemTitle" bindingId="PhaseText" />
+              </Col>
+            </ItemListLayout>
+          </Items>
+          <Events>
+            <ItemSelectedEvent event="itemSelected">
+              <Params>
+                <Param name="pKey" value=".pKey" />
+                <Param name="text" value=".text" />
+              </Params>
+            </ItemSelectedEvent>
+          </Events>
+        </GroupedList>
+      </Area>
+    </Section>
+  </Page>
+</UIDescription>

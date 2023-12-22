@@ -28,4 +28,5 @@
   <ValidationMessage name="CasClbCallHasReferencedOrder" defaultMessage="Due to active orders present, this call cannot be deleted." comment="A call cannot be deleted if it has referenced orders." />
   <ValidationMessage name="CasClbCallCannotBeCreated" defaultMessage="Call cannot be created without selecting call template." comment="A call cannot be created without selecting call template." />
   <ValidationMessage name="CasClbCallInvalidManagementRelation" defaultMessage="The management relation of the customer is not valid for the date of the call." comment="The management relation of the customer needs to be valid." />
+  <ValidationMessage name="CasClbCallCalculatorSaved" defaultMessage="Success! Calculator record has beed saved" comment="Success! Calculator record has beed saved" />
 </ValidationMessages>

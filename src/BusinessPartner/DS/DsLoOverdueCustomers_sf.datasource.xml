@@ -5,6 +5,7 @@
     <DerivedAttribute name="customerAddress" value="''" />
     <DerivedAttribute name="jdlCount" value="0" />
     <DerivedAttribute name="promotionCount" value="0" />
+    <DerivedAttribute name="overdueDate" value="''" />
   </Attributes>
   <Entities>
     <Entity name="Account" alias="" idAttribute="Id" />
@@ -19,24 +20,27 @@
 			var addCond_LeadTimeFollowUpTime = "";
 			var cardDate = "";
 			var limitDueToFormFactor = "";
+			var cardDateWithLeadTime = "";
 
 			if(Utils.isDefined(newParams.addCond_LeadTimeFollowUpTime)){
 				addCond_LeadTimeFollowUpTime = newParams.addCond_LeadTimeFollowUpTime;
 			}
 			if(Utils.isDefined(newParams.cardDate)){
 				cardDate = Utils.convertForDBParam(newParams.cardDate, "DomDate");
+				cardDateWithLeadTime = Utils.convertForDBParam(Utils.addDays2AnsiDate(newParams.cardDate,ApplicationContext.get('salesOrg').noOfDaysPastDueForOverdueCustomers), "DomDate");
 			}
             if (Utils.isDefined(newParams.limitDueToFormFactor)){
                 limitDueToFormFactor = newParams.limitDueToFormFactor;
             }
 
 			var sqlParams1 = {cardDate};
-			var sqlParams2 = {cardDate, limitDueToFormFactor};
+			var sqlParams2 = {cardDate, limitDueToFormFactor, cardDateWithLeadTime};
 
 			var sqlStmt1 = "SELECT ";		
 			sqlStmt1 +=      "customers.pKey AS pKey, ";
 			sqlStmt1 +=      "customers.name  as customerName, ";
 			sqlStmt1 +=      "customers.mainaddress as customerAddress, "; 
+			sqlStmt1 +=      "customers.overdueDate as overdueDate, "; 
 						
  			// JDL Determination
 			sqlStmt1 += "(SELECT count(*) FROM ( ";
@@ -145,7 +149,8 @@
 			sqlStmt1 +=      " SELECT  ";
 			sqlStmt1 +=          "Account.Id AS pKey, ";
 			sqlStmt1 +=          "Account.Name as name, ";
-			sqlStmt1 +=          "Account.ShippingStreet || ', ' || Account.ShippingPostalCode || ' ' || Account.ShippingCity || ', ' || Account.ShippingState as mainAddress ";
+			sqlStmt1 +=          "Account.ShippingStreet || ', ' || Account.ShippingPostalCode || ' ' || Account.ShippingCity || ', ' || Account.ShippingState as mainAddress, ";
+			sqlStmt1 +=          "AccountCallSetting.Overdue_Date__c AS overdueDate ";
 			sqlStmt1 +=      " FROM  ";
 			sqlStmt1 +=          "Account";
 			sqlStmt1 +=      " JOIN ";
@@ -197,7 +202,7 @@
 			sqlStmt2 += 		" AND #compareAsDate('AccountCallSetting.Overdue_Date__c', 'Date','<>',#MinDate#, 'Date')# ";
 			sqlStmt2 += 		" AND #compareAsDate('AccountCallSetting.Valid_From__c', 'Date','<=',#cardDate#, 'Date')# ";
 			sqlStmt2 += 		" AND #compareAsDate('AccountCallSetting.Valid_Thru__c', 'Date','>=',#cardDate#, 'Date')# ";
-			sqlStmt2 += 		" AND #compareAsDate('AccountCallSetting.Overdue_Date__c', 'Date','<',#cardDate#, 'Date')# ";
+			sqlStmt2 += 		" AND #compareAsDate('AccountCallSetting.Overdue_Date__c', 'Date','<',#cardDateWithLeadTime#, 'Date')# ";
 			sqlStmt2 +=    " WHERE ";
 			sqlStmt2 +=      "( ";          
 			sqlStmt2 +=       addCond_LeadTimeFollowUpTime;
@@ -212,7 +217,7 @@
 			sqlStmt2 +=    "GROUP BY ";
 			sqlStmt2 +=      "pKey ";
 			sqlStmt2 +=    "ORDER BY ";
-			sqlStmt2 +=      "upper(name) ";
+			sqlStmt2 +=      "overdueDate ";
 			sqlStmt2 +=      "LIMIT  #limitDueToFormFactor#  ";
 
 			var sqlStmt1Result = Utils.replaceMacrosParam(sqlStmt1, sqlParams1);

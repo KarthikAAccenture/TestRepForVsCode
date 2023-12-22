@@ -1,0 +1,8 @@
+<ListObject name="LoMyIssueAlerts" generateLoadMethod="true" schemaVersion="1.1">
+  <DataSource name=""/>
+  <Item objectClass="LiMyIssueAlerts"/>
+  <Methods>
+    <Method name="myGetAllCustomerTasksForCard"/>
+    <Method name="myGetInfoForAlertsCard"/>
+  </Methods>
+</ListObject>

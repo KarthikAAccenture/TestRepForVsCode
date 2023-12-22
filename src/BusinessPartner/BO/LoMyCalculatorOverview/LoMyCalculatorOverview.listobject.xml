@@ -1,0 +1,8 @@
+<ListObject name="LoMyCalculatorOverview" generateLoadMethod="true" schemaVersion="1.1">
+  <DataSource name="DsLoMyCalculatorOverview" />
+  <Item objectClass="LiMyCalculatorOverview" />
+  <Methods>
+    <Method name="myGetInfoForCalculatorCard" />
+    <Method name="myGetAllCalculatorTaskForCard" />
+  </Methods>
+</ListObject>

@@ -1,0 +1,17 @@
+<DataSource name="DsLoMyCalculatorOverview" backendSystem="sf" businessObjectClass="LoMyCalculatorOverview" external="false" editableEntity="cgcloud_Calculator__c" schemaVersion="2.0">
+  <Attributes>
+    <Attribute name="calcPKey" table="cgcloud_Calculator__c" column="Id" />
+    <Attribute name="name" table="cgcloud_Calculator__c" column="Name" />
+    <Attribute name="beerBrand" table="cgcloud_Calculator__c" column="cgcloud_Beer_Brand__c" />
+    <Attribute name="salesOrg" table="cgcloud_Calculator__c" column="cgcloud_Sales_Org__c" />
+  </Attributes>
+  <Entities>
+    <Entity name="cgcloud_Calculator__c" alias="" />
+  </Entities>
+  <QueryCondition><![CDATA[
+   cgcloud_Calculator__c.Account__c = #calcCustomerPKey#
+  ]]></QueryCondition>
+  <Parameters>
+    <Parameter name="calcCustomerPKey" type="TEXT" />
+  </Parameters>
+</DataSource>

@@ -24,5 +24,6 @@
     <Method name="getLatestPictureForSketching" />
     <Method name="filterRelevantAttachments" />
     <Method name="showMessageBox" />
+    <Method name="replaceSetEARights"/>
   </Methods>
 </ListObject>

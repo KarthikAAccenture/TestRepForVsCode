@@ -1,0 +1,7 @@
+<ListObject name="LoMyPerfectStoreIndexes" generateLoadMethod="true" schemaVersion="1.1">
+  <DataSource name="DsLoMyPerfectStoreIndexes" />
+  <Item objectClass="LiMyPerfectStoreIndexes" />
+  <Methods>
+    <Method name="myPreparePerfectStoreIndexes" />
+  </Methods>
+</ListObject>

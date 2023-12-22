@@ -248,6 +248,7 @@
                   <Binding target="Icon" type="Image" binding=".actionImg" />
                   <Binding target="Text" type="Label" binding=".actionId" />
                   <Binding type="Editable" target="Editable" binding=".actionEnabled" />
+                  <Binding type="Visible" target="Visible" binding=".actionVisible" />
                 </Bindings>
               </Items>
             </ContextMenu>

@@ -17,11 +17,41 @@
     <SimpleProperty name="department" type="DomText" dataSourceProperty="department" />
     <SimpleProperty name="description" type="DomText" dataSourceProperty="description" />
     <SimpleProperty name="emailEditable" type="DomBool" storable="false" dataSourceProperty="emailEditable" />
+    <SimpleProperty name="active" type="DomBool" dataSourceProperty="active" />
+    <SimpleProperty name="chainExecutionCommunicationMessage" type="DomText" dataSourceProperty="chainExecutionCommunicationMessage" />
+    <SimpleProperty name="position" type="DomMyContactPosition" dataSourceProperty="position" />
+    <SimpleProperty name="reportsToID" type="DomPKey" dataSourceProperty="reportsToID" />
+    <SimpleProperty name="mailingCity" type="DomString" dataSourceProperty="mailingCity" />
+    <SimpleProperty name="mailingCountry" type="DomCountry" dataSourceProperty="mailingCountry" />
+    <SimpleProperty name="mailingPostalCode" type="DomString" dataSourceProperty="mailingPostalCode" />
+    <SimpleProperty name="mailingState" type="DomCountryState" dataSourceProperty="mailingState" />
+    <SimpleProperty name="mailingStreet" type="DomString" dataSourceProperty="mailingStreet" />
+    <SimpleProperty name="language" type="DomMyContactLanguage" dataSourceProperty="language" />
+    <SimpleProperty name="decisionMaker" type="DomBool" dataSourceProperty="decisionMaker" />
+    <SimpleProperty name="nps" type="DomBool" dataSourceProperty="nps" />
+    <SimpleProperty name="financeContact" type="DomBool" dataSourceProperty="financeContact" />
+    <SimpleProperty name="gdrpConsent" type="DomBool" dataSourceProperty="gdrpConsent" />
+    <SimpleProperty name="dateofConsent" type="DomDate" dataSourceProperty="dateofConsent" />
+    <SimpleProperty name="mcbcExternalPrivacyPolicy" type="DomText" dataSourceProperty="mcbcExternalPrivacyPolicy" />
+    <SimpleProperty name="globalDataProtectionPolicy" type="DomText" dataSourceProperty="globalDataProtectionPolicy" />
+    <SimpleProperty name="optinLanguage" type="DomText" dataSourceProperty="optinLanguage" />
+    <SimpleProperty name="ownerID" type="DomPKey" dataSourceProperty="ownerID" id="true" />
+    <SimpleProperty name="emailOptOut" type="DomBool" dataSourceProperty="emailOptOut" />
+    <SimpleProperty name="lastModifiedId" type="DomPkey" id="true" dataSourceProperty="lastModifiedById" />
+    <SimpleProperty name="createdById" type="DomPkey" id="true" dataSourceProperty="createdById" />
+    <SimpleProperty name="contactOwner" type="DomPkey" dataSourceProperty="contactOwner" />
   </SimpleProperties>
   <NestedObjects>
     <!-- boBpaSales: not loaded - only used during create at the moment -->
     <NestedObject name="boBpaSales" objectClass="BoBpaSales" dataSourceProperty="pKey" nestingProperty="businessPartnerPKey" loadMode="LoadImmediate" />
   </NestedObjects>
+  <ObjectLookups>
+    <ObjectLookup name="luLastModifiedBy" objectClass="LuUser" dataSourceProperty="lastModifiedId" lookupProperty="pKey" loadMode="LoadImmediate" />
+    <ObjectLookup name="luCreatedBy" objectClass="LuUser" dataSourceProperty="createdById" lookupProperty="pKey" loadMode="LoadImmediate" />
+    <ObjectLookup name="luReportsTo" objectClass="LuUser" dataSourceProperty="reportsToID" lookupProperty="pKey" loadMode="LoadImmediate" />
+    <ObjectLookup name="luContactOwner" objectClass="LuContact" dataSourceProperty="contactOwner" lookupProperty="pKey" loadMode="LoadImmediate" />
+    <ObjectLookup name="luAccount" objectClass="LuCustomer" dataSourceProperty="account" lookupProperty="pKey" loadMode="LoadImmediate" />
+  </ObjectLookups>
   <ListObjects>
     <!-- loContactPartnerAddress: load immediate -->
     <ListObject name="loContactPartnerAddress" objectClass="LoContactPartnerAddress" dataSourceProperty="pKey" listProperty="referencePKey" loadMode="LoadImmediate" />
@@ -30,12 +60,16 @@
   </ListObjects>
   <Methods>
     <Method name="saveAsync" />
+    <Method name="replaceCreateAsync" />
     <Method name="createAsync" />
     <Method name="loadAsync" />
     <Method name="resetObjectStatus" />
     <Method name="setEARights" />
+    <Method name="replaceSetEARights" />
+    <Method name="replaceLoadAsync" />
   </Methods>
   <Validations>
+    <Validation name="replaceValidateContactPartner"/>
     <Validation name="validateContactPartner" />
   </Validations>
 </BusinessObject>

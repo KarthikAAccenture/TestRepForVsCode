@@ -7,5 +7,6 @@
     <Method name="addItem" />
     <Method name="getToggleText" />
     <Method name="loadAsync" />
+    <Method name="mySetEARights"/>
   </Methods>
 </ListObject>

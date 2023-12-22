@@ -83,5 +83,7 @@
     <Method name="assimilateQuestion" />
     <Method name="evaluateQuestions" />
     <Method name="updatePictureCountOnAddDelete" />
+    <Method name="replaceGetQuestions" />
+    <Method name="replaceGetSurveys"/>
   </Methods>
 </BusinessObject>

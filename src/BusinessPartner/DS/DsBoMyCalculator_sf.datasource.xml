@@ -1,0 +1,41 @@
+<DataSource name="DsBoMyCalculator" backendSystem="sf" businessObjectClass="BoMyCalculator" external="false" editableEntity="cgcloud_Calculator__c" schemaVersion="2.0">
+  <Attributes>
+    <Attribute name="pKey" table="cgcloud_Calculator__c" column="Id" />
+    <Attribute name="name" table="cgcloud_Calculator__c" column="Name" />
+    <Attribute name="accountPKey" table="cgcloud_Calculator__c" column="Account__c" />
+    <Attribute name="salesOrg" table="cgcloud_Calculator__c" column="cgcloud_Sales_Org__c" />
+    <Attribute name="timeFrame" table="cgcloud_Calculator__c" column="cgcloud_Time_Frame__c" />
+    <Attribute name="packageType" table="cgcloud_Calculator__c" column="cgcloud_Package_Type__c" />
+    <Attribute name="size" table="cgcloud_Calculator__c" column="cgcloud_Size__c" />
+    <Attribute name="beerBrand" table="cgcloud_Calculator__c" column="cgcloud_Beer_Brand__c" />
+    <Attribute name="servingSizeOz" table="cgcloud_Calculator__c" column="cgcloud_Serving_Size_oz__c" />
+    <Attribute name="otherBrandName" table="cgcloud_Calculator__c" column="cgcloud_Other_Brand_Name__c" />
+    <Attribute name="priceToConsumer" table="cgcloud_Calculator__c" column="cgcloud_Price_To_Consumer__c" />
+    <Attribute name="priceToRetailer" table="cgcloud_Calculator__c" column="cgcloud_Price_To_Retailer__c" />
+    <Attribute name="kegsCasesPerWeek" table="cgcloud_Calculator__c" column="cgcloud_Kegs_Cases_per_Week__c" />
+    <Attribute name="numberOfStores" table="cgcloud_Calculator__c" column="cgcloud_Number_of_Stores__c" />
+    <Attribute name="costPerOunce" table="cgcloud_Calculator__c" column="cgcloud_Cost_per_Ounce__c" />
+    <Attribute name="numberOfServings" table="cgcloud_Calculator__c" column="cgcloud_Number_of_Servings__c" />
+    <Attribute name="sizeInOunce" table="cgcloud_Calculator__c" column="cgcloud_Size_in_Ounces__c" />
+    <Attribute name="costPerServing" table="cgcloud_Calculator__c" column="cgcloud_Cost_per_Serving__c" />
+    <Attribute name="profitMargin" table="cgcloud_Calculator__c" column="cgcloud_Profit_Margin__c" />
+    <Attribute name="grossRevenuePerKegCase" table="cgcloud_Calculator__c" column="cgcloud_Gross_Revenue_Per_Keg_Case__c" />
+    <Attribute name="netMarginPerKegCase" table="cgcloud_Calculator__c" column="cgcloud_Net_Margin_Per_Keg_Case__c" />
+    <Attribute name="grossRevenuePerWeek" table="cgcloud_Calculator__c" column="cgcloud_Gross_Revenue_Per_Week__c" />
+    <Attribute name="netMarginPerWeek" table="cgcloud_Calculator__c" column="cgcloud_Net_Margin_Per_Week__c" />
+    <Attribute name="netMarginPerYear" table="cgcloud_Calculator__c" column="cgcloud_Net_Margin_Per_Year__c" />
+    <Attribute name="grossRevenuePerYear" table="cgcloud_Calculator__c" column="cgcloud_Gross_Revenue_Per_Year__c" />
+    <Attribute name="recordTypeId" table="cgcloud_Calculator__c" column="RecordTypeId" />
+    <DerivedAttribute name="isCalculated" value="''" />
+    <DerivedAttribute name="accountName" value="''" />
+  </Attributes>
+  <Entities>
+    <Entity name="cgcloud_Calculator__c" alias="" idAttribute="Id" />
+  </Entities>
+  <QueryCondition><![CDATA[
+   cgcloud_Calculator__c.Id = #calcPKey#
+  ]]></QueryCondition>
+  <Parameters>
+    <Parameter name="calcPKey" type="TEXT" />
+  </Parameters>
+</DataSource>

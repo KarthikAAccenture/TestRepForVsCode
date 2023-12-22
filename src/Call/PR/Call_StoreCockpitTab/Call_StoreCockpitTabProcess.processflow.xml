@@ -86,9 +86,22 @@
         <Declaration name="CardFollowUpVisits_SubstitutedUsrPKey" type="DomPKey" />
         <Declaration name="CardFollowUpVisits_IsManagedCustomer" type="DomBool" />
         <Declaration name="CardFollowUpVisits_ContextMenuList" type="LoAgendaOverviewContextMenu" />
+        <!--Card: Perfect Store Index -->
+        <Declaration name="CardPSIScore_DataLoaded" type="DomBool" />
+        <Declaration name="CardPSIScoreIndexes_List" type="LoMyPerfectStoreIndexes" />
+        <Declaration name="CardPSIScore_DisplayedSubcomponentName" type="String" />
         <!--Declaration for call complete-->
         <Declaration name="Completed" type="String" />
         <Declaration name="isReadOnly" type="DomBool" />
+        <!-- Alerts Card -->
+        <Declaration name="CardAlerts_InformationText" type="String" />
+        <Declaration name="CardAlerts_TasksList" type="LoMyIssueAlerts" />
+        <Declaration name="CardAlerts_DataLoaded" type="DomBool" />
+        <!-- Calculators Card -->
+        <Declaration name="CardCalculator_InformationText" type="String" />
+        <Declaration name="CardCalculator_List" type="LoMyCalculatorOverview" />
+        <Declaration name="CardCalculator_DataLoaded" type="DomBool" />
+        <Declaration name="CardCalculator_DisplayedSubcomponentName" type="String" />
       </Declarations>
       <Parameters>
         <Input name="MainBO" type="BoCall" />
@@ -99,6 +112,8 @@
         <Input name="LeadTime" type="String" />
         <Input name="MobilityUserGuidance" type="String" />
         <Input name="CallDateThru" type="String" />
+        <Input name="calculatorBo" type="BoMyCalculator" />
+        <Input name="isPreviewOnly" type="DomBool" />
       </Parameters>
     </ProcessContext>
     <EntryActions>
@@ -162,10 +177,22 @@
       <Action name="CardVisitsFollowUpCard_GetList" actionType="CREATE" type="LoAgendaOverview">
         <Return name="ProcessContext::CardFollowUpVisits_List" />
       </Action>
+      <!-- Card: Perfect Store Index -->
+      <Action name="CardPSIScoreIndexes_GetList" actionType="CREATE" type="LoMyPerfectStoreIndexes">
+        <Return name="ProcessContext::CardPSIScoreIndexes_List" />
+      </Action>
       <!-- Call readonly check-->
       <Action name="IsCallReadOnly" actionType="LOGIC" call="ProcessContext::MainBO.isReadOnly">
         <Return name="ProcessContext::isReadOnly" />
       </Action>
+      <!-- Card: Alerts -->
+      <Action name="CardTasks_GetAlertssList" actionType="CREATE" type="LoMyIssueAlerts">
+        <Return name="ProcessContext::CardAlerts_TasksList" />
+      </Action>
+      <!--Card: Calculator >
+      <Action name="CardCalculator_GetCalculatorsList" actionType="CREATE" type="LoMyCalculatorOverview">
+        <Return name="ProcessContext::CardCalculator_List" />
+      </Action-->
     </EntryActions>
   </Entry>
   <Body>
@@ -179,6 +206,7 @@
           <Event name="mailPressed" action="StartMail" />
           <Event name="completeCall" action="CheckForEmptyDateFields" />
           <Event name="StartPhoneCall" action="StartPhoneCall" />
+          <Event name="executeCall" action="setIsPreviewOnlyFlagToFalse" />
           <!-- Card: Sell-In's-->
           <Event name="CardSellIns_loadData" action="CardSellIns_LoadSellIns_Decision" />
           <Event name="CardSellIns_itemSelected" action="CardSellIns_LoadSellIn" />
@@ -194,6 +222,10 @@
           <Event name="CardCustomerTasks_contextMenuOpening" action="CardCustomerTasks_GetContextMenu" />
           <Event name="CardCustomerTasks_contextMenuItemSelected" action="CardCustomerTasks_ContextMenu_Result_Decision" />
           <Event name="CardCustomerTasks_showAllTasks" action="CardCustomerTasks_ShowAllTasks" />
+          <!-- Card: Alerts -->
+          <Event name="CardAlerts_loadData" action="CardAlerts_LoadTasks" />
+          <Event name="CardAlerts_itemSelected" action="CardAlert_ShowSelectedTask" />
+          <Event name="CardAlerts_showAllAlerts" action="CardAlert_ShowAllTasks" />
           <!-- Card: Order History -->
           <Event name="CardOrderHistory_loadData" action="CardOrderHistory_LoadOrders" />
           <Event name="CardOrderHistory_createNewOrderPressed" action="CardOrderHistory_AddNewOrder" />
@@ -245,6 +277,13 @@
           <Event name="CockpitMenu_StartSalesFolderProcess" action="StartSalesFolderOverviewProcess" />
           <Event name="CockpitMenu_StartAssetSubProcess" action="StartAssetSubProcess" />
           <Event name="CockpitMenu_StartCompleteProcess" action="Save_LoadAndSetPrerequisites_Complete" />
+          <!-- Card: Perfect Store Index -->
+          <Event name="CardPSIScore_loadData" action="LoadPSICardList" />
+          <!-- Card: Calculator>
+          <Event name="CardCalculator_loadData" action="CardCalculator_LoadCalculator" />
+          <Event name="CardCalculator_calculateValue" action="CgCalculatorValue" />
+          <Event name="CardCalculator_showAllCalculators" action="CardCalculator_ShowAllCalculator" />
+          <Event name="CardCalculator_itemSelected" action="CardCalculator_ShowSelectedCalculator" /-->
         </Events>
       </Action>
       <!-- Cockpit Menu Items -->
@@ -424,6 +463,37 @@
           <Input name="Mail" value="ProcessContext::CustomerDetail.email1" />
         </Parameters>
       </Action>
+      <!-- START - Execute Call Check -->
+      <Action name="setIsPreviewOnlyFlagToFalse" actionType="LOGIC" call="Utils.identity">
+        <Parameters>
+          <Input name="isPreviewOnly" value="0" type="DomBool" />
+        </Parameters>
+        <Return name="ProcessContext::isPreviewOnly" />
+        <TransitionTo action="ConvertToAnsi" />
+      </Action>
+      <Action actionType="LOGIC" name="ConvertToAnsi" call="Utils.createAnsiDateTimeNow">
+        <Return name="ProcessContext::MainBO.startTimeEffective" />
+        <TransitionTo action="refreshSetEARights" />
+      </Action>
+      <Action name="refreshSetEARights" actionType="LOGIC" call="ProcessContext::MainBO.setEARights">
+        <TransitionTo action="SetConfiguration" />
+      </Action>
+      <Action name="SetConfiguration" actionType="LOGIC" call="ProcessContext::MainBO.captureProceedingTime">
+        <Parameters>
+          <Input name="CallComplete" type="Literal" value="" />
+          <Input name="isPreviewOnly" value="ProcessContext::isPreviewOnly" />
+        </Parameters>
+        <TransitionTo action="ChangeStatusToInProgress" />
+      </Action>
+      <Action actionType="LOGIC" name="ChangeStatusToInProgress" call="ProcessContext::MainBO.setMyCallStatus">
+        <Parameters>
+          <Input name="myCallStatus" value="InProgress" type="Literal" />
+        </Parameters>
+        <TransitionTo action="SaveBoCall" />
+      </Action>
+      <Action name="SaveBoCall" actionType="SAVE">
+        <TransitionTo action="ShowCockpit" />
+      </Action>
       <!-- START - Complete Call Check -->
       <Action actionType="LOGIC" name="CheckForEmptyDateFields" call="ProcessContext::MainBO.checkForEmptyCallDate">
         <Return name="ProcessContext::ValidationResult" />
@@ -555,6 +625,17 @@
         <Parameters>
           <Input name="value" type="Literal" value="1" />
         </Parameters>
+        <TransitionTo action="CalculateAndStorePerfectStoreKPI" />
+      </Action>
+      <!-- Load and set can be done in calculate kpi method, so after test this can be removed
+      <Action name="LoadCustomerPSI" actionType="LOAD" type="LoMyCustomerPerfectStoreIndex">
+        <Return name="ProcessContext::MainBO.loMyCustomerPerfectStoreIndex" />
+        <Parameters>
+          <Input name="currentCustomerPKey" value="ProcessContext::MainBO.bpaMainPKey" />
+        </Parameters>
+        <TransitionTo action="CalculateAndStorePerfectStoreKPI" />
+      </Action> -->
+      <Action name="CalculateAndStorePerfectStoreKPI" actionType="LOGIC" call="ProcessContext::MainBO.myCalculatePerfectStoreKPI">
         <TransitionTo action="Save_LoadAndSetPrerequisites_ForExcceptions" />
       </Action>
       <Action name="CardActivities_CreateNewCustomerOrder" actionType="PROCESS" process="Order::CreateNewWizardProcess">
@@ -622,6 +703,10 @@
           <Return name="ProcessContext::CardCustomerTasks_Descritption" value="description" />
           <Return name="ProcessContext::CardCustomerTasks_DueDate" value="dueDate" />
           <Return name="ProcessContext::CardCustomerTasks_Add_ButtonPressed" value="buttonPressed" />
+          <Return name="ProcessContext::CardCustomerTasks_ProductPKey" value="productPKey" />
+          <Return name="ProcessContext::CardCustomerTasks_Priority" value="priority" />
+          <Return name="ProcessContext::CardCustomerTasks_StartDate" value="startDate" />
+          <Return name="ProcessContext::CardCustomerTasks_FeatureDescription" value="featureDescription" />
         </ReturnValues>
         <TransitionTo action="CardCustomerTasks_CreateTask_Decision" />
       </Action>
@@ -637,6 +722,10 @@
           <Input name="ownerBpaMainPKey" value="ProcessContext::CardCustomerTasks_CustomerPKey" />
           <Input name="text" value="ProcessContext::CardCustomerTasks_Descritption" />
           <Input name="dueDate" value="ProcessContext::CardCustomerTasks_DueDate" />
+          <Input name="productPkey" value="ProcessContext::CardCustomerTasks_ProductPKey" />
+          <Input name="priority" value="ProcessContext::CardCustomerTasks_Priority" />
+          <Input name="initiationDate" value="ProcessContext::CardCustomerTasks_StartDate" />
+          <Input name="featureDescription" value="ProcessContext::CardCustomerTasks_FeatureDescription" />
         </Parameters>
         <Return name="ProcessContext::CardCustomerTasks_TasksDetail" />
         <TransitionTo action="SaveCustomerTaskAndReload" />
@@ -760,6 +849,53 @@
         </Parameters>
         <TransitionTo action="CardCustomerTasks_LoadTasks" />
       </Action>
+      <!-- Card: Alerts Card START -->
+      <Action actionType="LOGIC" name="CardAlerts_LoadTasks" call="ProcessContext::CardAlerts_TasksList.myGetAllCustomerTasksForCard">
+        <Parameters>
+          <Input name="numberOfListItems" value="ProcessContext::CardController.numberOfListItems" />
+          <Input name="currentCustomerPKey" value="ProcessContext::MainBO.bpaMainPKey" />
+        </Parameters>
+        <TransitionTo action="CardAlerts_GetCardInformation" />
+      </Action>
+      <Action actionType="LOGIC" name="CardAlerts_GetCardInformation" call="ProcessContext::CardAlerts_TasksList.myGetInfoForAlertsCard">
+        <Return name="ProcessContext::CardAlerts_InformationText" />
+        <TransitionTo action="AssignDisplayedSubcomponentNameForAlerts" />
+      </Action>
+      <Action name="AssignDisplayedSubcomponentNameForAlerts" actionType="LOGIC" call="ProcessContext::CardController.getDisplayedSubcomponentName">
+        <Parameters>
+          <Input name="loItems" value="ProcessContext::CardAlerts_TasksList" />
+          <Input name="type" value="CustomerTasks" type="Literal" />
+        </Parameters>
+        <Return name="ProcessContext::CardAlerts_DisplayedSubcomponentName" />
+        <TransitionTo action="SetCardAlerts_DataLoaded" />
+      </Action>
+      <Action name="SetCardAlerts_DataLoaded" actionType="LOGIC" call="Utils.identity">
+        <Return name="ProcessContext::CardAlerts_DataLoaded" />
+        <Parameters>
+          <Input name="value" value="1" type="Literal" />
+        </Parameters>
+      </Action>
+      <Action actionType="PROCESS" name="CardAlert_ShowSelectedTask" process="Issue::OverviewProcess">
+        <Parameters>
+          <Input name="CallCustomerPKey" value="ProcessContext::MainBO.bpaMainPKey" />
+          <Input name="IsManagedCustomer" value="ProcessContext::MainBO.luCustomerManagementInfo.isManaged" />
+          <Input name="CallPKey" value="ProcessContext::MainBO.pKey" />
+          <Input name="CustomerName" value="ProcessContext::MainBO.luCustomer.name" />
+          <Input name="CustomerTaskPKey" value="Event.pKey" />
+          <Input name="Mode" value="Cockpit" type="Literal" />
+          <Input name="AlertsSelected" value="1" type="Literal" />
+        </Parameters>
+      </Action>
+      <Action actionType="PROCESS" name="CardAlert_ShowAllTasks" process="Issue::OverviewProcess">
+        <Parameters>
+          <Input name="CallCustomerPKey" value="ProcessContext::MainBO.bpaMainPKey" />
+          <Input name="IsManagedCustomer" value="ProcessContext::MainBO.luCustomerManagementInfo.isManaged" />
+          <Input name="CallPKey" value="ProcessContext::MainBO.pKey" />
+          <Input name="CustomerName" value="ProcessContext::MainBO.luCustomer.name" />
+          <Input name="AlertsSelected" value="1" type="Literal" />
+        </Parameters>
+      </Action>
+      <!-- Card: Alerts Card END -->
       <!-- Card: Order History  START-->
       <Action actionType="LOGIC" name="CardOrderHistory_LoadOrders" call="ProcessContext::CardOrderHistory_OrderList.getOrdersForCard">
         <Parameters>
@@ -1023,6 +1159,9 @@
           <Input name="accountNumber" value="ProcessContext::CustomerDetail.customerId" />
           <Input name="quickAccessURL" type="Literal" value=" " />
           <Input name="accountId" value="ProcessContext::CustomerDetail.pKey" />
+          <Input name="retailOutletId" value="ProcessContext::CustomerDetail.retailOutletId" />
+          <Input name="sapId" value="ProcessContext::CustomerDetail.sapId" />
+          <Input name="beermateAccountId" value="ProcessContext::CustomerDetail.beermateAccountId" />
         </Parameters>
         <TransitionTo action="SetCardMobileLinks_DataLoaded" />
       </Action>
@@ -1065,6 +1204,9 @@
           <Input name="accountNumber" value="ProcessContext::CustomerDetail.customerId" />
           <Input name="quickAccessURL" value="Event.url" />
           <Input name="accountId" value="ProcessContext::CustomerDetail.pKey" />
+          <Input name="retailOutletId" value="ProcessContext::CustomerDetail.retailOutletId" />
+          <Input name="sapId" value="ProcessContext::CustomerDetail.sapId" />
+          <Input name="beermateAccountId" value="ProcessContext::CustomerDetail.beermateAccountId" />
         </Parameters>
       </Action>
       <!-- Card: Quick Access  END-->
@@ -1140,6 +1282,7 @@
         <Return name="ProcessContext::NoteDetail" />
         <TransitionTo action="CardNotes_LoadNoteDetailWizard" />
       </Action>
+      <!-- folowupvisit notes -->
       <Action name="CardNotes_LoadNote" actionType="LOGIC" call="ProcessContext::CardNotes_List.getItemByPKey">
         <Parameters>
           <Input name="pKey" value="Event.pKey" />
@@ -1320,6 +1463,7 @@
         <Parameters>
           <Input name="pKey" value="Event.pKey" />
           <Input name="clbStatus" value="Event.clbStatus" />
+          <Input name="myCallStatus" value="Event.myCallStatus" />
           <Input name="deleteAllowed" value="Event.deleteAllowed" />
           <Input name="referenceUserPKey" value="ProcessContext::CurrentUser" />
           <Input name="responsiblePKey" value="Event.responsiblePKey" />
@@ -1338,6 +1482,7 @@
         <Case value="Delete" action="CardFollowUpVisits_DeleteVisit" />
         <Case value="Re-Schedule" action="CardFollowUpVisits_RescheduleVisit" />
         <Case value="Info" action="CardFollowUpVisits_VisitInfo" />
+        <Case value="Notes" action="editFollowUpVisitNotes" />
         <CaseElse action="ShowCockpit" />
       </Action>
       <Action name="CardFollowUpVisits_DeleteVisit" actionType="PROCESS" process="Call::ChangeStatusWizardProcess">
@@ -1347,6 +1492,13 @@
           <Input name="ResponsiblePKey" value="ProcessContext::CurrentUser" />
         </Parameters>
         <TransitionTo action="SetCardFollowUpVisits_DataLoaded" />
+      </Action>
+      <Action name="editFollowUpVisitNotes" actionType="PROCESS" process="Call::MyFollowUpVisitNotesProcess">
+        <Parameters>
+          <Input name="MainPKey" value="Event.pKey" />
+          <Input name="ResponsiblePKey" value="ProcessContext::CurrentUser" />
+          <Input name="isReadOnly" value="ProcessContext::isReadOnly" />
+        </Parameters>
       </Action>
       <Action name="CardFollowUpVisits_RescheduleVisit" actionType="PROCESS" process="Call::RescheduleCallProcess">
         <Parameters>
@@ -1372,6 +1524,28 @@
         </Cases>
       </Action>
       <!-- Card: Follow up visits END-->
+      <!-- Card: Perfect Store Index START-->
+      <Action name="LoadPSICardList" actionType="LOGIC" call="ProcessContext::CardPSIScoreIndexes_List.myPreparePerfectStoreIndexes">
+        <Parameters>
+          <Input name="currentCustomerPKey" value="ProcessContext::MainBO" />
+        </Parameters>
+        <TransitionTo action="AssignDisplayedSubcomponentNameForPSIScore" />
+      </Action>
+      <Action name="AssignDisplayedSubcomponentNameForPSIScore" actionType="LOGIC" call="ProcessContext::CardController.getDisplayedSubcomponentName">
+        <Parameters>
+          <Input name="loItems" value="ProcessContext::CardPSIScoreIndexes_List" />
+          <Input name="type" value="PSIScoreList" type="Literal" />
+        </Parameters>
+        <Return name="ProcessContext::CardPSIScore_DisplayedSubcomponentName" />
+        <TransitionTo action="SetCardPSIScore_DataLoaded" />
+      </Action>
+      <Action name="SetCardPSIScore_DataLoaded" actionType="LOGIC" call="Utils.identity">
+        <Parameters>
+          <Input name="value" value="1" type="Literal" />
+        </Parameters>
+        <Return name="ProcessContext::CardPSIScore_DataLoaded" />
+      </Action>
+      <!-- Card: Perfect Store Index End-->
       <!--End Action Decision-->
       <Action name="EndDecision" actionType="DECISION" parameter="ProcessContext::Completed">
         <Case value="1" action="End" />
@@ -1388,6 +1562,70 @@
         <Case value="validateBack" action="StartCompleteProcess" />
         <CaseElse action="End" />
       </Action>
+      <!-- Card: Calculator>
+      <Action actionType="LOGIC" name="CardCalculator_LoadCalculator" call="ProcessContext::CardCalculator_List.myGetAllCalculatorTaskForCard">
+        <Parameters>
+          <Input name="numberOfListItems" value="ProcessContext::CardController.numberOfListItems" />
+          <Input name="calcCustomerPKey" value="ProcessContext::MainBO.bpaMainPKey" />
+        </Parameters>
+        <TransitionTo action="CardCalculator_GetCardInformation" />
+      </Action>
+      <Action actionType="LOGIC" name="CardCalculator_GetCardInformation" call="ProcessContext::CardCalculator_List.myGetInfoForCalculatorCard">
+        <Return name="ProcessContext::CardCalculator_InformationText" />
+        <TransitionTo action="AssignDisplayedSubcomponentNameForCalculator" />
+      </Action>
+      <Action name="AssignDisplayedSubcomponentNameForCalculator" actionType="LOGIC" call="ProcessContext::CardController.getDisplayedSubcomponentName">
+        <Parameters>
+          <Input name="loItems" value="ProcessContext::CardCalculator_List" />
+          <Input name="type" value="Calculator" type="Literal" />
+        </Parameters>
+        <Return name="ProcessContext::CardCalculator_DisplayedSubcomponentName" />
+        <TransitionTo action="SetCardCalculator_DataLoaded" />
+      </Action>
+      <Action name="SetCardCalculator_DataLoaded" actionType="LOGIC" call="Utils.identity">
+        <Return name="ProcessContext::CardCalculator_DataLoaded" />
+        <Parameters>
+          <Input name="value" value="1" type="Literal" />
+        </Parameters>
+      </Action>
+      <Action actionType="PROCESS" name="CgCalculatorValue" process="Call::MyCalculatorProcess">
+        <Parameters>
+          <Input name="CalclulatorCustomerPKey" value="ProcessContext::MainBO.bpaMainPKey" />
+          <Input name="CalclulatorCustomerName" value="ProcessContext::MainBO.luCustomer.name" />
+        </Parameters>
+        <ReturnValues>
+          <Return name="ProcessContext::calculatorBo" value="calculatorBo" />
+          <Return name="ProcessContext::calculatorButtonPressed" value="buttonPressed" />
+        </ReturnValues>
+        <TransitionTo action="CalculatorDetails_Decision" />
+      </Action>
+      <Action actionType="DECISION" name="CalculatorDetails_Decision" parameter="ProcessContext::calculatorButtonPressed">
+        <Case value="1" action="CallCalculatorSaved" />
+      </Action>
+      <Action actionType="CONFIRM" confirmType="Ok" name="CallCalculatorSaved">
+        <Message messageId="CallCalculatorSaved" />
+        <Cases>
+          <Case value="Ok" action="CgCalculatorOverview" />
+        </Cases>
+      </Action>
+      <Action actionType="PROCESS" name="CgCalculatorOverview" process="Customer::MyCalculationOverviewProcess">
+        <Parameters>
+          <Input name="calcPKey" value="ProcessContext::calculatorBo.pKey" />
+          <Input name="CalclulatorCustomerName" value="ProcessContext::MainBO.luCustomer.name" />
+        </Parameters>
+      </Action>
+      <Action actionType="PROCESS" name="CardCalculator_ShowSelectedCalculator" process="Customer::MyCalculationOverviewProcess">
+        <Parameters>
+          <Input name="calcPKey" value="Event.calcPKey" />
+          <Input name="CalclulatorCustomerName" value="ProcessContext::MainBO.luCustomer.name" />
+        </Parameters>
+      </Action>
+      <Action actionType="PROCESS" name="CardCalculator_ShowAllCalculator" process="Customer::MyAllCalculatorsProcess">
+        <Parameters>
+          <Input name="CalcCustomerPKey" value="ProcessContext::MainBO.bpaMainPKey" />
+          <Input name="CalclulatorCustomerName" value="ProcessContext::MainBO.luCustomer.name" />
+        </Parameters>
+      </Action-->
     </Actions>
   </Body>
 </Process>

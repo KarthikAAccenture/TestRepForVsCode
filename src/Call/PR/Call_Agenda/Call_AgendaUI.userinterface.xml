@@ -255,6 +255,7 @@
                   <Binding target="Icon" type="Image" binding=".actionImg" />
                   <Binding target="Text" type="Label" binding=".actionId" />
                   <Binding type="Editable" target="Editable" binding=".actionEnabled" />
+                  <Binding type="Visible" target="Visible" binding=".actionVisible" />
                 </Bindings>
               </Items>
             </ContextMenu>
@@ -281,6 +282,7 @@
               <Params>
                 <Param name="pKey" value=".pKey" />
                 <Param name="clbStatus" value=".clbStatus" />
+                <Param name="myCallStatus" value=".myCallStatus" />
                 <Param name="deleteAllowed" value=".deleteAllowed" />
                 <Param name="dateFrom" value=".dateFrom" />
                 <Param name="bpaMainPKey" value=".bpaMainPKey" />
@@ -368,7 +370,7 @@
               <ImageButton>
                 <Bindings>
                   <Resource target="Image" type="Image" id="Plus" />
-                  <Resource target="Text" type="Label" id="CreateCallId" defaultLabel="Create Visit" />
+                  <Resource target="Text" type="Label" id="CreateCallId" defaultLabel="Check In" />
                   <Binding type="Visible" target="Visible" call="ProcessContext::CustomerList.getButtonVisibility" />
                 </Bindings>
                 <Events>

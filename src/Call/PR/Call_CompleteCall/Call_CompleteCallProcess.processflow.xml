@@ -72,16 +72,26 @@
         </Parameters>
         <TransitionTo action="ValidateBeforeComplete_SaveStatus" />
       </Action>
-       <Action actionType="LOGIC" name="ValidateBeforeComplete_SaveStatus" call="ProcessContext::MainBO.getClbStatus">
+      <Action actionType="LOGIC" name="ValidateBeforeComplete_SaveStatus" call="ProcessContext::MainBO.getClbStatus">
         <Return name="ProcessContext::SaveClbStatus" />
+        <TransitionTo action="ValidateBeforeComplete_SaveMyCallStatus" />
+      </Action>
+      <Action actionType="LOGIC" name="ValidateBeforeComplete_SaveMyCallStatus" call="ProcessContext::MainBO.getMyCallStatus">
+        <Return name="ProcessContext::SaveMyCallStatus" />
         <TransitionTo action="SetClbStatusToComplete" />
       </Action>
       <Action actionType="Logic" name="SetClbStatusToComplete" call="ProcessContext::MainBO.setClbStatus">
         <Parameters>
           <Input name="clbStatus" value="Completed" type="Literal" />
         </Parameters>
+        <TransitionTo action="SetMyCallStatusToComplete" />
+      </Action>
+      <Action actionType="Logic" name="SetMyCallStatusToComplete" call="ProcessContext::MainBO.setMyCallStatus">
+        <Parameters>
+          <Input name="myCallStatus" value="Completed" type="Literal" />
+        </Parameters>
         <TransitionTo action="ValidateBeforeComplete" />
-      </Action>    
+      </Action>
       <Action actionType="LOGIC" name="ValidateBeforeComplete" call="ProcessContext::MainBO.validateMandatoryQuestions">
         <Return name="ProcessContext::ValidationResult" />
         <TransitionTo action="ValidateBeforeComplete_Decision" />
@@ -93,6 +103,12 @@
       <Action actionType="LOGIC" name="ValidateBeforeComplete_ResetStatus" call="ProcessContext::MainBO.setClbStatus">
         <Parameters>
           <Input name="targetClbStatus" value="ProcessContext::SaveClbStatus" />
+        </Parameters>
+        <TransitionTo action="ValidateBeforeComplete_ResetMyCallStatus" />
+      </Action>
+      <Action actionType="LOGIC" name="ValidateBeforeComplete_ResetMyCallStatus" call="ProcessContext::MainBO.setMyCallStatus">
+        <Parameters>
+          <Input name="targetMyCallStatus" value="ProcessContext::SaveMyCallStatus" />
         </Parameters>
         <TransitionTo action="EndNotComplete" />
       </Action>

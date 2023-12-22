@@ -1,0 +1,25 @@
+<DataSource name="DsLoMyPhaseForCustomerTask" backendSystem="sf" businessObjectClass="LoMyPhaseForCustomerTask" external="false" editableEntity="" schemaVersion="2.0">
+  <Attributes>
+    <Attribute name="pKey" table="Sync_Mobile_App_PL_Repo__c" column="Id" />
+    <Attribute name="text" table="Sync_Mobile_App_PL_Repo__c" column="Text_#Language#__c" />
+    <Attribute name="value" table="Sync_Mobile_App_PL_Repo__c" column="Picklist_Value__c" />
+  </Attributes>
+  <Entities>
+    <Entity name="Sync_Mobile_App_PL_Repo__c" alias="" />
+  </Entities>
+  <QueryCondition><![CDATA[
+    Sync_Mobile_App_PL_Repo__c.Mobile_App_Domain__c = 'DomSvcIssuePhase'
+  AND Sync_Mobile_App_PL_Repo__c.Object__c = 'cgcloud__Account_Task__c'
+  AND CASE
+    WHEN #custTaskTemplate# IN ('Price Feature', 'Sampling Event', 'Engagement') THEN Sync_Mobile_App_PL_Repo__c.Text_Language_1__c IN ('Not Started','In Progress','Committed','Completed','Declined')
+    WHEN #custTaskTemplate# = 'Display' THEN Sync_Mobile_App_PL_Repo__c.Text_Language_1__c IN ('Pending', 'Final', 'Cancelled')
+    WHEN #custTaskTemplate# = 'Objective' THEN Sync_Mobile_App_PL_Repo__c.Text_Language_1__c IN ('In Progress', 'Committed', 'Completed')
+    WHEN #custTaskTemplate# = 'Feature' THEN Sync_Mobile_App_PL_Repo__c.Text_Language_1__c IN ('In Progress', 'Completed')
+    ELSE 0
+  END
+  ]]></QueryCondition>
+  <OrderCriteria />
+  <Parameters>
+    <Parameter name="custTaskTemplate" type="TEXT" />
+  </Parameters>
+</DataSource>

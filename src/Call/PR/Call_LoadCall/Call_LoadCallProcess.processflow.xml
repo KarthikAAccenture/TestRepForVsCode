@@ -1,4 +1,4 @@
-<Process name="Call::LoadCallProcess" defaultAction="CheckIfTimeCardIsAvailable" schemaVersion="0.0.0.5">
+<Process name="Call::LoadCallProcess" defaultAction="InProgressDecision" schemaVersion="0.0.0.5">
   <Entry>
     <ProcessContext>
       <Declarations>
@@ -8,6 +8,7 @@
       <Parameters>
         <Input name="CallPKey" type="String" />
         <Input name="ResponsiblePKey" type="DomPKey" />
+        <Input name="isPreviewOnly" type="DomBool" />
       </Parameters>
     </ProcessContext>
     <EntryActions>
@@ -18,7 +19,12 @@
         </Parameters>
         <Return name="ProcessContext::CallBO" />
       </Action>
-      <Action name="SetConfiguration" actionType="LOGIC" call="ProcessContext::CallBO.captureProceedingTime" />
+      <Action name="SetConfiguration" actionType="LOGIC" call="ProcessContext::CallBO.captureProceedingTime">
+        <Parameters>
+          <Input name="CallComplete" type="Literal" value="" />
+          <Input name="isPreviewOnly" value="ProcessContext::isPreviewOnly" />
+        </Parameters>
+      </Action>
       <Action name="CheckLoadOnDemand" actionType="LOGIC" call="ProcessContext::CallBO.loadOnDemand">
         <Parameters>
           <Input name="object" value="Attachments" type="Literal" />
@@ -28,6 +34,17 @@
   </Entry>
   <Body>
     <Actions>
+      <Action name="InProgressDecision" actionType="DECISION" parameter="ProcessContext::isPreviewOnly">
+        <Case value="1" action="CheckIfTimeCardIsAvailable" />
+        <CaseEmpty action="ChangeStatusToInProgress" />
+        <CaseElse action="ChangeStatusToInProgress" />
+      </Action>
+      <Action actionType="LOGIC" name="ChangeStatusToInProgress" call="ProcessContext::CallBO.setMyCallStatus">
+        <Parameters>
+          <Input name="myCallStatus" value="InProgress" type="Literal" />
+        </Parameters>
+        <TransitionTo action="CheckIfTimeCardIsAvailable" />
+      </Action>
       <Action actionType="LOGIC" name="CheckIfTimeCardIsAvailable" call="Utils.isDefined">
         <Parameters>
           <Input name="timeCard" value="ProcessContext::CallBO.boUserDailyReport" />
@@ -44,7 +61,7 @@
         <Case value="1" action="Navigation_Decision" />
         <CaseElse action="SaveBoCall" />
       </Action>
-      <Action name="SaveBoCall" actionType="SAVE" >
+      <Action name="SaveBoCall" actionType="SAVE">
         <TransitionTo action="Navigation_Decision" />
       </Action>
       <Action name="Navigation_Decision" actionType="DECISION" parameter="ProcessContext::CallBO.luCallMeta.mobilityUserGuidance">
@@ -64,6 +81,7 @@
           <Input name="LeadTime" value="ProcessContext::CallBO.LuCallMeta.PrmFindingLeadTime" />
           <Input name="MobilityUserGuidance" value="ProcessContext::CallBO.luCallMeta.mobilityUserGuidance" />
           <Input name="CallDateThru" value="ProcessContext::CallBO.DateThru" />
+          <Input name="isPreviewOnly" value="ProcessContext::isPreviewOnly" />
         </Parameters>
       </Action>
       <Action actionType="PROCESS" name="StartNavigationProcess" process="Call::NavigationProcess">

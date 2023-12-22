@@ -36,5 +36,7 @@
     <Method name="prepareMapDetails" />
     <Method name="calculateDistance" />
     <Method name="getCallsForFollowUpCard" />
+    <Method name="mySetCallColor" />
+    <Method name="replaceGetCallsForFollowUpCard"/>
   </Methods>
 </ListObject>

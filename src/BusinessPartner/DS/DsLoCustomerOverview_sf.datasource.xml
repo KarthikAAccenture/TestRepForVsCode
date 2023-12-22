@@ -28,6 +28,10 @@
     <DerivedAttribute name="mapIcon" value="'PurpleGoogleMarkerEmpty'" />
     <DerivedAttribute name="hasActivity" value="'0'" />
     <DerivedAttribute name="hasPromotion" value="'0'" />
+    <Attribute name="sapId" table="Account" column="C360_SAP_ID__c" />
+    <Attribute name="retailOutletId" table="Account" column="Retail_Outlet_ID__c" />
+    <DerivedAttribute name="billingAddress" value="''" />
+    <DerivedAttribute name="overdueDate" value="''" />
   </Attributes>
   <Entities>
     <Entity name="Account" alias="" idAttribute="Id" />
@@ -54,6 +58,7 @@
 			var referenceDateFrom;
 			var addCondSearch = "";
 			var customerId = "";
+			var sapId = "";
 			var name = "";
 			var street = "";
 			var zipCode = "";
@@ -71,12 +76,15 @@
             var currentLongitude = 0; 
             var currentLatitude = 0;
 			var distance = 0;
+			var retailOutletId = "";
+	  		var overdueWithLeadTime = "";
 
 			if(Utils.isDefined(newParams.addCond_LeadTimeFollowUpTime)){
 				addCond_LeadTimeFollowUpTime = newParams.addCond_LeadTimeFollowUpTime;
 			}
             if(Utils.isDefined(newParams.addCond_OverdueCustomers)){
 				addCond_OverdueCustomers = newParams.addCond_OverdueCustomers;
+				overdueWithLeadTime = Utils.convertForDBParam(Utils.addDays2AnsiDate(Utils.createAnsiDateToday(), ApplicationContext.get('salesOrg').noOfDaysPastDueForOverdueCustomers), "DomDate");
 			}
 			if(Utils.isDefined(newParams.currentDate)){
 				currentDate = newParams.currentDate;
@@ -116,6 +124,12 @@
               customerId = Utils.convertForDBParam(newParams.customerId, "DomId");
               addCondSearch += " AND customers.customerId " + Utils.replaceOperator(newParams.customerIdComp) + "#customerId# ";
 			} 
+
+			/**  Customer SAP ID  */
+			if (Utils.isDefined(newParams.sapId)){
+              sapId = Utils.convertForDBParam(newParams.sapId, "DomText");
+              addCondSearch += " AND customers.sapId " + Utils.replaceOperator(newParams.sapIdComp) + " '#sapId#' ";
+			}
 
 			/**  Customer Name  */
 			if (Utils.isDefined(newParams.name)){
@@ -209,13 +223,14 @@
                 addCondSearch += " AND DISTANCE(#currentLatitude#, #currentLongitude#, " + latitudeProperty + ", " + longitudeProperty + ") " + Utils.replaceOperator(newParams.Distance_1Comp) + " #distance# ";
             }
 
-			var sqlParams1 = {referenceDateThru, referenceDateFrom, currentLatitude, currentLongitude, distance};
-			var sqlParams2 = {referenceDateThru, referenceDateFrom, customerId, name, street, zipCode, city, countryState, prio, classOfTrade, substituted, tradeOrgPKey, currentDate, overdue, distributionIssue, outOfStockIssue, hasActivity, hasPromotion, currentLatitude, currentLongitude, referenceUserPKey, distance};
+			var sqlParams1 = {referenceDateThru, referenceDateFrom, currentLatitude, currentLongitude, distance, overdueWithLeadTime};
+			var sqlParams2 = {referenceDateThru, referenceDateFrom, customerId, sapId, name, street, zipCode, city, countryState, prio, classOfTrade, substituted, tradeOrgPKey, currentDate, overdue, distributionIssue, outOfStockIssue, hasActivity, hasPromotion, currentLatitude, currentLongitude, referenceUserPKey, distance, overdueWithLeadTime};
 
 			var sqlStmt1 = "SELECT ";
 			sqlStmt1 +=      "customers.pKey AS pKey, ";
 			sqlStmt1 +=      "customers.name  as name, ";
 			sqlStmt1 +=      "customers.customerid as customerId, ";
+			sqlStmt1 +=      "customers.sapid as sapId, ";
 			sqlStmt1 +=      "customers.Prio as prio, ";
 			sqlStmt1 +=      "customers.ClassOfTrade as classOfTrade, ";
 			sqlStmt1 +=      "customers.mainaddress as mainAddress, ";
@@ -239,17 +254,30 @@
             sqlStmt1 +=      "customers.distributionIssue as distributionIssue, ";
             sqlStmt1 +=      "customers.outOfStockIssue as outOfStockIssue, ";
             sqlStmt1 +=      "customers.hasActivity as hasActivity, ";
-            sqlStmt1 +=      "customers.hasPromotion as hasPromotion ";
+            sqlStmt1 +=      "customers.hasPromotion as hasPromotion, ";
+ 			sqlStmt1 +=      "customers.retailOutletId as retailOutletId, ";
+			sqlStmt1 +=      "customers.billingAddress as billingAddress, ";
+			sqlStmt1 +=      "customers.overdueDate AS overdueDate ";
 			sqlStmt1 +=      "FROM ( ";
 			sqlStmt1 +=      " SELECT  ";
 			sqlStmt1 +=          "Account.Id AS pKey, ";
 			sqlStmt1 +=          "Account.Name as name, ";
 			sqlStmt1 +=          "Account.Account_Number__c as customerId,";
+			sqlStmt1 +=          "Account.C360_SAP_ID__c as sapId,";
+			sqlStmt1 +=          "Account.Retail_Outlet_ID__c as retailOutletId,";
+			sqlStmt1 +=          "Account_Visit_Setting__c.Overdue_Date__c AS overdueDate, ";
+
 			sqlStmt1 +=          "#toggleMapping('Account_Extension__c', 'Priority__c')# as prio, ";
 			sqlStmt1 +=          "Account_Extension__c.Class_Of_Trade__c as ClassOfTrade,   ";
 			sqlStmt1 +=          "Account.ShippingStreet || ', ' || Account.ShippingPostalCode || ' ' || Account.ShippingCity || ', ' || Account.ShippingState as mainAddress, ";
+			sqlStmt1 +=          "Account.BillingStreet ||', ' || Account.BillingCity || ', ' || Account.BillingState as billingAddress, ";
 			sqlStmt1 +=          "Account.ShippingStreet as Street, Account.ShippingPostalCode as ZipCode, Account.ShippingCity as City, Account.ShippingState as CountryState, ";
+			if(addCond_OverdueCustomers !== ""){
+			sqlStmt1 +=          "'' as grouping1, ";
+			}
+			else{
 			sqlStmt1 +=          "Upper(substr(Account.Name,1,1)) as grouping1, ";
+			}
 			sqlStmt1 +=          "substitution.SubMainUsrMainPKey AS substitutedUsrPKey, ";
 			sqlStmt1 +=          "substitution.SubBpaRelValidFrom AS subValidFrom, ";
 			sqlStmt1 +=          "substitution.SubBpaRelValidThru AS subValidThru, ";
@@ -261,7 +289,7 @@
 			sqlStmt1 +=          "Account_Manager__c.Valid_Thru__c as mgmtValidThru, ";
 			sqlStmt1 +=          "Account.ShippingLongitude as longitude, ";
 			sqlStmt1 +=          "Account.ShippingLatitude as latitude, ";
-			sqlStmt1 +=          "CASE WHEN #compareAsDate('Account_Visit_Setting__c.Overdue_Date__c', 'Date','<',#TodayAsDate#, 'Date')# THEN '1' ELSE '0' END AS isOverdue, ";
+			sqlStmt1 +=          "CASE WHEN #compareAsDate('Account_Visit_Setting__c.Overdue_Date__c', 'Date','<',#overdueWithLeadTime#, 'Date')# THEN '1' ELSE '0' END AS isOverdue, ";
             sqlStmt1 +=          "Account_Extension__c.Distribution_Issue__c as distributionIssue, ";
             sqlStmt1 +=          "Account_Extension__c.OOS_Issue__c as outOfStockIssue, ";
             sqlStmt1 +=          "CASE WHEN EXISTS (SELECT Null FROM Job_Definition_List_Account__c WHERE Account.Id = Job_Definition_List_Account__c.Account__c) THEN '1' ELSE '0' END as hasActivity, ";
@@ -324,7 +352,7 @@
 			sqlStmt2 +=              "AND Account_Visit_Setting__c.Overdue_Date__c <> '#MinDate#' ";
 			sqlStmt2 +=              "AND #compareAsDate('Account_Visit_Setting__c.Valid_From__c', 'Date','<=',#TodayAsDate#, 'Date')# ";
 			sqlStmt2 +=              "AND #compareAsDate('Account_Visit_Setting__c.Valid_Thru__c', 'Date','>=',#TodayAsDate#, 'Date')# ";
-			sqlStmt2 +=              "AND #compareAsDate('Account_Visit_Setting__c.Overdue_Date__c', 'Date','<',#TodayAsDate#, 'Date')# ";
+			sqlStmt2 +=              "AND #compareAsDate('Account_Visit_Setting__c.Overdue_Date__c', 'Date','<',#overdueWithLeadTime#, 'Date')# ";
 			sqlStmt2 +=    " WHERE ";
 			sqlStmt2 +=      "( ";
 			sqlStmt2 +=       addCond_LeadTimeFollowUpTime;
@@ -342,7 +370,13 @@
 			sqlStmt2 +=    "GROUP BY ";
 			sqlStmt2 +=      "pKey ";
 			sqlStmt2 +=    "ORDER BY ";
-			sqlStmt2 +=      "upper(name) ";
+			if(addCond_OverdueCustomers !== ""){
+				sqlStmt2 +=   "overdueDate ";
+			} 
+		     else
+			{
+			sqlStmt2 +=      "upper(name)";
+			}
 
 			var sqlStmt1Result = Utils.replaceMacrosParam(sqlStmt1, sqlParams1);
 			var sqlStmt2Result = Utils.replaceMacrosParam(sqlStmt2, sqlParams2);

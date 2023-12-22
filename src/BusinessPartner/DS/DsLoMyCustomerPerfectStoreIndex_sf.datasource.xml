@@ -1,0 +1,25 @@
+<DataSource name="DsLoMyCustomerPerfectStoreIndex" backendSystem="sf" businessObjectClass="LoMyCustomerPerfectStoreIndex" external="false" editableEntity="Account" schemaVersion="2.0">
+  <Attributes>
+    <Attribute name="pKey" table="Account" column="Id" />
+    <Attribute name="totalPSI" table="Account" column="MCBC_Perfect_Store_Perfect_Store_Score__c" />
+    <Attribute name="availability" table="Account" column="MCBC_Perfect_Store_Availability__c" />
+    <Attribute name="visibility" table="Account" column="MCBC_Perfect_Store_Visibility__c" />
+    <Attribute name="quality" table="Account" column="MCBC_Perfect_Store_Quality__c" />
+    <Attribute name="price" table="Account" column="MCBC_Perfect_Store_Price__c" />
+    <Attribute name="totalPSIBenchmark" table="Account" column="MCBC_Benchmarking_Perfect_Store_Score__c" />
+    <Attribute name="availabilityBenchmark" table="Account" column="MCBC_Benchmarking_Availability__c" />
+    <Attribute name="visibilityBenchmark" table="Account" column="MCBC_Benchmarking_Visibility__c" />
+    <Attribute name="qualityBenchmark" table="Account" column="MCBC_Benchmarking_Quality__c" />
+    <Attribute name="priceBenchmark" table="Account" column="MCBC_Benchmarking_Price__c" />
+  </Attributes>
+  <Entities>
+    <Entity name="Account" alias="Account" idAttribute="Id" />
+  </Entities>
+  <QueryCondition><![CDATA[
+     Account.Id = #currentCustomerPKey#
+        ]]></QueryCondition>
+  <OrderCriteria />
+  <Parameters>
+    <Parameter name="currentCustomerPKey" type="TEXT" />
+  </Parameters>
+</DataSource>

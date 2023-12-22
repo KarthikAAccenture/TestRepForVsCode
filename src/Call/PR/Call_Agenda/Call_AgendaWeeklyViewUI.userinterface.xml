@@ -195,7 +195,7 @@
     </PageHeader>
     <Section sectionName="masterSection" Flex="3" sectionPattern="SingleAreaSection">
       <Area areaName="mainArea" areaPattern="SingleElementArea">
-        <CalendarControl name="AgendaCalendar" dataSource="ProcessContext::OverviewList.items[]" firstLine="Name" secondLine="TimeFrom" dateFromAttribute="DateFrom" dateThruAttribute="DateThru" timeFromAttribute="TimeFrom" timeThruAttribute="TimeThru" allDayAttribute="AllDay" backgroundColorAttribute="Color">
+        <CalendarControl name="AgendaCalendar" dataSource="ProcessContext::OverviewList.items[]" firstLine="Name" secondLine="TimeFrom" dateFromAttribute="DateFrom" dateThruAttribute="DateThru" timeFromAttribute="TimeFrom" timeThruAttribute="TimeThru" allDayAttribute="AllDay" backgroundColorAttribute="callColor">
           <Bindings>
             <Binding target="DateRangeStartDate" binding="ProcessContext::CurrentDate" bindingMode="ONE_WAY" />
           </Bindings>
@@ -210,6 +210,7 @@
                   <Binding target="Icon" type="Image" binding=".actionImg" />
                   <Binding target="Text" type="Label" binding=".actionId" />
                   <Binding type="Editable" target="Editable" binding=".actionEnabled" />
+                  <Binding type="Visible" target="Visible" binding=".actionVisible" />
                 </Bindings>
               </Items>
             </ContextMenu>
@@ -227,6 +228,7 @@
               <Params>
                 <Param name="pKey" value=".pKey" />
                 <Param name="clbStatus" value=".clbStatus" />
+                <Param name="myCallStatus" value=".myCallStatus" />
                 <Param name="deleteAllowed" value=".deleteAllowed" />
                 <Param name="dateFrom" value=".dateFrom" />
                 <Param name="bpaMainPKey" value=".bpaMainPKey" />

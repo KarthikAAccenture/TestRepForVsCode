@@ -32,6 +32,7 @@
         <Declaration name="TimeSlotContextMenu" type="LoTimeSlotContextMenu" />
         <Declaration name="IsOperatingHourAvailable" type="DomBool" />
         <Declaration name="AccountOperatingHourEnabled" type="LuSysSettingById" />
+        <Declaration name="SfReplicationCallbacks" type="BoSfReplicationCallbacks" />
       </Declarations>
       <Parameters>
         <Input name="CustomerPKey" type="String" />
@@ -68,6 +69,9 @@
           <Input name="cardOverdue" value="ProcessContext::CardOverdue" />
         </Parameters>
         <Return name="ProcessContext::IsEditable" />
+      </Action>
+      <Action name="CreateReplicationCallBacksBo" actionType="CREATE" type="BoSfReplicationCallbacks">
+        <Return name="ProcessContext::SfReplicationCallbacks" />
       </Action>
     </EntryActions>
   </Entry>
@@ -138,6 +142,11 @@
           <Event name="acceptTimeSlotChanges" action="ValidateTimeSlot" />
           <Event name="timeSlotContextMenuOpened" action="LoadTimeSlotContextMenu" />
           <Event name="timeSlotContextMenuItemSelected" action="ContextMenuResultDecision" />
+          <Event name="addVisit" action="getDateTimeFrom" />
+          <Event name="InfoLastmodified" action="infoForLastmodified" />
+          <Event name="emailPressed" action="StartMailPressed" />
+          <Event name="primaryContactLookup" action="primaryContactLookup" />
+          <Event name="keyContactLookup" action="keyContactLookup" />
         </Events>
       </Action>
       <!-- ContextMenu Decision -->
@@ -168,6 +177,115 @@
       <Action name="UnModifyContactPartner" actionType="LOGIC" call="ProcessContext::ContactPartnerDetail.resetObjectStatus">
         <TransitionTo action="CustomerListMasterDetail.create" />
       </Action>
+      <!-- BEGIN : Add Visit -->
+      <Action name="getDateTimeFrom" actionType="LOGIC" call="Utils.createAnsiDateTimeToday">
+        <Return name="ProcessContext::dateFrom" />
+        <TransitionTo action="CheckiInVisit_AddNewVisit" />
+      </Action>
+      <Action name="CheckiInVisit_AddNewVisit" actionType="PROCESS" process="Call::CreateNewWizardProcess">
+        <Parameters>
+          <Input name="DateFrom" value="ProcessContext::dateFrom" />
+          <Input name="Mode" value="Manual" type="Literal" />
+          <Input name="CustomerPKey" value="ProcessContext::CustomerDetail.pKey" />
+          <Input name="ResponsiblePKey" value="ApplicationContext::User.pKey" />
+        </Parameters>
+        <TransitionTo action="CreateNewCall_Decision" />
+        <ReturnValues>
+          <Return name="ProcessContext::CheckiInVisit_CallMetaPKey" value="callMetaPKey" />
+          <Return name="ProcessContext::CheckiInVisit_CustomerPKey" value="customerPKey" />
+          <Return name="ProcessContext::CheckiInVisit_DateFrom" value="dateFrom" />
+          <Return name="ProcessContext::CheckiInVisit_TimeFrom" value="timeFrom" />
+          <Return name="ProcessContext::CheckiInVisit_AllDay" value="allDay" />
+          <Return name="ProcessContext::CheckiInVisit_ButtonPressed" value="buttonPressed" />
+          <Return name="ProcessContext::CheckiInVisit_SubstitutedUsrPKey" value="substitutedUsrPKey" />
+          <Return name="ProcessContext::CheckiInVisit_IsManagedCustomer" value="isManagedCustomer" />
+        </ReturnValues>
+      </Action>
+      <Action name="CreateNewCall_Decision" actionType="DECISION" parameter="ProcessContext::CheckiInVisit_ButtonPressed">
+        <Case value="createCall" action="CreateNewCallWithCustomer" />
+        <CaseElse action="ShowCustomerList" />
+      </Action>
+      <Action name="CreateNewCallWithCustomer" actionType="PROCESS" process="Call::CreateNewCallProcess">
+        <Parameters>
+          <Input name="callMetaPKey" value="ProcessContext::CheckiInVisit_CallMetaPKey" />
+          <Input name="customerPKey" value="ProcessContext::CheckiInVisit_CustomerPKey" />
+          <Input name="dateFrom" value="ProcessContext::CheckiInVisit_DateFrom" />
+          <Input name="timeFrom" value="ProcessContext::CheckiInVisit_TimeFrom" />
+          <Input name="allDay" value="ProcessContext::CheckiInVisit_AllDay" />
+          <Input name="substitutedUsrPKey" value="ProcessContext::CheckiInVisit_SubstitutedUsrPKey" />
+          <Input name="responsiblePKey" value="ApplicationContext::User.pKey" />
+          <Input name="isManagedCustomer" value="ProcessContext::CheckiInVisit_IsManagedCustomer" />
+          <Input name="boSfReplicationCallbacks" value="ProcessContext::SfReplicationCallbacks" />
+        </Parameters>
+        <ReturnValues>
+          <Return name="ProcessContext::quickCallPKey" value="callPKey" />
+        </ReturnValues>
+        <TransitionTo action="CheckIfDataIsAvailable" />
+      </Action>
+      <!-- commented code is for check in functionality -->
+      <!--Action name="getDateTimeFrom" actionType="LOGIC" call="Utils.createAnsiDateTimeToday">
+        <Return name="ProcessContext::dateFrom" />
+        <TransitionTo action="getTimeFrom" />
+      </Action>
+      <Action name="getTimeFrom" actionType="LOGIC" call="Utils.createAnsiTimeNow">
+        <Return name="ProcessContext::timeFrom" />
+        <TransitionTo action="checkIfAccountManagerIsDefined" />
+      </Action>
+      <Action name="checkIfAccountManagerIsDefined" actionType="LOGIC" call="Utils.isDefined">
+        <Parameters>
+          <Input name="AccManager" value="ProcessContext::CustomerDetail.accountManagerPKey" />
+        </Parameters>
+        <Return name="ProcessContext::isManaged" />
+        <TransitionTo action="CreateNewCallWithCustomer" />
+      </Action>
+      <Action name="CreateNewCallWithCustomer" actionType="PROCESS" process="Call::CreateNewCallProcess">
+        <Parameters>
+          <Input name="callMetaPKey" value="ProcessContext::CustomerDetail.defaultVisitTemplate" />
+          <Input name="customerPKey" value="ProcessContext::CustomerDetail.pKey" />
+          <Input name="dateFrom" value="ProcessContext::dateFrom" />
+          <Input name="timeFrom" value="ProcessContext::timeFrom" />
+          <Input name="allDay" value="0" type="Literal" />
+          <Input name="responsiblePKey" value="ApplicationContext::User.pKey" />
+          <Input name="boSfReplicationCallbacks" value="ProcessContext::SfReplicationCallbacks" />
+          <Input name="substitutedUsrPKey" value=" " />
+          <Input name="isManagedCustomer" value="ProcessContext::isManaged" />
+        </Parameters>
+        <ReturnValues>
+          <Return name="ProcessContext::quickCallPKey" value="callPKey" />
+        </ReturnValues>
+        <TransitionTo action="CheckIfDataIsAvailable" />
+      </Action-->
+      <Action name="CheckIfDataIsAvailable" actionType="LOGIC" call="ProcessContext::SfReplicationCallbacks.isCallOnDemandDataAvailable">
+        <Parameters>
+          <Input name="CallPKey" value="ProcessContext::quickCallPKey" />
+          <Input name="customerPKey" value="ProcessContext::CustomerDetail.pKey" />
+        </Parameters>
+        <Return name="ProcessContext::CallDataAvailable" />
+        <TransitionTo action="CallDataCheck_Decision" />
+      </Action>
+      <Action name="CallDataCheck_Decision" actionType="DECISION" parameter="ProcessContext::CallDataAvailable">
+        <Case value="1" action="CardVisits_LoadCallFinal" />
+        <Case value="2" action="Visits_ShowCallCalendar" />
+        <CaseElse action="Visits_ShowCallCalendar" />
+      </Action>
+      <Action name="CardVisits_LoadCallFinal" actionType="PROCESS" process="Call::LoadCallProcess">
+        <Parameters>
+          <Input name="CallPKey" value="ProcessContext::quickCallPKey" />
+          <Input name="ResponsiblePKey" value="ApplicationContext::User.pKey" />
+        </Parameters>
+      </Action>
+      <Action name="ReloadVisitList" actionType="LOAD" type="LoAgendaOverview">
+        <Parameters>
+          <Input name="dateFromStart" value="ProcessContext::dateFrom" />
+        </Parameters>
+        <Return name="ProcessContext::VisitList" />
+      </Action>
+      <Action actionType="PROCESS" name="Visits_ShowCallCalendar" process="Call::AgendaProcess">
+        <Parameters>
+          <Input name="cardDate" value="ProcessContext::dateFrom" />
+        </Parameters>
+      </Action>
+      <!-- END : Add Visit -->
       <!-- BEGIN: Customer Overview -->
       <Action name="CustomerListMasterDetail" actionType="MASTER_DETAIL_HANDLER">
         <MasterList name="ProcessContext::CustomerList">
@@ -369,7 +487,9 @@
         <Parameters>
           <Input name="clear" type="Literal" value="BoContactPartner" />
         </Parameters>
+        <TransitionTo action="setEARightsForContactList" />
       </Action>
+      <Action name="setEARightsForContactList" actionType="LOGIC" call="ProcessContext::CustomerDetail.mySetEARights"></Action>
       <!-- POS Tab -->
       <Action name="LoadLoCustomerPOSRelation" actionType="LOGIC" call="ProcessContext::CustomerDetail.loadLoCustomerPOSRelationAsync">
         <Parameters>
@@ -427,6 +547,56 @@
       <!-- Main Tab -->
       <Action name="UpdateGeoCoordinates" actionType="LOGIC" call="ProcessContext::CustomerDetail.updateGeoCoordinates">
         <Return name="ProcessContext::MainAddress" />
+      </Action>
+      <!-- GB-28830 -->
+      <!-- Custom Tab -->
+      <Action name="infoForLastmodified" actionType="CONFIRM" confirmType="Ok">
+        <Message messageId="InfoForLastmodifiedMsg" />
+        <Cases>
+          <Case value="Ok" action="ShowCustomerList" />
+        </Cases>
+      </Action>
+      <Action actionType="PROCESS" name="primaryContactLookup" process="Customer::ContactPartnerLookupProcess">
+        <Parameters>
+          <Input name="AccountPKey" value="ProcessContext::CustomerDetail.pKey" />
+        </Parameters>
+        <ReturnValues>
+          <Return name="ProcessContext::primaryContactPKey" value="pKey" />
+        </ReturnValues>
+        <TransitionTo action="setPrimaryContact" />
+      </Action>
+      <Action name="setPrimaryContact" actionType="LOGIC" call="ProcessContext::CustomerDetail.setPrimaryContact">
+        <Parameters>
+          <Input name="primaryContact" value="ProcessContext::primaryContactPKey" />
+        </Parameters>
+        <TransitionTo action="loadPrimaryContact" />
+      </Action>
+      <Action name="loadPrimaryContact" actionType="LOAD" type="LuContact">
+        <Parameters>
+          <Input name="pKey" value="ProcessContext::primaryContactPKey" type="DomPKey" />
+        </Parameters>
+        <Return name="ProcessContext::CustomerDetail.luPrimaryContact" />
+      </Action>
+      <Action actionType="PROCESS" name="keyContactLookup" process="Customer::ContactPartnerLookupProcess">
+        <Parameters>
+          <Input name="AccountPKey" value="ProcessContext::CustomerDetail.pKey" />
+        </Parameters>
+        <ReturnValues>
+          <Return name="ProcessContext::keyContactPKey" value="pKey" />
+        </ReturnValues>
+        <TransitionTo action="setKeyContact" />
+      </Action>
+      <Action name="setKeyContact" actionType="LOGIC" call="ProcessContext::CustomerDetail.setKeyContact">
+        <Parameters>
+          <Input name="keyContact" value="ProcessContext::keyContactPKey" />
+        </Parameters>
+        <TransitionTo action="loadKeyContacts" />
+      </Action>
+      <Action name="loadKeyContacts" actionType="LOAD" type="LuContact">
+        <Parameters>
+          <Input name="pKey" value="ProcessContext::keyContactPKey" />
+        </Parameters>
+        <Return name="ProcessContext::CustomerDetail.luKeyContact" />
       </Action>
       <!-- Opening Hours Tab -->
       <!--Account Harmonization: obsolete
@@ -888,6 +1058,7 @@
         <Parameters>
           <Input name="bReload" type="Literal" value="1" />
         </Parameters>
+        <TransitionTo action="setEARightsForContactList" />
       </Action>
       <!-- Validation POS after click Done Button -->
       <Action name="ValidateCustomerPOSRelation" actionType="VALIDATION">
@@ -963,6 +1134,11 @@
       <Action name="StartMail" actionType="LOGIC" call="ProcessContext::CustomerDetail.sendMail">
         <Parameters>
           <Input name="Mail" value="ProcessContext::CustomerDetail.email1" />
+        </Parameters>
+      </Action>
+      <Action name="StartMailPressed" actionType="LOGIC" call="ProcessContext::CustomerDetail.sendMail">
+        <Parameters>
+          <Input name="Mail" value="ProcessContext::CustomerDetail.eMailAddress" />
         </Parameters>
       </Action>
       <Action name="StartContactPartnerPhone1Call" actionType="LOGIC" call="ProcessContext::CustomerDetail.processPhoneCall">
