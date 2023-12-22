@@ -13,5 +13,6 @@
     <SimpleProperty name="type" type="DomString" />
     <SimpleProperty name="sysReleaseStepText" type="DomString" dataSourceProperty="sysReleaseStepText" />
     <SimpleProperty name="fileName" type="DomFileName" dataSourceProperty="fileName" />
+    <SimpleProperty name="sysSort" type="DomFileName" dataSourceProperty="sysSort" />
   </SimpleProperties>
 </ListItem>

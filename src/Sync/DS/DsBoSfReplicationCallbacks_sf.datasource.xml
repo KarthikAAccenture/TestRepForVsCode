@@ -161,6 +161,10 @@
 					sqlStmt    += "INNER JOIN Job_Definition_List__c ON SF_FileLink.ParentId = Job_Definition_List__c.Id ";
                     sqlStmt    += "WHERE SF_File.Usage__c IN ('InitialBadge', 'FulfilledBadge') ";
 					sqlStmt    += "UNION ";
+                    sqlStmt    += "SELECT SF_File.Id FROM SF_File ";                    
+                    sqlStmt    += "INNER JOIN SF_FileLink ON SF_FileLink.FileId = SF_File.Id ";
+					sqlStmt    += "INNER JOIN Signature__c ON SF_FileLink.ParentId = Signature__c.Id ";
+					sqlStmt    += "UNION ";
 					sqlStmt    += "SELECT SF_File.Id FROM SF_File ";
 					sqlStmt    += "INNER JOIN SF_FileLink ON SF_FileLink.FileId = SF_File.Id ";
 					sqlStmt    += "WHERE SF_FileLink.ParentId in (Select Account_Manager__c.Account__c from Account_Manager__c "; 
@@ -174,24 +178,16 @@
                     
                     var accountIds = Utils.getListParams(jsonParams.accountId);
 
-                    //######################################################
-                    //## Visit only load visit attachments in 3 day range ##
-                    //######################################################
-                    var sqlStmt = "SELECT Visit.Id as Id FROM Visit "; 
-                    sqlStmt    += "INNER JOIN Account on Visit.AccountId = Account.Id ";
-                    sqlStmt    += "WHERE Visit.AccountId IN (" + accountIds.sql + ") ";
-                    sqlStmt    += "UNION ";
-
                     //#####################################################
                     //## Visit Jobs (only for visits in the 3 day range) ##
                     //##################;##################################
-                    sqlStmt    += "SELECT Visit_Job__c.Id as Id FROM Visit_Job__c ";
+                    var sqlStmt = "SELECT Visit_Job__c.Id as Id FROM Visit_Job__c ";
                     sqlStmt    += "INNER JOIN Visit ON Visit.Id = Visit_Job__c.Visit__c ";
                     sqlStmt    += "INNER JOIN Account on Visit.AccountId = Account.Id ";
                     sqlStmt    += "WHERE Visit.AccountId IN (" + accountIds.sql + ") ";
 
                     //list is used twice --> IDs must be doubled in the params
-                    return {sql: sqlStmt, params: accountIds.params.concat(accountIds.params)};
+                    return {sql: sqlStmt, params: accountIds.params};
 
       ]]></VisitAttachments>
       <!-- On demand data request, the below query fetches the ids for which the attachment header data needs to be downloaded. The attachment blob will be downloaded when the user tries to access the attachment. -->
@@ -215,6 +211,12 @@
                    //## Signature  ##
                    //################
                    sqlStmt    += "SELECT Signature__c.Id as parentId FROM Signature__c ";
+                   sqlStmt    += "UNION ";
+                   //############
+                   //## Visit  ##
+                   //############
+                   sqlStmt    += "SELECT Visit.Id as parentId FROM Visit "; 
+                   sqlStmt    += "INNER JOIN Account on Visit.AccountId = Account.Id ";
                    sqlStmt    += "UNION ";
                    //##################
                    //## Mobile Link  ##

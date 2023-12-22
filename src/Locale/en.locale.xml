@@ -127,299 +127,299 @@
       <Label id="DomainCheckMaximum" text="Maximum value is #MAXVALUE#" translationStatus="7" />
       <Label id="DomainCheckLength" text="Maximum length is #LENGTH# characters" translationStatus="7" />
       <!-- END of Restriction violation checks -->
-      <Label id="ThousendSign_Chart" text="k" translationStatus="0" />
-      <Label id="DatePickerUI_MinMaxHeader" text="Invalid Date" translationStatus="0" />
-      <Label id="DatePickerUI_MinMessage" text="Date must not be earlier than" translationStatus="0" />
-      <Label id="DatePickerUI_MaxMessage" text="Date must not be later than" translationStatus="0" />
-      <Label id="DatePickerUI_January_Short" text="Jan" translationStatus="0" />
-      <Label id="DatePickerUI_February_Short" text="Feb" translationStatus="0" />
-      <Label id="DatePickerUI_March_Short" text="Mar" translationStatus="0" />
-      <Label id="DatePickerUI_April_Short" text="Apr" translationStatus="0" />
-      <Label id="DatePickerUI_May_Short" text="May" translationStatus="0" />
-      <Label id="DatePickerUI_June_Short" text="Jun" translationStatus="0" />
-      <Label id="DatePickerUI_July_Short" text="Jul" translationStatus="0" />
-      <Label id="DatePickerUI_August_Short" text="Aug" translationStatus="0" />
-      <Label id="DatePickerUI_September_Short" text="Sep" translationStatus="0" />
-      <Label id="DatePickerUI_October_Short" text="Oct" translationStatus="0" />
-      <Label id="DatePickerUI_November_Short" text="Nov" translationStatus="0" />
-      <Label id="DatePickerUI_December_Short" text="Dec" translationStatus="0" />
-      <Label id="NumberPadUI_Minus" text="+/-" translationStatus="0" />
-      <Label id="NumberPadUI_MinMaxValidationMessageHeader" text="Invalid number" translationStatus="0" />
-      <Label id="NumberPadUI_MinMessage" text="must not be smaller than" translationStatus="0" />
-      <Label id="NumberPadUI_MaxMessage" text="must not be greater than" translationStatus="0" />
-      <Label id="ReplicationConnectionRequired_Title" text="Error" translationStatus="0" />
-      <Label id="ReplicationConnectionRequired_Message" text="Cannot set the connection type #TYPE#. Only the types NONE(0), CELL(1), ETHERNET(2), WIFI(3) and ALL(5) are allowed." translationStatus="0" />
-      <Label id="Attachment" text="Attachment" translationStatus="0" />
-      <Label id="Attachment_TmpPath" text="New captured images can only be displayed in full-screen mode after re-entering the application module you're currently in." translationStatus="0" />
-      <Label id="ReplicationManualSyncDisabled" text="No synchronization possible. All data connections have been disabled." translationStatus="0" />
-      <Label id="ReplicationManualSyncRestricted" text="Unable to synchronize due to current data transmission adjustments." translationStatus="0" />
-      <Label id="ReplicationConnectionBrokenUpload" text="Synchronization error. Data upload to the backend server was not successful." translationStatus="0" />
-      <Label id="ReplicationConnectionBrokenDownload" text="Synchronization error. Data download from the backend server was not successful." translationStatus="0" />
-      <Label id="ReplicationConnectionBrokenTransmission" text="Synchronization error. Data transmission in both directions failed." translationStatus="0" />
-      <Label id="IgnoreContinue" text="Ignore" translationStatus="0" />
-      <Label id="PrinterSetupUI_SettingsLabelId" text="Printer setup" translationStatus="0" />
-      <Label id="PrinterSetupUI_RefreshLabelId" text="Refresh" translationStatus="0" />
-      <Label id="PrinterSetupUI_SetPrinterLabelId" text="Set printer" translationStatus="0" />
-      <Label id="PrinterSetupUI_CurrentPrinterGroupLabelId" text="Current printer" translationStatus="0" />
-      <Label id="PrinterSetupUI_CurrentPrinterId" text="Brand/Model/Address" translationStatus="0" />
-      <Label id="PrinterSetupUI_SelectPrinterGroupTitleId" text="Select new printer" translationStatus="0" />
-      <Label id="PrinterSetupUI_SelectDeviceId" text="Device" translationStatus="0" />
-      <Label id="PrinterSetupUI_SelectModelId" text="Model" translationStatus="0" />
-      <Label id="InvalidPrinterSettingsTitleId" text="Invalid settings" translationStatus="0" />
-      <Label id="InvalidPrinterSettingsMessageId" text="Please select printer device and model." translationStatus="0" />
-      <Label id="Alert" text="Alert" translationStatus="0" />
-      <Label id="ChangePwd_Title" text="Change" translationStatus="0" />
-      <Label id="ChangePwd_Done" text="Done" translationStatus="0" />
-      <Label id="ChangePwd_Tab" text="Password" translationStatus="0" />
-      <Label id="ChangePwd_NetTab" text="Net Password" translationStatus="0" />
-      <Label id="ChangePwd_UserName" text="Username" translationStatus="0" />
-      <Label id="ChangePwd_OldPassword" text="Old password" translationStatus="0" />
-      <Label id="ChangePwd_NewPassword" text="New password" translationStatus="0" />
-      <Label id="ChangePwd_Confirm" text="Confirm" translationStatus="0" />
-      <Label id="ChangePwd_NetWorkUser" text="Network user id" translationStatus="0" />
-      <Label id="ChangePwd_NetPassword" text="Password" translationStatus="0" />
-      <Label id="ChangePwd_NetPasswordConfirm" text="Confirm" translationStatus="0" />
-      <Label id="ChangePwd_NetworkURL" text="URL (optional)" translationStatus="0" />
-      <Label id="PrintPreview_Title" text="Print Preview" translationStatus="0" />
-      <Label id="PrintPreview_Print" text="Print" translationStatus="0" />
-      <Label id="PrintPreview_MaskText" text="Printing" translationStatus="0" />
-      <Label id="PrinterSetupUI_ClosedError" text="Preview closed before printing has been completed." translationStatus="0" />
-      <Label id="ReplicationDeviceDisabled" text="Replication failed. This installation has been disabled for synchronization. Please contact your system administrator." translationStatus="0" />
-      <Label id="Printing_Error" text="There was a problem with your printing request. The printer reported: #ERROR#" translationStatus="0" />
-      <Label id="NewPrinterSettingsTitleId" text="New default printer" translationStatus="0" />
-      <Label id="NewPrinterSettingsMessageId" text="The default printer has been set." translationStatus="0" />
-      <Label id="RefreshPrinterSettingsTitleId" text="Refresh available printers" translationStatus="0" />
-      <Label id="RefreshPrinterSettingsMessageId" text="The list of available printers has been refreshed." translationStatus="0" />
-      <Label id="ValidatePrinterSettingsTitleId" text="Validate settings" translationStatus="0" />
-      <Label id="ValidatePrinterSettingsMessageId" text="Make sure that the selected printer is a #MODEL# or it will not work." translationStatus="0" />
-      <Label id="PrinterSetupUI_WirelessTabLabelId" text="TCP/IP" translationStatus="0" />
-      <Label id="PrinterSetupUI_WirelessDeviceId" text="Device IP" translationStatus="0" />
-      <Label id="InvalidWirelessPrinterSettingsTitleId" text="Validate settings" translationStatus="0" />
-      <Label id="InvalidWirelessPrinterSettingsMessageId" text="Please select model and enter a valid device IP." translationStatus="0" />
-      <Label id="SystemSettingsUI_SettingsLabelId" text="Framework settings" translationStatus="0" />
-      <Label id="SystemSettingsUI_SendLogsLabelId" text="Send logs" translationStatus="0" />
-      <Label id="SystemSettingsUI_ClearLogsLabelId" text="Clear logs" translationStatus="0" />
-      <Label id="SystemSettingsUI_DumpCacheLabelId" text="Dump cache" translationStatus="0" />
-      <Label id="SystemSettingsUI_LoggingGroupLabelId" text="Logging" translationStatus="0" />
-      <Label id="SystemSettingsUI_EnableLoggingBoxLabelId" text="Logging enabled" translationStatus="0" />
-      <Label id="SystemSettingsUI_LogSizeStepperLabelId" text="File size (KB)" translationStatus="0" />
-      <Label id="SystemSettingsUI_LogNumberStepperLabelId" text="Number of log files" translationStatus="0" />
-      <Label id="SystemSettingsUI_CachingGroupLabelId" text="UI caching" translationStatus="0" />
-      <Label id="SystemSettingsUI_CachingEnabledCheckboxLabelId" text="UI caching enabled" translationStatus="0" />
-      <Label id="SystemSettingsUI_CacheSizeLabelId" text="Cache size" translationStatus="0" />
-      <Label id="EmailNotSupported" text="Email is not available in browser scenario." translationStatus="0" />
-      <Label id="InvalidContextKeyOrProperty" text="Cannot set app context value for the #KEY# / #PROPERTY#" translationStatus="0" />
-      <Label id="InvalidContextKeyOrPropertyRead" text="Cannot retrieve app context value for the #KEY# / #PROPERTY#" translationStatus="0" />
-      <Label id="MapAlreadyInitialized" text="The map API has already been initialized. Please restart the app if you want to reset the map API." translationStatus="0" />
-      <Label id="TimePickerUI_Cancel" text="Cancel" translationStatus="0" />
-      <Label id="TimePickerUI_Done" text="Done" translationStatus="0" />
-      <Label id="NoDefaultPrinterFound" text="No default printer found. Please set a printer first." translationStatus="0" />
-      <Label id="AirPrinterError_Title" text="Printer error" translationStatus="0" />
-      <Label id="AirPrinterError_PrinterUnavailable" text="Printer is not available. Please check printer and try again." translationStatus="0" />
-      <Label id="AirPrinterError_AirPrintUnavailableDevice" text="AirPrint support is not available on this device." translationStatus="0" />
-      <Label id="AirPrinterError_AirPrintUnavailableBrowser" text="AirPrint support is not available for the browser scenario." translationStatus="0" />
-      <Label id="AirPrinterError_NoData" text="Failed to load image data to print." translationStatus="0" />
-      <Label id="Navigation" text="Navigation" translationStatus="0" />
-      <Label id="Details" text="Details" translationStatus="0" />
-      <Label id="ReplicationCustomizationNotAllowed" text="Synchronization is not allowed in customization mode" translationStatus="0" />
-      <Label id="Replication_LastUpload" text="Last Upload:" translationStatus="0" />
-      <Label id="Replication_LastDownload" text="Last Download:" translationStatus="0" />
-      <Label id="Printing_NoPrintIdError" text="No print document ID found. Cannot initialize printing." translationStatus="0" />
-      <Label id="Sign_Now" text="Sign now" translationStatus="0" />
-      <Label id="NoVersionInformationAvailable" text="No build information available." translationStatus="0" />
-      <Label id="Replication_LastUpload" text="Last Upload:" translationStatus="0" />
-      <Label id="Replication_LastDownload" text="Last Download:" translationStatus="0" />
-      <Label id="BTError" text="Bluetooth Configuration Error" translationStatus="0" />
-      <Label id="BTPrefixSuffixError" text="Setting the prefix and suffix for the BT scanner failed.&lt;br&gt;Please contact your system administrator." translationStatus="0" />
-      <Label id="fileNotFoundTitle" text="File not found" translationStatus="0" />
-      <Label id="fileNotFoundMessage" text="It seems the file you are trying to open does not exist. If it is an attachment, please re-sync the app." translationStatus="0" />
-      <Label id="ReplicationCustomizationNotAllowed" text="Synchronization is not allowed in customization mode" translationStatus="0" />
-      <Label id="SSOLoginAuthenticateNow" text="Authenticate Now" translationStatus="0" />
-      <Label id="SSOLoginAuthenticateTitle" text="Authentication Required" translationStatus="0" />
-      <Label id="SSOLoginAuthenticateMsg" text="Please note that your data wont get synched until you Authenticate." translationStatus="0" />
-      <Label id="SSOLoginOfflineAuthenticateMsg" text="Your session has timed out. Online reauthentication required." translationStatus="0" />
-      <Label id="netwStatTitle" text="No Network available" translationStatus="0" />
-      <Label id="netwStatMsg" text="Go online to login again" translationStatus="0" />
-      <Label id="loginFailedTitle" text="Login Failed" translationStatus="0" />
-      <Label id="loginFailedMsg" text="Please try logging again" translationStatus="0" />
-      <Label id="Navigation" text="Navigation" translationStatus="0" />
-      <Label id="netwErrTitle" text="Network error" translationStatus="0" />
-      <Label id="Details" text="Details" translationStatus="0" />
-      <Label id="Printing_InProgress" text="Printing not possible. The printer is busy." translationStatus="0" />
-      <Label id="MapIsBlockedLabel" text="Either internet connectivity is very slow or google maps is blocked" translationStatus="0" />
-      <Label id="AdvSearch_Apply" text="Apply" translationStatus="0" />
-      <Label id="Calendar_AllDayId" text="all-day" translationStatus="0" />
-      <Label id="Calendar_AllDayOverflowId" text="more" translationStatus="0" />
-      <Label id="NoVersionInformationAvailable" text="No build information available." translationStatus="0" />
-      <Label id="BTError" text="Bluetooth Configuration Error" translationStatus="0" />
-      <Label id="BTPrefixSuffixError" text="Setting the prefix and suffix for the BT scanner failed.&lt;br&gt;Please contact your system administrator." translationStatus="0" />
-      <Label id="fileNotFoundTitle" text="File not found" translationStatus="0" />
-      <Label id="fileNotFoundMessage" text="It seems the file you are trying to open does not exist. If it is an attachment, please re-sync the app." translationStatus="0" />
-      <Label id="AdvSearch_Date" text="Date" translationStatus="0" />
-      <Label id="AdvSearch_Time" text="Time" translationStatus="0" />
-      <Label id="AdvSearch_AlwaysNow" text="Use Now" translationStatus="0" />
-      <Label id="PrintId" text="Print" translationStatus="0" />
-      <Label id="SyncActive" text="Synchronization is running. Please try again later." translationStatus="0" />
-      <Label id="OnTheRoadSyncLabelId" text="Sync" translationStatus="0" />
-      <Label id="FirstSyncOfDayLabelId" text="First-Sync-of-Day" translationStatus="0" />
-      <Label id="AboutScreenTitle" text="About" translationStatus="0" />
-      <Label id="LicenceInfoText" text="The following 3rd party components are used by Salesforce CGCloud" translationStatus="0" />
-      <Label id="VersionInfoText" text="Version Information:" translationStatus="0" />
-      <Label id="LicenseInfoScreenId" text="License" translationStatus="0" />
-      <Label id="PickReplicationTypeScreenId" text="Sync modes" translationStatus="0" />
-      <Label id="PrintPreview" text="Print Preview" translationStatus="0" />
-      <Label id="TQStartupFailed" text="Initialization of synchronization failed: #ERROR#" translationStatus="0" />
-      <Label id="TQReplicationFailed" text="Synchronization failed: #ERROR#" translationStatus="0" />
-      <Label id="PhoneDialerUnavailable" text="Phone dialer not available." translationStatus="0" />
-      <Label id="ReplicationSyncCard_Conjunction" text="and" translationStatus="0" />
-      <Label id="ReplicationSyncCard_NotUploaded_Plural" text="are not uploaded yet." translationStatus="0" />
-      <Label id="ReplicationSyncCard_NotUploaded_Singular" text="is not uploaded yet." translationStatus="0" />
-      <Label id="ReplicationSyncCard_NonePending" text="are available for upload." translationStatus="0" />
-      <Label id="Synchronizing" text="Synchronizing" translationStatus="0" />
-      <Label id="Uploading_Data" text="Uploading data" translationStatus="0" />
-      <Label id="Downloading_Data" text="Downloading data" translationStatus="0" />
-      <Label id="Downloading_Attachments" text="Downloading attachments" translationStatus="0" />
-      <Label id="DeviceIdText" text="Device ID: #deviceid#" translationStatus="0" />
-      <Label id="TQSyncFailed" text="Synchronization Failed" translationStatus="0" />
-      <Label id="TQDeviceOffline" text="Device Offline" translationStatus="0" />
-      <Label id="TQConnectInternet" text="Please connect to the Internet and press OK." translationStatus="0" />
-      <Label id="TQInitFailed" text="Initialisation has failed" translationStatus="0" />
-      <Label id="TQContactAdmin" text="Please contact your administrator." translationStatus="0" />
-      <Label id="TQLoginError" text="Login Error" translationStatus="0" />
-      <Label id="TQNotRegisteredUser" text="The application is already registered to another user. Please login with the original credentials that were registered." translationStatus="0" />
-      <Label id="Cleaning_Up" text="Purging data" translationStatus="0" />
-      <Label id="TQ_Sync_Skipped" text="Skipped" translationStatus="0" />
-      <Label id="syncCancelInProgress" text="Cancelling..." translationStatus="0" />
-      <Label id="syncCancelButtonLabel" text="CANCEL" translationStatus="0" />
-      <Label id="TQ_Sync_Connecting" text="Connecting" translationStatus="0" />
-      <Label id="TQ_Sync_DownloadingConfiguration" text="Downloading app content" translationStatus="0" />
-      <Label id="TQ_Sync_UploadingData" text="Uploading data" translationStatus="0" />
-      <Label id="TQ_Sync_Purging" text="Purging" translationStatus="0" />
-      <Label id="TQ_Sync_DownloadingData" text="Downloading data" translationStatus="0" />
-      <Label id="TQ_Sync_ConfiguringApplication" text="Configuring app" translationStatus="0" />
-      <Label id="TQ_Sync_DownloadingOnDemandData" text="Downloading more data" translationStatus="0" />
-      <Label id="TQ_Sync_Done" text="Done" translationStatus="0" />
-      <Label id="NoLogoutDuringSFReplication" text="The device is currently synchronizing with the backend and no logout is possible. Please try again later." translationStatus="0" />
-      <Label id="NoNetworkAvailable" text="No Network available" translationStatus="0" />
-      <Label id="GoOnlineToLogin" text="Go online to login again" translationStatus="0" />
-      <Label id="WarningInactiveTooLong" text="You've been inactive for too long" translationStatus="0" />
-      <Label id="PleaseEnterYourPin" text="To continue working, please enter your PIN" translationStatus="0" />
-      <Label id="PinRequiredTitle" text="PIN required" translationStatus="0" />
-      <Label id="WrongPin" text="The pin you entered is incorrect." translationStatus="0" />
-      <Label id="WrongPinTryAgain" text="Wrong PIN, please try again" translationStatus="0" />
-      <Label id="AttemptsLeft" text="You have #AttemptsLeft# attempt(s) left to enter the correct PIN." translationStatus="0" />
-      <Label id="Info" text="Info" translationStatus="0" />
-      <Label id="SfSubDomainLoginURL" text="Login URL (optional) :" translationStatus="0" />
-      <Label id="ChoosePin" text="Choose your PIN" translationStatus="0" />
-      <Label id="ConfirmPin" text="Confirm your PIN" translationStatus="0" />
-      <Label id="PinDontMatch" text="PINs don't match, please try again" translationStatus="0" />
-      <Label id="SameDigitPinError" text="Use of the same digit is not allowed" translationStatus="0" />
-      <Label id="NoResetPinDuringSFReplication" text="Log out will be executed after synchronization is finished for a Reset of the PIN." translationStatus="0" />
-      <Label id="LogoutToResetPin" text="Log out will be executed for a Reset of the PIN." translationStatus="0" />
-      <Label id="Select" text="Select" translationStatus="0" />
-      <Label id="DatePickerUI_Monday_Long" text="Monday" translationStatus="0" />
-      <Label id="DatePickerUI_Tuesday_Long" text="Tuesday" translationStatus="0" />
-      <Label id="DatePickerUI_Wednesday_Long" text="Wednesday" translationStatus="0" />
-      <Label id="DatePickerUI_Thursday_Long" text="Thursday" translationStatus="0" />
-      <Label id="DatePickerUI_Friday_Long" text="Friday" translationStatus="0" />
-      <Label id="DatePickerUI_Saturday_Long" text="Saturday" translationStatus="0" />
-      <Label id="DatePickerUI_Sunday_Long" text="Sunday" translationStatus="0" />
-      <Label id="TimePickerUI_Now" text="Now" translationStatus="0" />
-      <Label id="ContactAdmin" text="Please contact your administrator." translationStatus="0" />
-      <Label id="ServerNotReachable" text="Server not reachable." translationStatus="0" />
-      <Label id="TQ_Sync_Error" text="There was an error during synchronization" translationStatus="0" />
-      <Label id="NoInfoAvailable" text="No information available" translationStatus="0" />
-      <Label id="ValidationMessageInputTooLongError" text="Object #processContextName# contains invalid data in field #simplePropertyName#" translationStatus="0" />
-      <Label id="Mobile_number_missing" text="Mobile-number missing." translationStatus="0" />
-      <Label id="PhoneError" text="Error in phone dialer." translationStatus="0" />
-      <Label id="SMS_not_supported" text="SMS not supported." translationStatus="0" />
-      <Label id="SMSError" text="Error in SMS application." translationStatus="0" />
-      <Label id="ValidationMessageInputTooLong" text="Input #processContextValue# is too long." translationStatus="0" />
-      <Label id="ValidationMessageInvalidData" text="Invalid data in #processContextValue#." translationStatus="0" />
-      <Label id="AdvSearch_Within" text="Within" translationStatus="0" />
-      <Label id="NoRouteFound" text="No route found." translationStatus="0" />
-      <Label id="DefaultRouteErrorMsg" text="Something went wrong while displaying route." translationStatus="0" />
-      <Label id="InvalidGoogleMapAPIKey" text="Invalid Google Maps API Key or Client. Please contact your system administrator." translationStatus="0" />
-      <Label id="MissingGoogleMapAPIKey" text="Missing Google Maps API Key or Client. Please contact your system administrator." translationStatus="0" />
-      <Label id="InvalidGeoCoordinates" text="Invalid Geo Coordinates." translationStatus="0" />
-      <Label id="DistanceError" text="First customer is more than 1000 KMs far from current location." translationStatus="0" />
-      <Label id="AdditionalWaypointsLimitExceed" text="Only first 1000 additional waypoints are shown. Please refine your search." translationStatus="0" />
-      <Label id="InvalidDistanceSearchRadius" text="The search radius cannot be displayed. Please contact your system administrator." translationStatus="0" />
-      <Label id="PositionPlaceholderText" text="Choose starting point" translationStatus="0" />
-      <Label id="UserLocation" text="Your Location" translationStatus="0" />
-      <Label id="LastUserLocationError" text="Not able to determine current user location, last know location is used as current location." translationStatus="0" />
-      <Label id="UserLocationNotFoundError" text="Not able to determine current user location." translationStatus="0" />
-      <Label id="Theming_Header" text="Select your favorite theme" translationStatus="0" />
-      <Label id="Theming_Hint" text="Note: you'll need to restart the app to apply the theme" translationStatus="0" />
-      <Label id="Theming_Default" text="Default" translationStatus="0" />
-      <Label id="StartTyping" text="Start typing" translationStatus="0" />
-      <Label id="Column" text="Column" translationStatus="0" />
-      <Label id="ColumnNumberInClipboard" text="Column number in clipboard" translationStatus="0" />
-      <Label id="Settings" text="Settings" translationStatus="0" />
-      <Label id="Mapping" text="Mapping" translationStatus="0" />
-      <Label id="Preview" text="Preview" translationStatus="0" />
-      <Label id="RowsFound" text="rows found" translationStatus="0" />
-      <Label id="Problems" text="problems" translationStatus="0" />
-      <Label id="DataImportWizard_ProblemGridColumn1" text="Row in source" translationStatus="0" />
-      <Label id="DataImportWizard_ProblemGridColumn2" text="Column" translationStatus="0" />
-      <Label id="DataImportWizard_ProblemGridColumn3" text="Problem" translationStatus="0" />
-      <Label id="DataImportWizard_ProblemsFoundHeadline" text="Problems found" translationStatus="0" />
-      <Label id="DataImportWizardValidations_ClipboardSizeExceeded" text="Clipboard content is too big. Try copying less rows." translationStatus="0" />
-      <Label id="DataImportWizardValidations_NoData" text="No data found in the clipboard." translationStatus="0" />
-      <Label id="DataImportWizardValidations_TooManyRows" text="Maximum of #MAX_ROW_NO# rows was exceeded, complete the paste process and repeat for additional rows." translationStatus="0" />
-      <Label id="DataImportWizardValidations_NoColMapping" text="Mapping invalid. Select another column in the Mapping grid." translationStatus="0" />
-      <Label id="DataImportWizardValidations_ColIndexExceeded" text="Not enough columns. Make sure you are pasting the same number of columns you see in the mapping grid." translationStatus="0" />
-      <Label id="DataImportWizardValidations_RowHasNotEnoughCols" text="Not enough columns. Make sure all rows have the same number of columns you see in the mapping grid." translationStatus="0" />
-      <Label id="DataImportWizardValidations_MaxLength" text="Value exceeds maximum length." translationStatus="0" />
-      <Label id="DataImportWizardValidations_RegexNotMatching" text="Value contains invalid characters." translationStatus="0" />
-      <Label id="DataImportWizardValidations_DatasourceValidationFailed" text="Value not found in list of allowed values." translationStatus="0" />
-      <Label id="DataImportWizardValidations_NotANumber" text="Value is not a number." translationStatus="0" />
-      <Label id="DataImportWizardValidations_TooManyErrors" text="Showing the first #MAX_PROBLEM_NO# problems. Once problems are fixed, more will be shown here." translationStatus="0" />
-      <Label id="Printing_NotSupported" text="Printing is not available in browser scenario." translationStatus="0" />
-      <Label id="AppRunIdText" text="App Run ID:" translationStatus="0" />
-      <Label id="CopySupportInfoButtonText" text="Copy Support Info" translationStatus="0" />
-      <Label id="ListTruncatedMessage" text="List contains more than #RestrictedItemCount# items. The first #RestrictedItemCount# items are displayed." translationStatus="0" />
-      <Label id="ResultCountMessage" text="Showing #displayCount# of #resultCount# results" translationStatus="0" />
-      <Label id="NoResultsMessage" text="Sorry, we couldn't find any results." translationStatus="0" />
-      <Label id="Skipped" text="skipped" translationStatus="0" />
-      <Label id="DataImportWizard_ProblemsFoundDetails" text="Check the source you copied from and reload or update the mappings" translationStatus="0" />
-      <Label id="DataImportWizard_ProblemUITitle" text="Paste from Clipboard" translationStatus="0" />
-      <Label id="MappingDetails" text="Check the preview to make sure the mapping is correct" translationStatus="0" />
-      <Label id="ThousandsSeperator" text="Thousands Seperator" translationStatus="0" />
-      <Label id="DecimalSeperator" text="Decimal Seperator" translationStatus="0" />
-      <Label id="ShowDetails" text="Show Details" translationStatus="0" />
-      <Label id="PreviewDetails" text="Showing first 4 rows" translationStatus="0" />
-      <Label id="Share" text="Share" translationStatus="0" />
-      <Label id="ServerNotResolved" text="A server with the specified hostname could not be found." translationStatus="0" />
-      <Label id="DeviceOffline" text="The device is offline." translationStatus="0" />
-      <Label id="PrintV2_ToggleNotFound" text="Toggle not found" translationStatus="0" />
-      <Label id="PrintV2_ToggleValueNotFound" text="Toggle value not found" translationStatus="0" />
-      <Label id="PrintV2_ToggleFieldNotFound" text="Toggle field not found" translationStatus="0" />
-      <Label id="PrintingV2_SharePdf" text="Your PDF is ready to be shared." translationStatus="0" />
-      <Label id="PrintV2Preview_Title" text="PDF preview" translationStatus="0" />
-      <Label id="SMSCancelled" text="User canceled sending SMS." translationStatus="0" />
-      <Label id="PrintV2Preview_Title" text="PDF preview" translationStatus="0" />
-      <Label id="LicenceInfo" text="The following 3rd party components are used by #applicationName#" translationStatus="0" />
-      <Label id="SyncFailed" text="Synchronization Failed" translationStatus="0" />
-      <Label id="SyncLoginError" text="Login Error" translationStatus="0" />
-      <Label id="Sync_Skipped" text="Skipped" translationStatus="0" />
-      <Label id="SyncNotRegisteredUser" text="The application is already registered to another user. Please login with the original credentials that were registered." translationStatus="0" />
-      <Label id="Sync_Connecting" text="Connecting" translationStatus="0" />
-      <Label id="Sync_DownloadingConfiguration" text="Downloading app content" translationStatus="0" />
-      <Label id="Sync_UploadingData" text="Uploading data" translationStatus="0" />
-      <Label id="Sync_Purging" text="Purging" translationStatus="0" />
-      <Label id="Sync_DownloadingData" text="Downloading data" translationStatus="0" />
-      <Label id="Sync_ConfiguringApplication" text="Configuring app" translationStatus="0" />
-      <Label id="Sync_DownloadingOnDemandData" text="Downloading more data" translationStatus="0" />
-      <Label id="Sync_Done" text="Done" translationStatus="0" />
-      <Label id="Sync_Error" text="There was an error during synchronization" translationStatus="0" />
-      <Label id="SMSCancelled" text="User canceled sending SMS." translationStatus="0" />
-      <Label id="NO_UI_PLUGIN_FOUND" text="No such UI Plugin found " translationStatus="0" />
-      <Label id="DeviceIdChanged" text="Device Id Changed" translationStatus="0" />
-      <Label id="DeviceIdChanged_UserMsg" text="You must re-authenticate and set new PIN to continue using the application." translationStatus="0" />
-      <Label id="NotificationPopupForUnsavedChangesTitle" text="You have unsaved changes" translationStatus="0" />
-      <Label id="NotificationPopupForUnsavedChangesBody" text="Open CG Cloud, and then navigate back to the cockpit to save changes." translationStatus="0" />
-      <Label id="AdvSearch_ApplyFilter" text="Apply Filter" translationStatus="0" />
+      <Label id="ThousendSign_Chart" text="k" translationStatus="7" />
+      <Label id="DatePickerUI_MinMaxHeader" text="Invalid Date" translationStatus="7" />
+      <Label id="DatePickerUI_MinMessage" text="Date must not be earlier than" translationStatus="7" />
+      <Label id="DatePickerUI_MaxMessage" text="Date must not be later than" translationStatus="7" />
+      <Label id="DatePickerUI_January_Short" text="Jan" translationStatus="7" />
+      <Label id="DatePickerUI_February_Short" text="Feb" translationStatus="7" />
+      <Label id="DatePickerUI_March_Short" text="Mar" translationStatus="7" />
+      <Label id="DatePickerUI_April_Short" text="Apr" translationStatus="7" />
+      <Label id="DatePickerUI_May_Short" text="May" translationStatus="7" />
+      <Label id="DatePickerUI_June_Short" text="Jun" translationStatus="7" />
+      <Label id="DatePickerUI_July_Short" text="Jul" translationStatus="7" />
+      <Label id="DatePickerUI_August_Short" text="Aug" translationStatus="7" />
+      <Label id="DatePickerUI_September_Short" text="Sep" translationStatus="7" />
+      <Label id="DatePickerUI_October_Short" text="Oct" translationStatus="7" />
+      <Label id="DatePickerUI_November_Short" text="Nov" translationStatus="7" />
+      <Label id="DatePickerUI_December_Short" text="Dec" translationStatus="7" />
+      <Label id="NumberPadUI_Minus" text="+/-" translationStatus="7" />
+      <Label id="NumberPadUI_MinMaxValidationMessageHeader" text="Invalid number" translationStatus="7" />
+      <Label id="NumberPadUI_MinMessage" text="must not be smaller than" translationStatus="7" />
+      <Label id="NumberPadUI_MaxMessage" text="must not be greater than" translationStatus="7" />
+      <Label id="ReplicationConnectionRequired_Title" text="Error" translationStatus="7" />
+      <Label id="ReplicationConnectionRequired_Message" text="Cannot set the connection type #TYPE#. Only the types NONE(0), CELL(1), ETHERNET(2), WIFI(3) and ALL(5) are allowed." translationStatus="7" />
+      <Label id="Attachment" text="Attachment" translationStatus="7" />
+      <Label id="Attachment_TmpPath" text="New captured images can only be displayed in full-screen mode after re-entering the application module you're currently in." translationStatus="7" />
+      <Label id="ReplicationManualSyncDisabled" text="No synchronization possible. All data connections have been disabled." translationStatus="7" />
+      <Label id="ReplicationManualSyncRestricted" text="Unable to synchronize due to current data transmission adjustments." translationStatus="7" />
+      <Label id="ReplicationConnectionBrokenUpload" text="Synchronization error. Data upload to the backend server was not successful." translationStatus="7" />
+      <Label id="ReplicationConnectionBrokenDownload" text="Synchronization error. Data download from the backend server was not successful." translationStatus="7" />
+      <Label id="ReplicationConnectionBrokenTransmission" text="Synchronization error. Data transmission in both directions failed." translationStatus="7" />
+      <Label id="IgnoreContinue" text="Ignore" translationStatus="7" />
+      <Label id="PrinterSetupUI_SettingsLabelId" text="Printer setup" translationStatus="7" />
+      <Label id="PrinterSetupUI_RefreshLabelId" text="Refresh" translationStatus="7" />
+      <Label id="PrinterSetupUI_SetPrinterLabelId" text="Set printer" translationStatus="7" />
+      <Label id="PrinterSetupUI_CurrentPrinterGroupLabelId" text="Current printer" translationStatus="7" />
+      <Label id="PrinterSetupUI_CurrentPrinterId" text="Brand/Model/Address" translationStatus="7" />
+      <Label id="PrinterSetupUI_SelectPrinterGroupTitleId" text="Select new printer" translationStatus="7" />
+      <Label id="PrinterSetupUI_SelectDeviceId" text="Device" translationStatus="7" />
+      <Label id="PrinterSetupUI_SelectModelId" text="Model" translationStatus="7" />
+      <Label id="InvalidPrinterSettingsTitleId" text="Invalid settings" translationStatus="7" />
+      <Label id="InvalidPrinterSettingsMessageId" text="Please select printer device and model." translationStatus="7" />
+      <Label id="Alert" text="Alert" translationStatus="7" />
+      <Label id="ChangePwd_Title" text="Change" translationStatus="7" />
+      <Label id="ChangePwd_Done" text="Done" translationStatus="7" />
+      <Label id="ChangePwd_Tab" text="Password" translationStatus="7" />
+      <Label id="ChangePwd_NetTab" text="Net Password" translationStatus="7" />
+      <Label id="ChangePwd_UserName" text="Username" translationStatus="7" />
+      <Label id="ChangePwd_OldPassword" text="Old password" translationStatus="7" />
+      <Label id="ChangePwd_NewPassword" text="New password" translationStatus="7" />
+      <Label id="ChangePwd_Confirm" text="Confirm" translationStatus="7" />
+      <Label id="ChangePwd_NetWorkUser" text="Network user id" translationStatus="7" />
+      <Label id="ChangePwd_NetPassword" text="Password" translationStatus="7" />
+      <Label id="ChangePwd_NetPasswordConfirm" text="Confirm" translationStatus="7" />
+      <Label id="ChangePwd_NetworkURL" text="URL (optional)" translationStatus="7" />
+      <Label id="PrintPreview_Title" text="Print Preview" translationStatus="7" />
+      <Label id="PrintPreview_Print" text="Print" translationStatus="7" />
+      <Label id="PrintPreview_MaskText" text="Printing" translationStatus="7" />
+      <Label id="PrinterSetupUI_ClosedError" text="Preview closed before printing has been completed." translationStatus="7" />
+      <Label id="ReplicationDeviceDisabled" text="Replication failed. This installation has been disabled for synchronization. Please contact your system administrator." translationStatus="7" />
+      <Label id="Printing_Error" text="There was a problem with your printing request. The printer reported: #ERROR#" translationStatus="7" />
+      <Label id="NewPrinterSettingsTitleId" text="New default printer" translationStatus="7" />
+      <Label id="NewPrinterSettingsMessageId" text="The default printer has been set." translationStatus="7" />
+      <Label id="RefreshPrinterSettingsTitleId" text="Refresh available printers" translationStatus="7" />
+      <Label id="RefreshPrinterSettingsMessageId" text="The list of available printers has been refreshed." translationStatus="7" />
+      <Label id="ValidatePrinterSettingsTitleId" text="Validate settings" translationStatus="7" />
+      <Label id="ValidatePrinterSettingsMessageId" text="Make sure that the selected printer is a #MODEL# or it will not work." translationStatus="7" />
+      <Label id="PrinterSetupUI_WirelessTabLabelId" text="TCP/IP" translationStatus="7" />
+      <Label id="PrinterSetupUI_WirelessDeviceId" text="Device IP" translationStatus="7" />
+      <Label id="InvalidWirelessPrinterSettingsTitleId" text="Validate settings" translationStatus="7" />
+      <Label id="InvalidWirelessPrinterSettingsMessageId" text="Please select model and enter a valid device IP." translationStatus="7" />
+      <Label id="SystemSettingsUI_SettingsLabelId" text="Framework settings" translationStatus="7" />
+      <Label id="SystemSettingsUI_SendLogsLabelId" text="Send logs" translationStatus="7" />
+      <Label id="SystemSettingsUI_ClearLogsLabelId" text="Clear logs" translationStatus="7" />
+      <Label id="SystemSettingsUI_DumpCacheLabelId" text="Dump cache" translationStatus="7" />
+      <Label id="SystemSettingsUI_LoggingGroupLabelId" text="Logging" translationStatus="7" />
+      <Label id="SystemSettingsUI_EnableLoggingBoxLabelId" text="Logging enabled" translationStatus="7" />
+      <Label id="SystemSettingsUI_LogSizeStepperLabelId" text="File size (KB)" translationStatus="7" />
+      <Label id="SystemSettingsUI_LogNumberStepperLabelId" text="Number of log files" translationStatus="7" />
+      <Label id="SystemSettingsUI_CachingGroupLabelId" text="UI caching" translationStatus="7" />
+      <Label id="SystemSettingsUI_CachingEnabledCheckboxLabelId" text="UI caching enabled" translationStatus="7" />
+      <Label id="SystemSettingsUI_CacheSizeLabelId" text="Cache size" translationStatus="7" />
+      <Label id="EmailNotSupported" text="Email is not available in browser scenario." translationStatus="7" />
+      <Label id="InvalidContextKeyOrProperty" text="Cannot set app context value for the #KEY# / #PROPERTY#" translationStatus="7" />
+      <Label id="InvalidContextKeyOrPropertyRead" text="Cannot retrieve app context value for the #KEY# / #PROPERTY#" translationStatus="7" />
+      <Label id="MapAlreadyInitialized" text="The map API has already been initialized. Please restart the app if you want to reset the map API." translationStatus="7" />
+      <Label id="TimePickerUI_Cancel" text="Cancel" translationStatus="7" />
+      <Label id="TimePickerUI_Done" text="Done" translationStatus="7" />
+      <Label id="NoDefaultPrinterFound" text="No default printer found. Please set a printer first." translationStatus="7" />
+      <Label id="AirPrinterError_Title" text="Printer error" translationStatus="7" />
+      <Label id="AirPrinterError_PrinterUnavailable" text="Printer is not available. Please check printer and try again." translationStatus="7" />
+      <Label id="AirPrinterError_AirPrintUnavailableDevice" text="AirPrint support is not available on this device." translationStatus="7" />
+      <Label id="AirPrinterError_AirPrintUnavailableBrowser" text="AirPrint support is not available for the browser scenario." translationStatus="7" />
+      <Label id="AirPrinterError_NoData" text="Failed to load image data to print." translationStatus="7" />
+      <Label id="Navigation" text="Navigation" translationStatus="7" />
+      <Label id="Details" text="Details" translationStatus="7" />
+      <Label id="ReplicationCustomizationNotAllowed" text="Synchronization is not allowed in customization mode" translationStatus="7" />
+      <Label id="Replication_LastUpload" text="Last Upload:" translationStatus="7" />
+      <Label id="Replication_LastDownload" text="Last Download:" translationStatus="7" />
+      <Label id="Printing_NoPrintIdError" text="No print document ID found. Cannot initialize printing." translationStatus="7" />
+      <Label id="Sign_Now" text="Sign now" translationStatus="7" />
+      <Label id="NoVersionInformationAvailable" text="No build information available." translationStatus="7" />
+      <Label id="Replication_LastUpload" text="Last Upload:" translationStatus="7" />
+      <Label id="Replication_LastDownload" text="Last Download:" translationStatus="7" />
+      <Label id="BTError" text="Bluetooth Configuration Error" translationStatus="7" />
+      <Label id="BTPrefixSuffixError" text="Setting the prefix and suffix for the BT scanner failed.&lt;br&gt;Please contact your system administrator." translationStatus="7" />
+      <Label id="fileNotFoundTitle" text="File not found" translationStatus="7" />
+      <Label id="fileNotFoundMessage" text="It seems the file you are trying to open does not exist. If it is an attachment, please re-sync the app." translationStatus="7" />
+      <Label id="ReplicationCustomizationNotAllowed" text="Synchronization is not allowed in customization mode" translationStatus="7" />
+      <Label id="SSOLoginAuthenticateNow" text="Authenticate Now" translationStatus="7" />
+      <Label id="SSOLoginAuthenticateTitle" text="Authentication Required" translationStatus="7" />
+      <Label id="SSOLoginAuthenticateMsg" text="Please note that your data wont get synched until you Authenticate." translationStatus="7" />
+      <Label id="SSOLoginOfflineAuthenticateMsg" text="Your session has timed out. Online reauthentication required." translationStatus="7" />
+      <Label id="netwStatTitle" text="No Network available" translationStatus="7" />
+      <Label id="netwStatMsg" text="Go online to login again" translationStatus="7" />
+      <Label id="loginFailedTitle" text="Login Failed" translationStatus="7" />
+      <Label id="loginFailedMsg" text="Please try logging again" translationStatus="7" />
+      <Label id="Navigation" text="Navigation" translationStatus="7" />
+      <Label id="netwErrTitle" text="Network error" translationStatus="7" />
+      <Label id="Details" text="Details" translationStatus="7" />
+      <Label id="Printing_InProgress" text="Printing not possible. The printer is busy." translationStatus="7" />
+      <Label id="MapIsBlockedLabel" text="Either internet connectivity is very slow or google maps is blocked" translationStatus="7" />
+      <Label id="AdvSearch_Apply" text="Apply" translationStatus="7" />
+      <Label id="Calendar_AllDayId" text="all-day" translationStatus="7" />
+      <Label id="Calendar_AllDayOverflowId" text="more" translationStatus="7" />
+      <Label id="NoVersionInformationAvailable" text="No build information available." translationStatus="7" />
+      <Label id="BTError" text="Bluetooth Configuration Error" translationStatus="7" />
+      <Label id="BTPrefixSuffixError" text="Setting the prefix and suffix for the BT scanner failed.&lt;br&gt;Please contact your system administrator." translationStatus="7" />
+      <Label id="fileNotFoundTitle" text="File not found" translationStatus="7" />
+      <Label id="fileNotFoundMessage" text="It seems the file you are trying to open does not exist. If it is an attachment, please re-sync the app." translationStatus="7" />
+      <Label id="AdvSearch_Date" text="Date" translationStatus="7" />
+      <Label id="AdvSearch_Time" text="Time" translationStatus="7" />
+      <Label id="AdvSearch_AlwaysNow" text="Use Now" translationStatus="7" />
+      <Label id="PrintId" text="Print" translationStatus="7" />
+      <Label id="SyncActive" text="Synchronization is running. Please try again later." translationStatus="7" />
+      <Label id="OnTheRoadSyncLabelId" text="Sync" translationStatus="7" />
+      <Label id="FirstSyncOfDayLabelId" text="First-Sync-of-Day" translationStatus="7" />
+      <Label id="AboutScreenTitle" text="About" translationStatus="7" />
+      <Label id="LicenceInfoText" text="The following 3rd party components are used by Salesforce CGCloud" translationStatus="7" />
+      <Label id="VersionInfoText" text="Version Information:" translationStatus="7" />
+      <Label id="LicenseInfoScreenId" text="License" translationStatus="7" />
+      <Label id="PickReplicationTypeScreenId" text="Sync modes" translationStatus="7" />
+      <Label id="PrintPreview" text="Print Preview" translationStatus="7" />
+      <Label id="TQStartupFailed" text="Initialization of synchronization failed: #ERROR#" translationStatus="7" />
+      <Label id="TQReplicationFailed" text="Synchronization failed: #ERROR#" translationStatus="7" />
+      <Label id="PhoneDialerUnavailable" text="Phone dialer not available." translationStatus="7" />
+      <Label id="ReplicationSyncCard_Conjunction" text="and" translationStatus="7" />
+      <Label id="ReplicationSyncCard_NotUploaded_Plural" text="are not uploaded yet." translationStatus="7" />
+      <Label id="ReplicationSyncCard_NotUploaded_Singular" text="is not uploaded yet." translationStatus="7" />
+      <Label id="ReplicationSyncCard_NonePending" text="are available for upload." translationStatus="7" />
+      <Label id="Synchronizing" text="Synchronizing" translationStatus="7" />
+      <Label id="Uploading_Data" text="Uploading data" translationStatus="7" />
+      <Label id="Downloading_Data" text="Downloading data" translationStatus="7" />
+      <Label id="Downloading_Attachments" text="Downloading attachments" translationStatus="7" />
+      <Label id="DeviceIdText" text="Device ID: #deviceid#" translationStatus="7" />
+      <Label id="TQSyncFailed" text="Synchronization Failed" translationStatus="7" />
+      <Label id="TQDeviceOffline" text="Device Offline" translationStatus="7" />
+      <Label id="TQConnectInternet" text="Please connect to the Internet and press OK." translationStatus="7" />
+      <Label id="TQInitFailed" text="Initialisation has failed" translationStatus="7" />
+      <Label id="TQContactAdmin" text="Please contact your administrator." translationStatus="7" />
+      <Label id="TQLoginError" text="Login Error" translationStatus="7" />
+      <Label id="TQNotRegisteredUser" text="The application is already registered to another user. Please login with the original credentials that were registered." translationStatus="7" />
+      <Label id="Cleaning_Up" text="Purging data" translationStatus="7" />
+      <Label id="TQ_Sync_Skipped" text="Skipped" translationStatus="7" />
+      <Label id="syncCancelInProgress" text="Cancelling..." translationStatus="7" />
+      <Label id="syncCancelButtonLabel" text="CANCEL" translationStatus="7" />
+      <Label id="TQ_Sync_Connecting" text="Connecting" translationStatus="7" />
+      <Label id="TQ_Sync_DownloadingConfiguration" text="Downloading app content" translationStatus="7" />
+      <Label id="TQ_Sync_UploadingData" text="Uploading data" translationStatus="7" />
+      <Label id="TQ_Sync_Purging" text="Purging" translationStatus="7" />
+      <Label id="TQ_Sync_DownloadingData" text="Downloading data" translationStatus="7" />
+      <Label id="TQ_Sync_ConfiguringApplication" text="Configuring app" translationStatus="7" />
+      <Label id="TQ_Sync_DownloadingOnDemandData" text="Downloading more data" translationStatus="7" />
+      <Label id="TQ_Sync_Done" text="Done" translationStatus="7" />
+      <Label id="NoLogoutDuringSFReplication" text="The device is currently synchronizing with the backend and no logout is possible. Please try again later." translationStatus="7" />
+      <Label id="NoNetworkAvailable" text="No Network available" translationStatus="7" />
+      <Label id="GoOnlineToLogin" text="Go online to login again" translationStatus="7" />
+      <Label id="WarningInactiveTooLong" text="You've been inactive for too long" translationStatus="7" />
+      <Label id="PleaseEnterYourPin" text="To continue working, please enter your PIN" translationStatus="7" />
+      <Label id="PinRequiredTitle" text="PIN required" translationStatus="7" />
+      <Label id="WrongPin" text="The pin you entered is incorrect." translationStatus="7" />
+      <Label id="WrongPinTryAgain" text="Wrong PIN, please try again" translationStatus="7" />
+      <Label id="AttemptsLeft" text="You have #AttemptsLeft# attempt(s) left to enter the correct PIN." translationStatus="7" />
+      <Label id="Info" text="Info" translationStatus="7" />
+      <Label id="SfSubDomainLoginURL" text="Login URL (optional) :" translationStatus="7" />
+      <Label id="ChoosePin" text="Choose your PIN" translationStatus="7" />
+      <Label id="ConfirmPin" text="Confirm your PIN" translationStatus="7" />
+      <Label id="PinDontMatch" text="PINs don't match, please try again" translationStatus="7" />
+      <Label id="SameDigitPinError" text="Use of the same digit is not allowed" translationStatus="7" />
+      <Label id="NoResetPinDuringSFReplication" text="Log out will be executed after synchronization is finished for a Reset of the PIN." translationStatus="7" />
+      <Label id="LogoutToResetPin" text="Log out will be executed for a Reset of the PIN." translationStatus="7" />
+      <Label id="Select" text="Select" translationStatus="7" />
+      <Label id="DatePickerUI_Monday_Long" text="Monday" translationStatus="7" />
+      <Label id="DatePickerUI_Tuesday_Long" text="Tuesday" translationStatus="7" />
+      <Label id="DatePickerUI_Wednesday_Long" text="Wednesday" translationStatus="7" />
+      <Label id="DatePickerUI_Thursday_Long" text="Thursday" translationStatus="7" />
+      <Label id="DatePickerUI_Friday_Long" text="Friday" translationStatus="7" />
+      <Label id="DatePickerUI_Saturday_Long" text="Saturday" translationStatus="7" />
+      <Label id="DatePickerUI_Sunday_Long" text="Sunday" translationStatus="7" />
+      <Label id="TimePickerUI_Now" text="Now" translationStatus="7" />
+      <Label id="ContactAdmin" text="Please contact your administrator." translationStatus="7" />
+      <Label id="ServerNotReachable" text="Server not reachable." translationStatus="7" />
+      <Label id="TQ_Sync_Error" text="There was an error during synchronization" translationStatus="7" />
+      <Label id="NoInfoAvailable" text="No information available" translationStatus="7" />
+      <Label id="ValidationMessageInputTooLongError" text="Object #processContextName# contains invalid data in field #simplePropertyName#" translationStatus="7" />
+      <Label id="Mobile_number_missing" text="Mobile-number missing." translationStatus="7" />
+      <Label id="PhoneError" text="Error in phone dialer." translationStatus="7" />
+      <Label id="SMS_not_supported" text="SMS not supported." translationStatus="7" />
+      <Label id="SMSError" text="Error in SMS application." translationStatus="7" />
+      <Label id="ValidationMessageInputTooLong" text="Input #processContextValue# is too long." translationStatus="7" />
+      <Label id="ValidationMessageInvalidData" text="Invalid data in #processContextValue#." translationStatus="7" />
+      <Label id="AdvSearch_Within" text="Within" translationStatus="7" />
+      <Label id="NoRouteFound" text="No route found." translationStatus="7" />
+      <Label id="DefaultRouteErrorMsg" text="Something went wrong while displaying route." translationStatus="7" />
+      <Label id="InvalidGoogleMapAPIKey" text="Invalid Google Maps API Key or Client. Please contact your system administrator." translationStatus="7" />
+      <Label id="MissingGoogleMapAPIKey" text="Missing Google Maps API Key or Client. Please contact your system administrator." translationStatus="7" />
+      <Label id="InvalidGeoCoordinates" text="Invalid Geo Coordinates." translationStatus="7" />
+      <Label id="DistanceError" text="First customer is more than 1000 KMs far from current location." translationStatus="7" />
+      <Label id="AdditionalWaypointsLimitExceed" text="Only first 1000 additional waypoints are shown. Please refine your search." translationStatus="7" />
+      <Label id="InvalidDistanceSearchRadius" text="The search radius cannot be displayed. Please contact your system administrator." translationStatus="7" />
+      <Label id="PositionPlaceholderText" text="Choose starting point" translationStatus="7" />
+      <Label id="UserLocation" text="Your Location" translationStatus="7" />
+      <Label id="LastUserLocationError" text="Not able to determine current user location, last know location is used as current location." translationStatus="7" />
+      <Label id="UserLocationNotFoundError" text="Not able to determine current user location." translationStatus="7" />
+      <Label id="Theming_Header" text="Select your favorite theme" translationStatus="7" />
+      <Label id="Theming_Hint" text="Note: you'll need to restart the app to apply the theme" translationStatus="7" />
+      <Label id="Theming_Default" text="Default" translationStatus="7" />
+      <Label id="StartTyping" text="Start typing" translationStatus="7" />
+      <Label id="Column" text="Column" translationStatus="7" />
+      <Label id="ColumnNumberInClipboard" text="Column number in clipboard" translationStatus="7" />
+      <Label id="Settings" text="Settings" translationStatus="7" />
+      <Label id="Mapping" text="Mapping" translationStatus="7" />
+      <Label id="Preview" text="Preview" translationStatus="7" />
+      <Label id="RowsFound" text="rows found" translationStatus="7" />
+      <Label id="Problems" text="problems" translationStatus="7" />
+      <Label id="DataImportWizard_ProblemGridColumn1" text="Row in source" translationStatus="7" />
+      <Label id="DataImportWizard_ProblemGridColumn2" text="Column" translationStatus="7" />
+      <Label id="DataImportWizard_ProblemGridColumn3" text="Problem" translationStatus="7" />
+      <Label id="DataImportWizard_ProblemsFoundHeadline" text="Problems found" translationStatus="7" />
+      <Label id="DataImportWizardValidations_ClipboardSizeExceeded" text="Clipboard content is too big. Try copying less rows." translationStatus="7" />
+      <Label id="DataImportWizardValidations_NoData" text="No data found in the clipboard." translationStatus="7" />
+      <Label id="DataImportWizardValidations_TooManyRows" text="Maximum of #MAX_ROW_NO# rows was exceeded, complete the paste process and repeat for additional rows." translationStatus="7" />
+      <Label id="DataImportWizardValidations_NoColMapping" text="Mapping invalid. Select another column in the Mapping grid." translationStatus="7" />
+      <Label id="DataImportWizardValidations_ColIndexExceeded" text="Not enough columns. Make sure you are pasting the same number of columns you see in the mapping grid." translationStatus="7" />
+      <Label id="DataImportWizardValidations_RowHasNotEnoughCols" text="Not enough columns. Make sure all rows have the same number of columns you see in the mapping grid." translationStatus="7" />
+      <Label id="DataImportWizardValidations_MaxLength" text="Value exceeds maximum length." translationStatus="7" />
+      <Label id="DataImportWizardValidations_RegexNotMatching" text="Value contains invalid characters." translationStatus="7" />
+      <Label id="DataImportWizardValidations_DatasourceValidationFailed" text="Value not found in list of allowed values." translationStatus="7" />
+      <Label id="DataImportWizardValidations_NotANumber" text="Value is not a number." translationStatus="7" />
+      <Label id="DataImportWizardValidations_TooManyErrors" text="Showing the first #MAX_PROBLEM_NO# problems. Once problems are fixed, more will be shown here." translationStatus="7" />
+      <Label id="Printing_NotSupported" text="Printing is not available in browser scenario." translationStatus="7" />
+      <Label id="AppRunIdText" text="App Run ID:" translationStatus="7" />
+      <Label id="CopySupportInfoButtonText" text="Copy Support Info" translationStatus="7" />
+      <Label id="ListTruncatedMessage" text="List contains more than #RestrictedItemCount# items. The first #RestrictedItemCount# items are displayed." translationStatus="7" />
+      <Label id="ResultCountMessage" text="Showing #displayCount# of #resultCount# results" translationStatus="7" />
+      <Label id="NoResultsMessage" text="Sorry, we couldn't find any results." translationStatus="7" />
+      <Label id="Skipped" text="skipped" translationStatus="7" />
+      <Label id="DataImportWizard_ProblemsFoundDetails" text="Check the source you copied from and reload or update the mappings" translationStatus="7" />
+      <Label id="DataImportWizard_ProblemUITitle" text="Paste from Clipboard" translationStatus="7" />
+      <Label id="MappingDetails" text="Check the preview to make sure the mapping is correct" translationStatus="7" />
+      <Label id="ThousandsSeperator" text="Thousands Seperator" translationStatus="7" />
+      <Label id="DecimalSeperator" text="Decimal Seperator" translationStatus="7" />
+      <Label id="ShowDetails" text="Show Details" translationStatus="7" />
+      <Label id="PreviewDetails" text="Showing first 4 rows" translationStatus="7" />
+      <Label id="Share" text="Share" translationStatus="7" />
+      <Label id="ServerNotResolved" text="A server with the specified hostname could not be found." translationStatus="7" />
+      <Label id="DeviceOffline" text="The device is offline." translationStatus="7" />
+      <Label id="PrintV2_ToggleNotFound" text="Toggle not found" translationStatus="7" />
+      <Label id="PrintV2_ToggleValueNotFound" text="Toggle value not found" translationStatus="7" />
+      <Label id="PrintV2_ToggleFieldNotFound" text="Toggle field not found" translationStatus="7" />
+      <Label id="PrintingV2_SharePdf" text="Your PDF is ready to be shared." translationStatus="7" />
+      <Label id="PrintV2Preview_Title" text="PDF preview" translationStatus="7" />
+      <Label id="SMSCancelled" text="User canceled sending SMS." translationStatus="7" />
+      <Label id="PrintV2Preview_Title" text="PDF preview" translationStatus="7" />
+      <Label id="LicenceInfo" text="The following 3rd party components are used by #applicationName#" translationStatus="7" />
+      <Label id="SyncFailed" text="Synchronization Failed" translationStatus="7" />
+      <Label id="SyncLoginError" text="Login Error" translationStatus="7" />
+      <Label id="Sync_Skipped" text="Skipped" translationStatus="7" />
+      <Label id="SyncNotRegisteredUser" text="The application is already registered to another user. Please login with the original credentials that were registered." translationStatus="7" />
+      <Label id="Sync_Connecting" text="Connecting" translationStatus="7" />
+      <Label id="Sync_DownloadingConfiguration" text="Downloading app content" translationStatus="7" />
+      <Label id="Sync_UploadingData" text="Uploading data" translationStatus="7" />
+      <Label id="Sync_Purging" text="Purging" translationStatus="7" />
+      <Label id="Sync_DownloadingData" text="Downloading data" translationStatus="7" />
+      <Label id="Sync_ConfiguringApplication" text="Configuring app" translationStatus="7" />
+      <Label id="Sync_DownloadingOnDemandData" text="Downloading more data" translationStatus="7" />
+      <Label id="Sync_Done" text="Done" translationStatus="7" />
+      <Label id="Sync_Error" text="There was an error during synchronization" translationStatus="7" />
+      <Label id="SMSCancelled" text="User canceled sending SMS." translationStatus="7" />
+      <Label id="NO_UI_PLUGIN_FOUND" text="No such UI Plugin found " translationStatus="7" />
+      <Label id="DeviceIdChanged" text="Device Id Changed" translationStatus="7" />
+      <Label id="DeviceIdChanged_UserMsg" text="You must re-authenticate and set new PIN to continue using the application." translationStatus="7" />
+      <Label id="NotificationPopupForUnsavedChangesTitle" text="You have unsaved changes" translationStatus="7" />
+      <Label id="NotificationPopupForUnsavedChangesBody" text="Open CG Cloud, and then navigate back to the cockpit to save changes." translationStatus="7" />
+      <Label id="AdvSearch_ApplyFilter" text="Apply Filter" translationStatus="7" />
     </Framework>
     <Global>
       <!-- ####################################################################################################################################################################################### -->
@@ -956,12 +956,12 @@
         <Label id="OpenHoursId" text="Open Hours" translationStatus="7" />
         <Label id="OpenHoursStartTime" text="Start time" translationStatus="7" />
         <Label id="OpenHoursEndTime" text="End time" translationStatus="7" />
-        <Label id="NewTimeSlotId" text="New" translationStatus="1" />
-        <Label id="AcceptTimeSlotChangesId" text="Done" translationStatus="1" />
-        <Label id="dayOfWeek" text="Day of week" translationStatus="1" />
-        <Label id="TimeFromTimeSlot" text="Start time" translationStatus="1" />
-        <Label id="TimeSlotGroupId" text="Time Slot" translationStatus="1" />
-        <Label id="TimeThruTimeSlot" text="End time" translationStatus="1" />
+        <Label id="NewTimeSlotId" text="New" translationStatus="7" />
+        <Label id="AcceptTimeSlotChangesId" text="Done" translationStatus="7" />
+        <Label id="dayOfWeek" text="Day of week" translationStatus="7" />
+        <Label id="TimeFromTimeSlot" text="Start time" translationStatus="7" />
+        <Label id="TimeSlotGroupId" text="Time Slot" translationStatus="7" />
+        <Label id="TimeThruTimeSlot" text="End time" translationStatus="7" />
       </UserInterface>
       <UserInterface id="CustomerCreateCustomerWizardUI">
         <Label id="CreateCustomerTitleId" text="New Customer" translationStatus="7" />
@@ -1125,12 +1125,12 @@
         <Label id="OpenHoursId" text="Open Hours" translationStatus="7" />
         <Label id="OpenHoursStartTime" text="Start time" translationStatus="7" />
         <Label id="OpenHoursEndTime" text="End time" translationStatus="7" />
-        <Label id="NewTimeSlotId" text="New" translationStatus="1" />
-        <Label id="AcceptTimeSlotChangesId" text="Done" translationStatus="1" />
-        <Label id="dayOfWeek" text="Day of week" translationStatus="1" />
-        <Label id="TimeFromTimeSlot" text="Start time" translationStatus="1" />
-        <Label id="TimeSlotGroupId" text="Time Slot" translationStatus="1" />
-        <Label id="TimeThruTimeSlot" text="End time" translationStatus="1" />
+        <Label id="NewTimeSlotId" text="New" translationStatus="7" />
+        <Label id="AcceptTimeSlotChangesId" text="Done" translationStatus="7" />
+        <Label id="dayOfWeek" text="Day of week" translationStatus="7" />
+        <Label id="TimeFromTimeSlot" text="Start time" translationStatus="7" />
+        <Label id="TimeSlotGroupId" text="Time Slot" translationStatus="7" />
+        <Label id="TimeThruTimeSlot" text="End time" translationStatus="7" />
       </UserInterface>
       <UserInterface id="DeliveryRecipientLookup">
         <Label id="DeliveryRecipientLookupTitleId" text="Customers" translationStatus="7" />
@@ -3312,7 +3312,7 @@
         <Label id="StatusLabelId" text="Status" translationStatus="7" />
         <Label id="DateLabelId" text="Date" translationStatus="7" />
         <Label id="DurationLabelId" text="Duration" translationStatus="7" />
-        <Label id="OpenHoursType" text="Type" translationStatus="1" />
+        <Label id="OpenHoursType" text="Type" translationStatus="7" />
       </UserInterface>
       <UserInterface id="VisitCalendarDailyViewUI">
         <Label id="AgendaMapShowId" text="Show Map" translationStatus="7" />
@@ -3752,9 +3752,9 @@
         <Label id="CasClbCallHasReferencedOrder" text="Due to active orders present, this visit cannot be deleted." translationStatus="7" />
         <Label id="CasClbCallCannotBeCreated" text="Visit cannot be created without selecting visit template." translationStatus="7" />
         <Label id="CasClbCallInvalidManagementRelation" text="The management relation of the customer is not valid for the date of the visit." translationStatus="7" />
-        <Label id="CasClbDateMustBeOnOrBeforeTodayDatePolicy" text="Looks like you’ve selected an invalid date. Select a date that's on or before today's date." translationStatus="1" />
-        <Label id="CasClbDateMustBeOnOrAfterTodayDatePolicy" text="Looks like you’ve selected an invalid date. Select a date that's on or after today's date." translationStatus="1" />
-        <Label id="CasClbDateMustBeTodayDatePolicy" text="Looks like you’ve selected an invalid date. Select today's date." translationStatus="1" />
+        <Label id="CasClbDateMustBeOnOrBeforeTodayDatePolicy" text="Looks like you’ve selected an invalid date. Select a date that's on or before today's date." translationStatus="7" />
+        <Label id="CasClbDateMustBeOnOrAfterTodayDatePolicy" text="Looks like you’ve selected an invalid date. Select a date that's on or after today's date." translationStatus="7" />
+        <Label id="CasClbDateMustBeTodayDatePolicy" text="Looks like you’ve selected an invalid date. Select today's date." translationStatus="7" />
       </BusinessObject>
       <BusinessObject id="BoWizardCreateNewCall">
         <Label id="CasClbFillInAllValues" text="Please fill in all values." translationStatus="7" />
@@ -4019,9 +4019,9 @@
         <Label id="FillInDateAndTimeFields" text="Enter date and time for planned start date and planned end date." translationStatus="7" />
       </BusinessObject>
       <BusinessObject id="BoTimeSlot">
-        <Label id="CasBoTimeSlotStartTimeBiggerEndTime" text="Enter a start time that’s earlier than the end time." translationStatus="1" />
-        <Label id="CasBoTimeSlotOverlap" text="One or more time slots overlap with the times you entered. Update existing time slots in the Time Slots related list, or create a time slot that doesn’t overlap." translationStatus="1" />
-        <Label id="CasBoTimeSlotDayOfWeekMandatory" text="Select the day of week." translationStatus="1" />
+        <Label id="CasBoTimeSlotStartTimeBiggerEndTime" text="Enter a start time that’s earlier than the end time." translationStatus="7" />
+        <Label id="CasBoTimeSlotOverlap" text="One or more time slots overlap with the times you entered. Update existing time slots in the Time Slots related list, or create a time slot that doesn’t overlap." translationStatus="7" />
+        <Label id="CasBoTimeSlotDayOfWeekMandatory" text="Select the day of week." translationStatus="7" />
       </BusinessObject>
     </ValidationMessages>
     <NavigationLabels>
@@ -4769,6 +4769,8 @@
     <Image id="ClbTypeStatus_DeliveryVisit_Planned_77AA99" alternativeId="Truck_Sage_Green" />
     <Image id="ClbTypeStatus_DeliveryVisit_Planned_008899" alternativeId="Truck_Sea_Green" />
     <Image id="ClbTypeStatus_DeliveryVisit_Planned_EE9B38" alternativeId="Truck_Yellow_Orange" />
+    <Image id="ClbTypeStatus_DeliveryVisit_Planned_AA1133" alternativeId="Truck_Dark_Orange" />
+    <Image id="ClbTypeStatus_DeliveryVisit_Planned_003344" alternativeId="Truck_Grey_Blue" />
     <Image id="ClbTypeStatus_Call_Planned_DD4411" alternativeId="Suitcase_Dark_Orange" />
     <Image id="ClbTypeStatus_Call_Planned_467596" alternativeId="Suitcase_Grey_Blue" />
     <Image id="ClbTypeStatus_Call_Planned_BBBB00" alternativeId="Suitcase_Lime" />
@@ -4777,6 +4779,8 @@
     <Image id="ClbTypeStatus_Call_Planned_77AA99" alternativeId="Suitcase_Sage_Green" />
     <Image id="ClbTypeStatus_Call_Planned_008899" alternativeId="Suitcase_Sea_Green" />
     <Image id="ClbTypeStatus_Call_Planned_EE9B38" alternativeId="Suitcase_Yellow_Orange" />
+    <Image id="ClbTypeStatus_Call_Planned_AA1133" alternativeId="Suitcase_Dark_Orange" />
+    <Image id="ClbTypeStatus_Call_Planned_003344" alternativeId="Suitcase_Grey_Blue" />
     <Image id="ClbTypeStatus_Vacation_Planned_DD4411" alternativeId="Palmtree_Dark_Orange" />
     <Image id="ClbTypeStatus_Vacation_Planned_467596" alternativeId="Palmtree_Grey_Blue" />
     <Image id="ClbTypeStatus_Vacation_Planned_BBBB00" alternativeId="Palmtree_Lime" />
@@ -4785,6 +4789,8 @@
     <Image id="ClbTypeStatus_Vacation_Planned_77AA99" alternativeId="Palmtree_Sage_Green" />
     <Image id="ClbTypeStatus_Vacation_Planned_008899" alternativeId="Palmtree_Sea_Green" />
     <Image id="ClbTypeStatus_Vacation_Planned_EE9B38" alternativeId="Palmtree_Yellow_Orange" />
+    <Image id="ClbTypeStatus_Vacation_Planned_AA1133" alternativeId="Palmtree_Dark_Orange" />
+    <Image id="ClbTypeStatus_Vacation_Planned_003344" alternativeId="Palmtree_Grey_Blue" />
     <Image id="ClbTypeStatus_Private_Planned_DD4411" alternativeId="Private_Dark_Orange" />
     <Image id="ClbTypeStatus_Private_Planned_467596" alternativeId="Private_Grey_Blue" />
     <Image id="ClbTypeStatus_Private_Planned_BBBB00" alternativeId="Private_Lime" />
@@ -4793,6 +4799,8 @@
     <Image id="ClbTypeStatus_Private_Planned_77AA99" alternativeId="Private_Sage_Green" />
     <Image id="ClbTypeStatus_Private_Planned_008899" alternativeId="Private_Sea_Green" />
     <Image id="ClbTypeStatus_Private_Planned_EE9B38" alternativeId="Private_Yellow_Orange" />
+    <Image id="ClbTypeStatus_Private_Planned_AA1133" alternativeId="Private_Dark_Orange" />
+    <Image id="ClbTypeStatus_Private_Planned_003344" alternativeId="Private_Grey_Blue" />
     <Image id="ClbTypeStatus_Merchandising_Planned_DD4411" alternativeId="Shelf_Dark_Orange" />
     <Image id="ClbTypeStatus_Merchandising_Planned_467596" alternativeId="Shelf_Grey_Blue" />
     <Image id="ClbTypeStatus_Merchandising_Planned_BBBB00" alternativeId="Shelf_Lime" />
@@ -4800,6 +4808,9 @@
     <Image id="ClbTypeStatus_Merchandising_Planned_77AA99" alternativeId="Shelf_Sage_Green" />
     <Image id="ClbTypeStatus_Merchandising_Planned_008899" alternativeId="Shelf_Sea_Green" />
     <Image id="ClbTypeStatus_Merchandising_Planned_EE9B38" alternativeId="Shelf_Yellow_Orange" />
+    <Image id="ClbTypeStatus_Merchandising_Planned_AA1133" alternativeId="Shelf_Dark_Orange" />
+    <Image id="ClbTypeStatus_Merchandising_Planned_003344" alternativeId="Shelf_Grey_Blue" />
+    <Image id="ClbTypeStatus_Merchandising_Planned_551155" alternativeId="Shelf_Red_Violet" />
     <Image id="ClbTypeStatus_Training_Planned_DD4411" alternativeId="Training_Dark_Orange" />
     <Image id="ClbTypeStatus_Training_Planned_467596" alternativeId="Training_Grey_Blue" />
     <Image id="ClbTypeStatus_Training_Planned_BBBB00" alternativeId="Training_Lime" />
@@ -4808,6 +4819,8 @@
     <Image id="ClbTypeStatus_Training_Planned_77AA99" alternativeId="Training_Sage_Green" />
     <Image id="ClbTypeStatus_Training_Planned_008899" alternativeId="Training_Sea_Green" />
     <Image id="ClbTypeStatus_Training_Planned_EE9B38" alternativeId="Training_Yellow_Orange" />
+    <Image id="ClbTypeStatus_Training_Planned_AA1133" alternativeId="Training_Dark_Orange" />
+    <Image id="ClbTypeStatus_Training_Planned_003344" alternativeId="Training_Grey_Blue" />
     <Image id="ClbTypeStatus_Contract_Planned_DD4411" alternativeId="Contract_Dark_Orange" />
     <Image id="ClbTypeStatus_Contract_Planned_467596" alternativeId="Contract_Grey_Blue" />
     <Image id="ClbTypeStatus_Contract_Planned_BBBB00" alternativeId="Contract_Lime" />
@@ -4817,6 +4830,8 @@
     <Image id="ClbTypeStatus_Contract_Planned_008899" alternativeId="Contract_Sea_Green" />
     <Image id="ClbTypeStatus_Contract_Planned_EE9B38" alternativeId="Contract_Yellow_Orange" />
     <Image id="ClbTypeStatus_Contract_Planned_2E8B57" alternativeId="Contract_Teal_Green" />
+    <Image id="ClbTypeStatus_Contract_Planned_AA1133" alternativeId="Contract_Dark_Orange" />
+    <Image id="ClbTypeStatus_Contract_Planned_003344" alternativeId="Contract_Grey_Blue" />
     <Image id="ClbTypeStatus_Phone_Planned_DD4411" alternativeId="Phone_Dark_Orange" />
     <Image id="ClbTypeStatus_Phone_Planned_467596" alternativeId="Phone_Grey_Blue" />
     <Image id="ClbTypeStatus_Phone_Planned_BBBB00" alternativeId="Phone_Lime" />
@@ -4825,6 +4840,8 @@
     <Image id="ClbTypeStatus_Phone_Planned_77AA99" alternativeId="Phone_Sage_Green" />
     <Image id="ClbTypeStatus_Phone_Planned_008899" alternativeId="Phone_Sea_Green" />
     <Image id="ClbTypeStatus_Phone_Planned_EE9B38" alternativeId="Phone_Yellow_Orange" />
+    <Image id="ClbTypeStatus_Phone_Planned_AA1133" alternativeId="Phone_Dark_Orange" />
+    <Image id="ClbTypeStatus_Phone_Planned_003344" alternativeId="Phone_Grey_Blue" />
     <Image id="ClbTypeStatus_Service_Planned_DD4411" alternativeId="Service_Dark_Orange" />
     <Image id="ClbTypeStatus_Service_Planned_467596" alternativeId="Service_Grey_Blue" />
     <Image id="ClbTypeStatus_Service_Planned_BBBB00" alternativeId="Service_Lime" />
@@ -4833,6 +4850,8 @@
     <Image id="ClbTypeStatus_Service_Planned_77AA99" alternativeId="Service_Sage_Green" />
     <Image id="ClbTypeStatus_Service_Planned_008899" alternativeId="Service_Sea_Green" />
     <Image id="ClbTypeStatus_Service_Planned_EE9B38" alternativeId="Service_Yellow_Orange" />
+    <Image id="ClbTypeStatus_Service_Planned_AA1133" alternativeId="Service_Dark_Orange" />
+    <Image id="ClbTypeStatus_Service_Planned_003344" alternativeId="Service_Grey_Blue" />
     <Image id="ClbTypeStatus_Sickness_Planned_DD4411" alternativeId="BandAid_Dark_Orange" />
     <Image id="ClbTypeStatus_Sickness_Planned_467596" alternativeId="BandAid_Grey_Blue" />
     <Image id="ClbTypeStatus_Sickness_Planned_BBBB00" alternativeId="BandAid_Lime" />
@@ -4841,6 +4860,8 @@
     <Image id="ClbTypeStatus_Sickness_Planned_77AA99" alternativeId="BandAid_Sage_Green" />
     <Image id="ClbTypeStatus_Sickness_Planned_008899" alternativeId="BandAid_Sea_Green" />
     <Image id="ClbTypeStatus_Sickness_Planned_EE9B38" alternativeId="BandAid_Yellow_Orange" />
+    <Image id="ClbTypeStatus_Sickness_Planned_AA1133" alternativeId="BandAid_Dark_Orange" />
+    <Image id="ClbTypeStatus_Sickness_Planned_003344" alternativeId="BandAid_Grey_Blue" />
     <Image id="ClbTypeStatus_IdleTime_Planned_DD4411" alternativeId="PriorityLow" />
     <Image id="ClbTypeStatus_IdleTime_Planned_467596" alternativeId="PriorityLow" />
     <Image id="ClbTypeStatus_IdleTime_Planned_BBBB00" alternativeId="PriorityLow" />
@@ -4850,6 +4871,8 @@
     <Image id="ClbTypeStatus_IdleTime_Planned_008899" alternativeId="PriorityLow" />
     <Image id="ClbTypeStatus_IdleTime_Planned_EE9B38" alternativeId="PriorityLow" />
     <Image id="ClbTypeStatus_IdleTime_Planned_DDECD1" alternativeId="PriorityLow" />
+    <Image id="ClbTypeStatus_IdleTime_Planned_AA1133" alternativeId="PriorityLow" />
+    <Image id="ClbTypeStatus_IdleTime_Planned_003344" alternativeId="PriorityLow" />
     <Image id="ClbTypeStatus_Van Sales_Planned_DD4411" alternativeId="Truck_Dark_Orange" />
     <Image id="ClbTypeStatus_Van Sales_Planned_467596" alternativeId="Truck_Grey_Blue" />
     <Image id="ClbTypeStatus_Van Sales_Planned_BBBB00" alternativeId="Truck_Lime" />
@@ -4858,6 +4881,8 @@
     <Image id="ClbTypeStatus_Van Sales_Planned_77AA99" alternativeId="Truck_Sage_Green" />
     <Image id="ClbTypeStatus_Van Sales_Planned_008899" alternativeId="Truck_Sea_Green" />
     <Image id="ClbTypeStatus_Van Sales_Planned_EE9B38" alternativeId="Truck_Yellow_Orange" />
+    <Image id="ClbTypeStatus_Van Sales_Planned_AA1133" alternativeId="Truck_Dark_Orange" />
+    <Image id="ClbTypeStatus_Van Sales_Planned_003344" alternativeId="Truck_Grey_Blue" />
     <Image id="ClbTypeStatus_InboundCall_Planned_DD4411" alternativeId="Suitcase_Dark_Orange" />
     <Image id="ClbTypeStatus_InboundCall_Planned_467596" alternativeId="Suitcase_Grey_Blue" />
     <Image id="ClbTypeStatus_InboundCall_Planned_BBBB00" alternativeId="Suitcase_Lime" />
@@ -4866,6 +4891,8 @@
     <Image id="ClbTypeStatus_InboundCall_Planned_77AA99" alternativeId="Suitcase_Sage_Green" />
     <Image id="ClbTypeStatus_InboundCall_Planned_008899" alternativeId="Suitcase_Sea_Green" />
     <Image id="ClbTypeStatus_InboundCall_Planned_EE9B38" alternativeId="Suitcase_Yellow_Orange" />
+    <Image id="ClbTypeStatus_InboundCall_Planned_AA1133" alternativeId="Suitcase_Dark_Orange" />
+    <Image id="ClbTypeStatus_InboundCall_Planned_003344" alternativeId="Suitcase_Grey_Blue" />
     <!-- ClbTypeStatus Done -->
     <Image id="ClbTypeStatus_Call_Completed" alternativeId="SuitcaseDoneGrey24" />
     <Image id="ClbTypeStatus_Complaint_Completed" alternativeId="BoltDoneGrey24" />

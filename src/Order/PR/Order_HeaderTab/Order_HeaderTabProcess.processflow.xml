@@ -282,6 +282,7 @@
           <Input name="reportPolicy" value="ProcessContext::MainBO.boOrderMeta.reportPolicy" />
           <Input name="documentTransactionType" value="ProcessContext::MainBO.docTaType" />
           <Input name="releaseInProgress" value="ProcessContext::ReleaseInProgress" />
+          <Input name="signatures" value="ProcessContext::MainBO.loSysSignatureBlob" />
         </Parameters>
         <Return name="ProcessContext::BoOrderPrintTextItems" />
         <TransitionTo action="LoadPriceList" />
@@ -333,6 +334,7 @@
           <Input name="salesOrg" value="ApplicationContext::SalesOrg" />
           <Input name="textItems" value="ProcessContext::BoOrderPrintTextItems" />
           <Input name="blobPkey" value="ProcessContext::BoOrderPrintTextItems.blobPKey" />
+          <Input name="signature1" value="ProcessContext::BoOrderPrintTextItems.signature1MediaPath" />
         </Parameters>
         <Return name="ProcessContext::FinalPath" />
         <TransitionTo action="CheckIfPrintGenerationRequired" />

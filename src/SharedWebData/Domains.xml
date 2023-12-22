@@ -3674,7 +3674,7 @@
       <Empty value="" />
     </Initializer>
   </Domain>
-  <Domain name="DomPKey" baseType="NonUnicode" length="23">
+  <Domain name="DomPKey" baseType="NonUnicode" length="34">
     <Initializer>
       <Default value="' '" />
       <Empty value="" />
@@ -6242,7 +6242,7 @@
       <Empty value="" />
     </Initializer>
   </Domain>
-    <Domain name="DomTaskType" baseType="Toggle" length="255">
+  <Domain name="DomTaskType" baseType="Toggle" length="255">
     <Initializer>
       <Default value="'Inquiry'" />
       <Empty value="" />
