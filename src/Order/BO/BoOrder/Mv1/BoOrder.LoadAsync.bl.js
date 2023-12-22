@@ -49,7 +49,8 @@ function loadAsync(jsonQuery){
     //               Add your customizing javaScript code below.                                 //
     //                                                                                           //
     ///////////////////////////////////////////////////////////////////////////////////////////////
-    var promise;
+    
+var promise;
 var phase;
 var checkIfPhaseConditionIsMet;
 //Reset stored register and category filters on order load
@@ -195,6 +196,35 @@ if (canceling) {
             if (Utils.isDefined(attachment)) {
               me.setLoOrderAttachment(attachment);
             }
+            return BoFactory.loadObjectByParamsAsync("LoSysSignatureBlob", me.getQueryBy("referencePKey", me.getPKey()));
+          })
+          .then(function (LoSysSignatureBlob){
+            if (Utils.isDefined(LoSysSignatureBlob))  {
+              me.setLoSysSignatureBlob(LoSysSignatureBlob);
+              var jsonParamsForSignature = [];
+              var jsonQueryForSignature = {};
+              var signatureBlobs = me.getLoSysSignatureBlob().getItems();
+
+              var referencePKey = signatureBlobs.map(function(item){return item.getSignaturePKey();});
+
+
+              jsonParamsForSignature.push({
+                "field" : "referencePKey",
+                "value" : "'" + referencePKey.join("','") + "'"
+              });
+
+              jsonQueryForSignature.params = jsonParamsForSignature;
+
+              return Facade.getListAsync("LoSysSignatureAttribute",jsonQueryForSignature);
+            }
+          })
+          .then(function (LoSysSignatureAttribute){
+            if (Utils.isDefined(LoSysSignatureAttribute))  {
+              me.setLoSysSignatureAttribute(BoFactory.instantiateLightweightList("LoSysSignatureAttribute"));
+              me.getLoSysSignatureAttribute().addItems(LoSysSignatureAttribute);
+              me.getLoSysSignatureAttribute().setObjectStatus(STATE.PERSISTED);
+            }
+
             return BoFactory.createListAsync("LoSplittingGroupResult", {});
           }).then(
           function (list) {
@@ -515,6 +545,7 @@ if (canceling) {
       }
     });
 }
+
     ///////////////////////////////////////////////////////////////////////////////////////////////
     //                                                                                           //
     //               Add your customizing javaScript code above.                                 //

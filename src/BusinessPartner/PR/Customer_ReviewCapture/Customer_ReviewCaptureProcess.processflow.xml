@@ -1045,7 +1045,7 @@
       </Action>
       <!-- Save ContactPartner and refresh LoContactPartner -->
       <Action name="SaveReloadLoContactPartner" actionType="SAVE">
-        <TransitionTo action="ReloadLoContactPartner" />
+        <TransitionTo action="ClearValidatedContactPartner" />
       </Action>
       <Action name="ClearValidatedContactPartner" actionType="LOGIC" call="BoFactory.instantiate">
         <Parameters>

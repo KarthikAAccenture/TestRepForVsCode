@@ -14,6 +14,7 @@
     <Attribute name="sysReleaseProcessStepPKey" table="Signature__c" column="Signature_Flow_Step__c" />
     <Attribute name="usrUserPKey" table="Signature__c" column="User__c" />
     <Attribute name="sysReleaseStepText" table="Signature_Flow_Step__c" column="Description_#Language#__c" />
+    <Attribute name="sysSort" table="Signature_Flow_Step__c" column="Sort__c" />
   </Attributes>
   <Entities>
     <Entity name="SF_File" idAttribute="Id" />
@@ -44,6 +45,6 @@
       ]]></QueryCondition>
   <OrderCriteria />
   <Parameters>
-    <Parameter name="referencePKey" type="TEXT"/>
+    <Parameter name="referencePKey" type="TEXT" />
   </Parameters>
 </DataSource>

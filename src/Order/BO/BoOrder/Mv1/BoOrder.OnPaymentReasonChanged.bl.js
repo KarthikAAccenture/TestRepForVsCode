@@ -70,10 +70,9 @@ if(Utils.isEmptyString(oldValue) && type != "NonValuatedDeliveryNote"){
             var items = itemsMain.getAllItems();
             var deferreds = [];
 
-            for (var index = 0; index < items.length; index++){
-              var item = items[index];
-              deferreds.push(me.resetFreeItems(item));
-            }
+            // remove all free items
+            me.deleteAllFreeItems();
+
             me.setCalculationTime(Utils.getMinDate());
             me.setCalculationStatus("4");
             deferreds.push(me.setEARight());

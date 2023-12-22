@@ -123,6 +123,19 @@ if (params.releaseInProgress === "yes") {
   me.setPrintV2GenerateAndSave(false);
 }
 
+if (Utils.isDefined(params.signatures)) {
+  if (Utils.isDefined(params.signatures.getAllItems()[0])) {
+    var firstSignature = params.signatures.getItemsByParamArray([
+    ],[
+      { "sysSort" : "ASC" },
+      { "name" : "ASC" }
+    ])[0];
+    me.setSignature1MediaPath(firstSignature.mediaPath);
+    me.setSignature1Name(firstSignature.name);
+    me.setSignature1sysReleaseStepText(firstSignature.sysReleaseStepText);
+  }
+}
+
 var promise = when.resolve(me);
 
     ///////////////////////////////////////////////////////////////////////////////////////////////

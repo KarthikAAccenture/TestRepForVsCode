@@ -4,6 +4,7 @@
     <DataDeclaration name="salesOrg" type="LuSalesOrg" />
     <DataDeclaration name="myImageName" type="Image" mimeType="image/png" imageId="CoralSpringLogo" />
     <DataDeclaration name="textItems" type="BoOrderPrintTextItems" />
+    <DataDeclaration name="signature1" type="Signature" /> 
   </Declarations>
   <ReportLayout pageMargins="[40,40,40,40]">
     <!--
@@ -327,6 +328,30 @@ Total Table
         </tr>
       </tbody>
     </table>
+    
+        <!--
+
+
+ Signature Table
+    -->
+    <table name="SignatureTable" tableLayout="noBorders">
+      <tbody>
+        <tr>
+          <td width="160" alignment="center" >
+            <img src="{{Declarations::signature1}}" width="160" alignment="left" />
+          </td>
+          <td width="100"/>
+          <td width="160"/>
+        </tr>
+        <tr>
+          <td>{{Declarations::textItems.signature1Name}}</td>
+          <td />
+          <td />       
+        </tr>
+      </tbody>
+    </table>
+    
+    
     <p>{{Declarations::salesOrg.legalInformation}}</p>
     <p>{{Declarations::textItems.endOfPrint}}</p>
   </ReportLayout>
