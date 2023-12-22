@@ -47,20 +47,40 @@ function deleteAllFreeItems(){
     //                                                                                           //
     ///////////////////////////////////////////////////////////////////////////////////////////////
     
-var me = this;
+/** 
+ * Resets all free items created by PPP engine (related to a specific item (parentType: Item)
+ * or related to the complete order (parentType: Order)) - ignoring manual and Reward Based free items
+ * Should be used if ppp relevant order attributes (e.g. pricing date, header discount, payment reason) changed
+ */
+
 var itemsMain = me.getLoItems();
 var items = itemsMain.getAllItems();
 var index;
 
-for (index = 0; index < items.length; index++)
-{
+for (index = 0; index < items.length; index++){
+  
 	var currentItem = items[index];
-		
-	if(!Utils.isEmptyString(currentItem.getSdoParentItemPKey()))
-	{
-      currentItem.setQuantity(0);
+    var origQty;
+
+    // Remove free items of parent Type "Item" (directly linked to an order item) 
+    // OR of parent type "Order" (linked to the complete Order)
+	if(currentItem.getParentType() === "Item" ||currentItem.getParentType() === "Order" ){
+      
+      origQty = currentItem.getQuantity();
+
+      // First set the item deleted so that quantity changed allowed check is NOT executed in onOrderItemChanged handler
       currentItem.setDeletedFreeItem("1");
-    }		
+      currentItem.setQuantity(0);
+      // remove item from basket
+      currentItem.setShowInBasket("0");
+      // update basket counter
+      me.updateItemFilterBasketCount(currentItem, origQty, 0);
+      // Update counter for "All" Filter
+      me.updateItemFilterCountAfterAdd();
+      // update item in ppp engine
+      CP.PricingHandler.getInstance().updateProduct(currentItem.getData(), "Quantity");
+    }	
+  
 }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////

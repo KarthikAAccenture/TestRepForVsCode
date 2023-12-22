@@ -50,34 +50,40 @@ function resetFreeItems(orderItem){
     //                                                                                           //
     ///////////////////////////////////////////////////////////////////////////////////////////////
     
+/** 
+ * Resets free items related to the given order item (parentType: Item) 
+ * OR related to the complete order (parentType: Order)
+ * Should be used if ppp relevant order item attribute changed
+ */
+
 var promise = when.resolve();
 var deferreds = [];
 var parentPKey = orderItem.getPKey();
-var orderPKey = me.getPKey();
 var items = me.getLoItems().getAllItems();
 var length = items.length;
 var origQty;
 
 for (var index = 0; index < length; index++) {
   var item = items[index];
-  var isFreeItem = false;
 
-  if (Utils.isSfBackend()){
-    isFreeItem = item.getSdoParentItemPKey() === parentPKey || item.getParentType() === "Order";
-  }
-  else{
-    isFreeItem = item.getSdoParentItemPKey() === parentPKey || item.getSdoParentItemPKey() === orderPKey;
-  }
-
-  if (isFreeItem) {
+  // Remove free items linked to given order item (parent item)
+  // OR of parent type "Order" (linked to the complete Order)
+  // Free Items linked to the complete order must also be removed because the changed item might contribute to an overall order based or grouping based free item grant
+  if (item.getSdoParentItemPKey() === parentPKey || item.getParentType() === "Order") {
+    
     origQty = item.getQuantity();
+
+    // First set the item deleted so that quantity changed allowed check is NOT executed in onOrderItemChanged handler
     deferreds.push(item.setDeletedFreeItem("1"));
-    deferreds.push(item.setShowInBasket("0"));
     deferreds.push(item.setQuantity(0));
-    deferreds.push(CP.PricingHandler.getInstance().updateProduct(item.getData(), "Quantity"));
+    // remove item from basket
+    deferreds.push(item.setShowInBasket("0"));
+    // update basket counter
     me.updateItemFilterBasketCount(item, origQty, 0);
-    //Update Count for "All" Filter
+    //Update counter for "All" Filter
     me.updateItemFilterCountAfterAdd();
+    // update item in ppp engine
+    deferreds.push(CP.PricingHandler.getInstance().updateProduct(item.getData(), "Quantity"));
   }
 }
 promise = when.all(deferreds);
