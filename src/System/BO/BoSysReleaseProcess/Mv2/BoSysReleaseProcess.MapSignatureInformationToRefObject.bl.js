@@ -109,6 +109,7 @@ if(!signatureBlobsAreEmpty) {
           "mediaPath" : mediaPath,
           "type" : Utils.getFileExtensionFromMediaPath(mediaPath),
           "sysReleaseStepText" : stepItems[i-1].getText(),
+          "sysSort" : stepItems[i-1].getSort(),
           "objectStatus" : STATE.NEW | STATE.DIRTY,
           "signaturePKey": PKey.next()
         };

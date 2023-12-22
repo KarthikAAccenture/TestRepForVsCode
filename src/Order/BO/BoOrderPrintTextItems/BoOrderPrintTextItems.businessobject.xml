@@ -6,6 +6,10 @@
     <SimpleProperty name="endOfPrint" type="DomText" />
     <SimpleProperty name="printV2GenerateAndSave" type="DomBool" />
     <SimpleProperty name="blobPKey" type="DomPKey" />
+    
+    <SimpleProperty name="signature1MediaPath" type="DomText" />
+    <SimpleProperty name="signature1sysReleaseStepText" type="DomText" />
+    <SimpleProperty name="signature1Name" type="DomText" />
   </SimpleProperties>
   <NestedObjects></NestedObjects>
   <ObjectLookups></ObjectLookups>
